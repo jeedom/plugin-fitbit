@@ -94,10 +94,10 @@ class fitbit extends eqLogic {
 
     public static function getCallbackUri() {
         $url = config::byKey('externalAddr');
-        if (strpos('http://', $url) != 0 && strpos('https://', $url) != 0) {
+        if (strpos($url, 'http://') !== 0 && strpos($url, 'https://') !== 0) {
             $url = 'http://' . $url;
         }
-        if (config::byKey('externalPort') != ''  && config::byKey('externalPort') != 80) {
+        if (config::byKey('externalPort') != '' && config::byKey('externalPort') != 80) {
             return $url . ':' . config::byKey('externalPort') . '/plugins/fitbit/core/php/callback.php';
         } else {
             return $url . '/plugins/fitbit/core/php/callback.php';
@@ -242,6 +242,7 @@ class fitbit extends eqLogic {
             $distance->setConfiguration('goal', $activity['goals']['distance']);
             $distance->save();
         }
+        fitbit::pull();
     }
 
     /*     * *********************Methode d'instance************************* */

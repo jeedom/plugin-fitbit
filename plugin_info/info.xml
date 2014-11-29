@@ -3,7 +3,7 @@
     <id>fitbit</id>
     <name>Fitbit</name>
     <description>Plugin pour fitbit</description>
-    <icon>fa fa-envelope</icon>
+    <icon>icon loisir-weightlift</icon>
     <licence>AGPL</licence>
     <author>Loïc Gevrey</author>
     <installation>Aucune</installation>
