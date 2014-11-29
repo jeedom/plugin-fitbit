@@ -11,5 +11,5 @@ $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('se
 $fitbit->initSession(fitbit::getCallbackUri());
 config::save('fitbit_Token', $_SESSION['fitbit_Token'], 'fitbit');
 config::save('fitbit_Secret', $_SESSION['fitbit_Secret'], 'fitbit');
-exit();
+fitbit::syncWithFitbit();
 redirect(config::byKey('externalAddr') . '?v=d&p=plugin&id=fitbit');

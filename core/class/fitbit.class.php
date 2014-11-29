@@ -93,7 +93,15 @@ class fitbit extends eqLogic {
     }
 
     public static function getCallbackUri() {
-        return config::byKey('externalAddr') . '/plugins/fitbit/core/php/callback.php';
+        $url = config::byKey('externalAddr');
+        if (strpos('http://', $url) != 0 && strpos('https://', $url) != 0) {
+            $url = 'http://' . $url;
+        }
+        if (config::byKey('externalPort') != ''  && config::byKey('externalPort') != 80) {
+            return $url . ':' . config::byKey('externalPort') . '/plugins/fitbit/core/php/callback.php';
+        } else {
+            return $url . '/plugins/fitbit/core/php/callback.php';
+        }
     }
 
     public static function initFitbitOAuth($_new = false) {

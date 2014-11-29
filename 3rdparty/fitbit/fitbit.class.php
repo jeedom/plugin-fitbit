@@ -147,9 +147,8 @@ class FitBitPHP {
     public function initSession($callbackUrl, $cookie = true) {
 
         $session = session_id();
-        if (empty($session)) {
-            session_start();
-        }
+        session_start();
+
 
         if (empty($_SESSION['fitbit_Session']))
             $_SESSION['fitbit_Session'] = 0;
