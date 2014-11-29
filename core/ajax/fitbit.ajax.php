@@ -25,7 +25,10 @@ try {
     }
 
     if (init('action') == 'syncWithFitbit') {
-        fitbit::initFitbitOAuth(true);
+        $result = fitbit::initFitbitOAuth(true);
+        if (is_string($result)) {
+            ajax::success(array('redirect' => $result));
+        }
         fitbit::syncWithFitbit();
         ajax::success();
     }

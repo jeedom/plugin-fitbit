@@ -102,7 +102,7 @@ class fitbit extends eqLogic {
             $fitbit->setOAuthDetails(config::byKey('fitbit_Token', 'fitbit'), config::byKey('fitbit_Secret', 'fitbit'));
         } else {
             if (!self::testFitbitConnexion()) {
-                $fitbit->initSession(self::getCallbackUri());
+                return $fitbit->initSession(self::getCallbackUri());
             } else {
                 $fitbit->setOAuthDetails(config::byKey('fitbit_Token', 'fitbit'), config::byKey('fitbit_Secret', 'fitbit'));
             }

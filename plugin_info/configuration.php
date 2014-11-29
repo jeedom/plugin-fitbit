@@ -73,7 +73,11 @@ if (!isConnect()) {
                     $('#div_alert').showAlert({message: data.result, level: 'danger'});
                     return;
                 }
-                $('#div_alert').showAlert({message: 'Synchronisation réussie', level: 'success'});
+                if (isset(data.result.redirect)) {
+                    window.location.href = data.result.redirect;
+                } else {
+                    $('#div_alert').showAlert({message: 'Synchronisation réussie', level: 'success'});
+                }
             }
         });
     });
