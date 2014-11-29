@@ -264,8 +264,8 @@ class fitbitCmd extends cmd {
 
     /*     * *********************Methode d'instance************************* */
 
-    public function toHtml($_version = 'dashboard') {
-        $html = parent::toHtml($_version);
+    public function toHtml($_version = 'dashboard', $options = '', $_cmdColor = NULL, $_cache = 2) {
+        $html = parent::toHtml($_version, $options, $_cmdColor, $_cache);
         $replace = array(
             '#goal#' => $this->getConfiguration('goal'),
         );
