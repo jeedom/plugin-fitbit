@@ -11,6 +11,9 @@
         $('.cmd[data-cmd_id=#id#] .value').append(value + ' #unite#');
         var goal = parseInt('#goal#');
         var pourcent = value / goal * 100;
+        if (pourcent > 100) {
+            pourcent = 100;
+        }
         if (pourcent > 75) {
             var color = 'progress-bar-success';
         } else if (pourcent > 50) {

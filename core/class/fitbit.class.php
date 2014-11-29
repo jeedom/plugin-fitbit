@@ -35,8 +35,6 @@ class fitbit extends eqLogic {
             }
             $fitbit->setUser($user['encodedId']);
             $activity = $fitbit->getActivities(new DateTime());
-            print_r($activity);
-
             $weight = $eqLogic->getCmd(null, 'weight');
             if (is_object($weight)) {
                 if ($weight->execCmd() != $weight->formatValue($user['weight'])) {
