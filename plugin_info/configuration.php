@@ -49,7 +49,7 @@ if (!isConnect()) {
             <div class="form-group">
                 <label class="col-lg-4 control-label">Synchroniser</label>
                 <div class="col-lg-2">
-                    <a class="btn btn-default" id="bt_syncWithNest"><i class='fa fa-refresh'></i> Synchroniser mes équipements</a> 
+                    <a class="btn btn-default" id="bt_syncWithFitbit"><i class='fa fa-refresh'></i> Synchroniser mes équipements</a> 
                 </div>
             </div>
         <?php } ?>
@@ -57,12 +57,12 @@ if (!isConnect()) {
 </form>
 
 <script>
-    $('#bt_syncWithNest').on('click', function () {
+    $('#bt_syncWithFitbit').on('click', function () {
         $.ajax({// fonction permettant de faire de l'ajax
             type: "POST", // methode de transmission des données au fichier php
-            url: "plugins/nest/core/ajax/nest.ajax.php", // url du fichier php
+            url: "plugins/fitbit/core/ajax/fitbit.ajax.php", // url du fichier php
             data: {
-                action: "syncWithNest",
+                action: "syncWithFitbit",
             },
             dataType: 'json',
             error: function (request, status, error) {

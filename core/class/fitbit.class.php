@@ -84,6 +84,13 @@ class fitbit extends eqLogic {
                     $distance->event($activity['summary']['distances'][0]['distance']);
                 }
             }
+            $mc = cache::byKey('fitbitWidgetmobile' . $eqLogic->getId());
+            $mc->remove();
+            $mc = cache::byKey('fitbitWidgetdashboard' . $eqLogic->getId());
+            $mc->remove();
+            $eqLogic->toHtml('mobile');
+            $eqLogic->toHtml('dashboard');
+            $eqLogic->refreshWidget();
         }
     }
 
@@ -96,7 +103,11 @@ class fitbit extends eqLogic {
         if (!$_new) {
             $fitbit->setOAuthDetails(config::byKey('fitbit_Token', 'fitbit'), config::byKey('fitbit_Secret', 'fitbit'));
         } else {
-            $fitbit->initSession(self::getCallbackUri());
+            if (!self::testFitbitConnexion()) {
+                $fitbit->initSession(self::getCallbackUri());
+            } else {
+                $fitbit->setOAuthDetails(config::byKey('fitbit_Token', 'fitbit'), config::byKey('fitbit_Secret', 'fitbit'));
+            }
         }
         return $fitbit;
     }
@@ -116,6 +127,8 @@ class fitbit extends eqLogic {
         $json = $fitbit->getProfile();
         foreach ($json as $user) {
             $eqLogic = fitbit::byLogicalId($user['encodedId'], 'fitbit');
+            $fitbit->setUser($user['encodedId']);
+            $activity = $fitbit->getActivities(new DateTime());
             if (!is_object($eqLogic)) {
                 $eqLogic = new fitbit();
                 $eqLogic->setName($user['displayName']);
@@ -132,6 +145,8 @@ class fitbit extends eqLogic {
                 $weight->setLogicalId('weight');
                 $weight->setIsVisible(1);
                 $weight->setName(__('Poids', __FILE__));
+                $weight->setTemplate('dashboard', 'tile');
+                $weight->setTemplate('mobile', 'tile');
             }
             $weight->setType('info');
             $weight->setSubType('numeric');
@@ -144,7 +159,7 @@ class fitbit extends eqLogic {
             if (!is_object($height)) {
                 $height = new fitbitCmd();
                 $height->setLogicalId('height');
-                $height->setIsVisible(1);
+                $height->setIsVisible(0);
                 $height->setName(__('Taille', __FILE__));
             }
             $height->setType('info');
@@ -160,11 +175,15 @@ class fitbit extends eqLogic {
                 $step->setLogicalId('step');
                 $step->setIsVisible(1);
                 $step->setName(__('Pas', __FILE__));
+                $step->setTemplate('dashboard', 'fitbit_goal');
+                $step->setTemplate('mobile', 'fitbit_goal');
             }
+
             $step->setType('info');
             $step->setSubType('numeric');
             $step->setEventOnly(1);
             $step->setEqLogic_id($eqLogic->getId());
+            $step->setConfiguration('goal', $activity['goals']['steps']);
             $step->save();
 
             $caloriesOut = $eqLogic->getCmd(null, 'caloriesOut');
@@ -173,11 +192,14 @@ class fitbit extends eqLogic {
                 $caloriesOut->setLogicalId('caloriesOut');
                 $caloriesOut->setIsVisible(1);
                 $caloriesOut->setName(__('Calorie', __FILE__));
+                $caloriesOut->setTemplate('dashboard', 'fitbit_goal');
+                $caloriesOut->setTemplate('mobile', 'fitbit_goal');
             }
             $caloriesOut->setType('info');
             $caloriesOut->setSubType('numeric');
             $caloriesOut->setEventOnly(1);
             $caloriesOut->setEqLogic_id($eqLogic->getId());
+            $caloriesOut->setConfiguration('goal', $activity['goals']['caloriesOut']);
             $caloriesOut->save();
 
             $veryActiveMinutes = $eqLogic->getCmd(null, 'veryActiveMinutes');
@@ -186,12 +208,15 @@ class fitbit extends eqLogic {
                 $veryActiveMinutes->setLogicalId('veryActiveMinutes');
                 $veryActiveMinutes->setIsVisible(1);
                 $veryActiveMinutes->setName(__('Minute active', __FILE__));
+                $veryActiveMinutes->setTemplate('dashboard', 'fitbit_goal');
+                $veryActiveMinutes->setTemplate('mobile', 'fitbit_goal');
             }
             $veryActiveMinutes->setType('info');
             $veryActiveMinutes->setSubType('numeric');
             $veryActiveMinutes->setEventOnly(1);
             $veryActiveMinutes->setUnite('min');
             $veryActiveMinutes->setEqLogic_id($eqLogic->getId());
+            $veryActiveMinutes->setConfiguration('goal', $activity['goals']['activeMinutes']);
             $veryActiveMinutes->save();
 
             $distance = $eqLogic->getCmd(null, 'distance');
@@ -200,17 +225,34 @@ class fitbit extends eqLogic {
                 $distance->setLogicalId('distance');
                 $distance->setIsVisible(1);
                 $distance->setName(__('Distance', __FILE__));
+                $distance->setTemplate('dashboard', 'fitbit_goal');
+                $distance->setTemplate('mobile', 'fitbit_goal');
             }
             $distance->setType('info');
             $distance->setSubType('numeric');
             $distance->setEventOnly(1);
             $distance->setUnite('km');
             $distance->setEqLogic_id($eqLogic->getId());
+            $distance->setConfiguration('goal', $activity['goals']['distance']);
             $distance->save();
         }
     }
 
     /*     * *********************Methode d'instance************************* */
+
+    public function toHtml($_version = 'dashboard') {
+        if ($this->getIsEnable() != 1) {
+            return '';
+        }
+        $_version = jeedom::versionAlias($_version);
+        $mc = cache::byKey('fitbitWidget' . $_version . $this->getId());
+        if ($mc->getValue() != '') {
+            return $mc->getValue();
+        }
+        $html = parent::toHtml($_version);
+        cache::set('fitbitWidget' . $_version . $this->getId(), $html, 0);
+        return $html;
+    }
 
     /*     * **********************Getteur Setteur*************************** */
 }
@@ -223,6 +265,14 @@ class fitbitCmd extends cmd {
 
 
     /*     * *********************Methode d'instance************************* */
+
+    public function toHtml($_version = 'dashboard') {
+        $html = parent::toHtml($_version);
+        $replace = array(
+            '#goal#' => $this->getConfiguration('goal'),
+        );
+        return template_replace($replace, $html);
+    }
 
     public function execute($_options = null) {
         return '';
