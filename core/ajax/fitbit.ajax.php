@@ -33,6 +33,15 @@ try {
         ajax::success();
     }
 
+    if (init('action') == 'forgetAutorization') {
+        @session_start();
+        $_SESSION['fitbit_Session'] = 0;
+        @session_write_close();
+        config::save('fitbit_Token', '', 'fitbit');
+        config::save('fitbit_Secret', '', 'fitbit');
+        ajax::success();
+    }
+
     throw new Exception(__('Aucune methode correspondante à : ', __FILE__) . init('action'));
     /*     * *********Catch exeption*************** */
 } catch (Exception $e) {

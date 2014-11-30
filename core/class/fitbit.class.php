@@ -92,16 +92,14 @@ class fitbit extends eqLogic {
         }
     }
 
-    public static function getCallbackUri() {
-        $url = config::byKey('externalAddr');
-        if (strpos($url, 'http://') !== 0 && strpos($url, 'https://') !== 0) {
-            $url = 'http://' . $url;
-        }
-        if (config::byKey('externalPort') != '' && config::byKey('externalPort') != 80) {
-            return $url . ':' . config::byKey('externalPort') . '/plugins/fitbit/core/php/callback.php';
+    public static function getCallbackUri($_arg = '/plugins/fitbit/core/php/callback.php') {
+        $url = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        if (strpos($url, '/plugins') !== false) {
+            $url = substr($url, 0, strpos($url, '/plugins'));
         } else {
-            return $url . '/plugins/fitbit/core/php/callback.php';
+            $url = substr($url, 0, strpos($url, '/index.php'));
         }
+        return $url . $_arg;
     }
 
     public static function initFitbitOAuth($_new = false) {

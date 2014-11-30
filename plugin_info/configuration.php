@@ -52,6 +52,12 @@ if (!isConnect()) {
                     <a class="btn btn-default" id="bt_syncWithFitbit"><i class='fa fa-refresh'></i> Synchroniser mes équipements</a> 
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Révoquer</label>
+                <div class="col-lg-2">
+                    <a class="btn btn-danger" id="bt_forgetAutorization"><i class='fa fa-times'></i> Révoquer</a> 
+                </div>
+            </div>
         <?php } ?>
     </fieldset>
 </form>
@@ -78,6 +84,32 @@ if (!isConnect()) {
                 } else {
                     $('#div_alert').showAlert({message: 'Synchronisation réussie', level: 'success'});
                 }
+            }
+        });
+    });
+
+    $('#bt_forgetAutorization').on('click', function () {
+        bootbox.confirm('Etes-vous sur de vouloir révoquer les autorisations ?', function (result) {
+            if (result) {
+                $.ajax({// fonction permettant de faire de l'ajax
+                    type: "POST", // methode de transmission des données au fichier php
+                    url: "plugins/fitbit/core/ajax/fitbit.ajax.php", // url du fichier php
+                    data: {
+                        action: "forgetAutorization",
+                    },
+                    dataType: 'json',
+                    error: function (request, status, error) {
+                        handleAjaxError(request, status, error);
+                    },
+                    success: function (data) { // si l'appel a bien fonctionné
+                        if (data.state != 'ok') {
+                            $('#div_alert').showAlert({message: data.result, level: 'danger'});
+                            return;
+                        }
+                        $('#ul_plugin .li_plugin[data-plugin_id=fitbit]').click();
+                        $('#div_alert').showAlert({message: 'Révoquation réussie', level: 'success'});
+                    }
+                });
             }
         });
     });

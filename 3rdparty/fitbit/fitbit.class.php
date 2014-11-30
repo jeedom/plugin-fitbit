@@ -154,9 +154,9 @@ class FitBitPHP {
             $_SESSION['fitbit_Session'] = 0;
 
 
-        if (!isset($_GET['oauth_token']) && $_SESSION['fitbit_Session'] == 1)
+        if (!isset($_GET['oauth_token']) && $_SESSION['fitbit_Session'] == 1) {
             $_SESSION['fitbit_Session'] = 0;
-
+        }
 
         if ($_SESSION['fitbit_Session'] == 0) {
 
@@ -166,6 +166,7 @@ class FitBitPHP {
             $_SESSION['fitbit_Session'] = 1;
 
             return $this->authUrl . '?oauth_token=' . $request_token_info['oauth_token'];
+            @session_write_close();
             exit;
         } else if ($_SESSION['fitbit_Session'] == 1) {
 
@@ -177,9 +178,11 @@ class FitBitPHP {
             $_SESSION['fitbit_Secret'] = $access_token_info['oauth_token_secret'];
 
             $this->setOAuthDetails($_SESSION['fitbit_Token'], $_SESSION['fitbit_Secret']);
+            @session_write_close();
             return 1;
         } else if ($_SESSION['fitbit_Session'] == 2) {
             $this->setOAuthDetails($_SESSION['fitbit_Token'], $_SESSION['fitbit_Secret']);
+            @session_write_close();
             return 2;
         }
     }
