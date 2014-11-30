@@ -53,9 +53,9 @@ class fitbit extends eqLogic {
 
             $step = $eqLogic->getCmd(null, 'step');
             if (is_object($step)) {
-                if ($step->execCmd() != $step->formatValue($activity['summary']['step'])) {
+                if ($step->execCmd() != $step->formatValue($activity['summary']['steps'])) {
                     $step->setCollectDate('');
-                    $step->event($activity['summary']['step']);
+                    $step->event($activity['summary']['steps']);
                 }
             }
 
