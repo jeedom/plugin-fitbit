@@ -24,22 +24,12 @@ try {
         throw new Exception(__('401 - Accès non autorisé', __FILE__));
     }
 
-    if (init('action') == 'syncWithFitbit') {
-        $result = fitbit::initFitbitOAuth(true);
-        if (is_string($result)) {
-            ajax::success(array('redirect' => $result));
+    if (init('action') == 'linkToUser') {
+        $eqLogic = eqLogic::byId(init('id'));
+        if (!is_object($eqLogic)) {
+            throw new Exception(__('EqLogic non trouvé : ', __FILE__) . init('id'));
         }
-        fitbit::syncWithFitbit();
-        ajax::success();
-    }
-
-    if (init('action') == 'forgetAutorization') {
-        @session_start();
-        $_SESSION['fitbit_Session'] = 0;
-        @session_write_close();
-        config::save('fitbit_Token', '', 'fitbit');
-        config::save('fitbit_Secret', '', 'fitbit');
-        ajax::success();
+        ajax::success(array('redirect' => $eqLogic->linkToUser()));
     }
 
     throw new Exception(__('Aucune methode correspondante à : ', __FILE__) . init('action'));

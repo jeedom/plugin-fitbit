@@ -26,69 +26,10 @@ class fitbit extends eqLogic {
     /*     * ***********************Methode static*************************** */
 
     public static function pull() {
-        $fitbit = self::initFitbitOAuth();
-        $json = $fitbit->getProfile();
-        foreach ($json as $user) {
-            $eqLogic = fitbit::byLogicalId($user['encodedId'], 'fitbit');
-            if (!is_object($eqLogic)) {
-                continue;
+        foreach (self::byType('fitbit') as $fitbit) {
+            if ($fitbit->getIsEnable() == 1) {
+                $fitbit->syncWithFitbit();
             }
-            $fitbit->setUser($user['encodedId']);
-            $activity = $fitbit->getActivities(new DateTime());
-            $weight = $eqLogic->getCmd(null, 'weight');
-            if (is_object($weight)) {
-                if ($weight->execCmd() != $weight->formatValue($user['weight'])) {
-                    $weight->setCollectDate('');
-                    $weight->event($user['weight']);
-                }
-            }
-
-            $height = $eqLogic->getCmd(null, 'height');
-            if (is_object($height)) {
-                if ($height->execCmd() != $height->formatValue($user['height'])) {
-                    $height->setCollectDate('');
-                    $height->event($user['height']);
-                }
-            }
-
-            $step = $eqLogic->getCmd(null, 'step');
-            if (is_object($step)) {
-                if ($step->execCmd() != $step->formatValue($activity['summary']['steps'])) {
-                    $step->setCollectDate('');
-                    $step->event($activity['summary']['steps']);
-                }
-            }
-
-            $caloriesOut = $eqLogic->getCmd(null, 'caloriesOut');
-            if (is_object($caloriesOut)) {
-                if ($caloriesOut->execCmd() != $caloriesOut->formatValue($activity['summary']['caloriesOut'])) {
-                    $caloriesOut->setCollectDate('');
-                    $caloriesOut->event($activity['summary']['caloriesOut']);
-                }
-            }
-
-            $veryActiveMinutes = $eqLogic->getCmd(null, 'veryActiveMinutes');
-            if (is_object($veryActiveMinutes)) {
-                if ($veryActiveMinutes->execCmd() != $veryActiveMinutes->formatValue($activity['summary']['veryActiveMinutes'])) {
-                    $veryActiveMinutes->setCollectDate('');
-                    $veryActiveMinutes->event($activity['summary']['veryActiveMinutes']);
-                }
-            }
-
-            $distance = $eqLogic->getCmd(null, 'distance');
-            if (is_object($distance)) {
-                if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances'][0]['distance'])) {
-                    $distance->setCollectDate('');
-                    $distance->event($activity['summary']['distances'][0]['distance']);
-                }
-            }
-            $mc = cache::byKey('fitbitWidgetmobile' . $eqLogic->getId());
-            $mc->remove();
-            $mc = cache::byKey('fitbitWidgetdashboard' . $eqLogic->getId());
-            $mc->remove();
-            $eqLogic->toHtml('mobile');
-            $eqLogic->toHtml('dashboard');
-            $eqLogic->refreshWidget();
         }
     }
 
@@ -102,148 +43,20 @@ class fitbit extends eqLogic {
         return $url . $_arg;
     }
 
-    public static function initFitbitOAuth($_new = false) {
-        $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'), 1, null, 'json');
-        if (!$_new) {
-            $fitbit->setOAuthDetails(config::byKey('fitbit_Token', 'fitbit'), config::byKey('fitbit_Secret', 'fitbit'));
-        } else {
-            if (!self::testFitbitConnexion()) {
-                return $fitbit->initSession(self::getCallbackUri());
-            } else {
-                $fitbit->setOAuthDetails(config::byKey('fitbit_Token', 'fitbit'), config::byKey('fitbit_Secret', 'fitbit'));
-            }
-        }
+    /*     * *********************Methode d'instance************************* */
+
+    public function linkToUser() {
+        @session_start();
+        $_SESSION['fitbit_Session'] = 0;
+        $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
+        return $fitbit->initSession(self::getCallbackUri() . '?eqLogic_id=' . $this->getId());
+    }
+
+    public function getFitbit() {
+        $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
+        $fitbit->setOAuthDetails($this->getConfiguration('token'), $this->getConfiguration('secret'));
         return $fitbit;
     }
-
-    public static function testFitbitConnexion() {
-        try {
-            $fitbit = self::initFitbitOAuth();
-            $fitbit->getProfile();
-            return true;
-        } catch (Exception $ex) {
-            return false;
-        }
-    }
-
-    public static function syncWithFitbit() {
-        $fitbit = self::initFitbitOAuth();
-        $json = $fitbit->getProfile();
-        foreach ($json as $user) {
-            $eqLogic = fitbit::byLogicalId($user['encodedId'], 'fitbit');
-            $fitbit->setUser($user['encodedId']);
-            $activity = $fitbit->getActivities(new DateTime());
-            if (!is_object($eqLogic)) {
-                $eqLogic = new fitbit();
-                $eqLogic->setName($user['displayName']);
-                $eqLogic->setEqType_name('fitbit');
-                $eqLogic->setIsVisible(1);
-                $eqLogic->setIsEnable(1);
-                $eqLogic->setLogicalId($user['encodedId']);
-                $eqLogic->save();
-            }
-
-            $weight = $eqLogic->getCmd(null, 'weight');
-            if (!is_object($weight)) {
-                $weight = new fitbitCmd();
-                $weight->setLogicalId('weight');
-                $weight->setIsVisible(1);
-                $weight->setName(__('Poids', __FILE__));
-                $weight->setTemplate('dashboard', 'tile');
-                $weight->setTemplate('mobile', 'tile');
-            }
-            $weight->setType('info');
-            $weight->setSubType('numeric');
-            $weight->setUnite('kg');
-            $weight->setEventOnly(1);
-            $weight->setEqLogic_id($eqLogic->getId());
-            $weight->save();
-
-            $height = $eqLogic->getCmd(null, 'height');
-            if (!is_object($height)) {
-                $height = new fitbitCmd();
-                $height->setLogicalId('height');
-                $height->setIsVisible(0);
-                $height->setName(__('Taille', __FILE__));
-            }
-            $height->setType('info');
-            $height->setSubType('numeric');
-            $height->setUnite('cm');
-            $height->setEventOnly(1);
-            $height->setEqLogic_id($eqLogic->getId());
-            $height->save();
-
-            $step = $eqLogic->getCmd(null, 'step');
-            if (!is_object($step)) {
-                $step = new fitbitCmd();
-                $step->setLogicalId('step');
-                $step->setIsVisible(1);
-                $step->setName(__('Pas', __FILE__));
-                $step->setTemplate('dashboard', 'fitbit_goal');
-                $step->setTemplate('mobile', 'fitbit_goal');
-            }
-
-            $step->setType('info');
-            $step->setSubType('numeric');
-            $step->setEventOnly(1);
-            $step->setEqLogic_id($eqLogic->getId());
-            $step->setConfiguration('goal', $activity['goals']['steps']);
-            $step->save();
-
-            $caloriesOut = $eqLogic->getCmd(null, 'caloriesOut');
-            if (!is_object($caloriesOut)) {
-                $caloriesOut = new fitbitCmd();
-                $caloriesOut->setLogicalId('caloriesOut');
-                $caloriesOut->setIsVisible(1);
-                $caloriesOut->setName(__('Calorie', __FILE__));
-                $caloriesOut->setTemplate('dashboard', 'fitbit_goal');
-                $caloriesOut->setTemplate('mobile', 'fitbit_goal');
-            }
-            $caloriesOut->setType('info');
-            $caloriesOut->setSubType('numeric');
-            $caloriesOut->setEventOnly(1);
-            $caloriesOut->setEqLogic_id($eqLogic->getId());
-            $caloriesOut->setConfiguration('goal', $activity['goals']['caloriesOut']);
-            $caloriesOut->save();
-
-            $veryActiveMinutes = $eqLogic->getCmd(null, 'veryActiveMinutes');
-            if (!is_object($veryActiveMinutes)) {
-                $veryActiveMinutes = new fitbitCmd();
-                $veryActiveMinutes->setLogicalId('veryActiveMinutes');
-                $veryActiveMinutes->setIsVisible(1);
-                $veryActiveMinutes->setName(__('Minute active', __FILE__));
-                $veryActiveMinutes->setTemplate('dashboard', 'fitbit_goal');
-                $veryActiveMinutes->setTemplate('mobile', 'fitbit_goal');
-            }
-            $veryActiveMinutes->setType('info');
-            $veryActiveMinutes->setSubType('numeric');
-            $veryActiveMinutes->setEventOnly(1);
-            $veryActiveMinutes->setUnite('min');
-            $veryActiveMinutes->setEqLogic_id($eqLogic->getId());
-            $veryActiveMinutes->setConfiguration('goal', $activity['goals']['activeMinutes']);
-            $veryActiveMinutes->save();
-
-            $distance = $eqLogic->getCmd(null, 'distance');
-            if (!is_object($distance)) {
-                $distance = new fitbitCmd();
-                $distance->setLogicalId('distance');
-                $distance->setIsVisible(1);
-                $distance->setName(__('Distance', __FILE__));
-                $distance->setTemplate('dashboard', 'fitbit_goal');
-                $distance->setTemplate('mobile', 'fitbit_goal');
-            }
-            $distance->setType('info');
-            $distance->setSubType('numeric');
-            $distance->setEventOnly(1);
-            $distance->setUnite('km');
-            $distance->setEqLogic_id($eqLogic->getId());
-            $distance->setConfiguration('goal', $activity['goals']['distance']);
-            $distance->save();
-        }
-        fitbit::pull();
-    }
-
-    /*     * *********************Methode d'instance************************* */
 
     public function toHtml($_version = 'dashboard') {
         if ($this->getIsEnable() != 1) {
@@ -257,6 +70,183 @@ class fitbit extends eqLogic {
         $html = parent::toHtml($_version);
         cache::set('fitbitWidget' . $_version . $this->getId(), $html, 0);
         return $html;
+    }
+
+    public function postSave() {
+        $weight = $this->getCmd(null, 'weight');
+        if (!is_object($weight)) {
+            $weight = new fitbitCmd();
+            $weight->setLogicalId('weight');
+            $weight->setIsVisible(1);
+            $weight->setName(__('Poids', __FILE__));
+            $weight->setTemplate('dashboard', 'tile');
+            $weight->setTemplate('mobile', 'tile');
+        }
+        $weight->setType('info');
+        $weight->setSubType('numeric');
+        $weight->setUnite('kg');
+        $weight->setEventOnly(1);
+        $weight->setEqLogic_id($this->getId());
+        $weight->save();
+
+        $height = $this->getCmd(null, 'height');
+        if (!is_object($height)) {
+            $height = new fitbitCmd();
+            $height->setLogicalId('height');
+            $height->setIsVisible(0);
+            $height->setName(__('Taille', __FILE__));
+        }
+        $height->setType('info');
+        $height->setSubType('numeric');
+        $height->setUnite('cm');
+        $height->setEventOnly(1);
+        $height->setEqLogic_id($this->getId());
+        $height->save();
+
+        $step = $this->getCmd(null, 'step');
+        if (!is_object($step)) {
+            $step = new fitbitCmd();
+            $step->setLogicalId('step');
+            $step->setIsVisible(1);
+            $step->setName(__('Pas', __FILE__));
+            $step->setTemplate('dashboard', 'fitbit_goal');
+            $step->setTemplate('mobile', 'fitbit_goal');
+        }
+
+        $step->setType('info');
+        $step->setSubType('numeric');
+        $step->setEventOnly(1);
+        $step->setEqLogic_id($this->getId());
+        $step->save();
+
+        $caloriesOut = $this->getCmd(null, 'caloriesOut');
+        if (!is_object($caloriesOut)) {
+            $caloriesOut = new fitbitCmd();
+            $caloriesOut->setLogicalId('caloriesOut');
+            $caloriesOut->setIsVisible(1);
+            $caloriesOut->setName(__('Calorie', __FILE__));
+            $caloriesOut->setTemplate('dashboard', 'fitbit_goal');
+            $caloriesOut->setTemplate('mobile', 'fitbit_goal');
+        }
+        $caloriesOut->setType('info');
+        $caloriesOut->setSubType('numeric');
+        $caloriesOut->setEventOnly(1);
+        $caloriesOut->setEqLogic_id($this->getId());
+        $caloriesOut->save();
+
+        $veryActiveMinutes = $this->getCmd(null, 'veryActiveMinutes');
+        if (!is_object($veryActiveMinutes)) {
+            $veryActiveMinutes = new fitbitCmd();
+            $veryActiveMinutes->setLogicalId('veryActiveMinutes');
+            $veryActiveMinutes->setIsVisible(1);
+            $veryActiveMinutes->setName(__('Minute active', __FILE__));
+            $veryActiveMinutes->setTemplate('dashboard', 'fitbit_goal');
+            $veryActiveMinutes->setTemplate('mobile', 'fitbit_goal');
+        }
+        $veryActiveMinutes->setType('info');
+        $veryActiveMinutes->setSubType('numeric');
+        $veryActiveMinutes->setEventOnly(1);
+        $veryActiveMinutes->setUnite('min');
+        $veryActiveMinutes->setEqLogic_id($this->getId());
+        $veryActiveMinutes->save();
+
+        $distance = $this->getCmd(null, 'distance');
+        if (!is_object($distance)) {
+            $distance = new fitbitCmd();
+            $distance->setLogicalId('distance');
+            $distance->setIsVisible(1);
+            $distance->setName(__('Distance', __FILE__));
+            $distance->setTemplate('dashboard', 'fitbit_goal');
+            $distance->setTemplate('mobile', 'fitbit_goal');
+        }
+        $distance->setType('info');
+        $distance->setSubType('numeric');
+        $distance->setEventOnly(1);
+        $distance->setUnite('km');
+        $distance->setEqLogic_id($this->getId());
+        $distance->save();
+
+        if ($this->getConfiguration('encodedId') != '') {
+            $this->syncWithFitbit();
+        }
+    }
+
+    public function syncWithFitbit() {
+        $fitbit = $this->getFitbit();
+        $fitbit->setUser($this->getConfiguration('encodedId'));
+        $activity = json_decode(json_encode($fitbit->getActivities(new DateTime())), true);
+        $users = json_decode(json_encode($fitbit->getProfile()), true);
+        $user = $users['user'];
+        $weight = $this->getCmd(null, 'weight');
+        if (is_object($weight)) {
+            if ($weight->execCmd() != $weight->formatValue($user['weight'])) {
+                $weight->setCollectDate('');
+                $weight->event($user['weight']);
+            }
+        }
+
+        $height = $this->getCmd(null, 'height');
+        if (is_object($height)) {
+            if ($height->execCmd() != $height->formatValue($user['height'])) {
+                $height->setCollectDate('');
+                $height->event($user['height']);
+            }
+        }
+
+        $step = $this->getCmd(null, 'step');
+        if (is_object($step)) {
+            if ($step->getConfiguration('goal') != $activity['goals']['steps']) {
+                $step->setConfiguration('goal', $activity['goals']['steps']);
+                $step->save();
+            }
+            if ($step->execCmd() != $step->formatValue($activity['summary']['steps'])) {
+                $step->setCollectDate('');
+                $step->event($activity['summary']['steps']);
+            }
+        }
+
+        $caloriesOut = $this->getCmd(null, 'caloriesOut');
+        if (is_object($caloriesOut)) {
+            if ($caloriesOut->getConfiguration('goal') != $activity['goals']['caloriesOut']) {
+                $caloriesOut->setConfiguration('goal', $activity['goals']['caloriesOut']);
+                $caloriesOut->save();
+            }
+            if ($caloriesOut->execCmd() != $caloriesOut->formatValue($activity['summary']['caloriesOut'])) {
+                $caloriesOut->setCollectDate('');
+                $caloriesOut->event($activity['summary']['caloriesOut']);
+            }
+        }
+
+        $veryActiveMinutes = $this->getCmd(null, 'veryActiveMinutes');
+        if (is_object($veryActiveMinutes)) {
+            if ($veryActiveMinutes->getConfiguration('goal') != $activity['goals']['activeMinutes']) {
+                $veryActiveMinutes->setConfiguration('goal', $activity['goals']['activeMinutes']);
+                $veryActiveMinutes->save();
+            }
+            if ($veryActiveMinutes->execCmd() != $veryActiveMinutes->formatValue($activity['summary']['veryActiveMinutes'])) {
+                $veryActiveMinutes->setCollectDate('');
+                $veryActiveMinutes->event($activity['summary']['veryActiveMinutes']);
+            }
+        }
+
+        $distance = $this->getCmd(null, 'distance');
+        if (is_object($distance)) {
+            if ($distance->getConfiguration('goal') != $activity['goals']['distance']) {
+                $distance->setConfiguration('goal', $activity['goals']['distance']);
+                $distance->save();
+            }
+            if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances'][0]['distance'])) {
+                $distance->setCollectDate('');
+                $distance->event($activity['summary']['distances'][0]['distance']);
+            }
+        }
+        $mc = cache::byKey('fitbitWidgetmobile' . $this->getId());
+        $mc->remove();
+        $mc = cache::byKey('fitbitWidgetdashboard' . $this->getId());
+        $mc->remove();
+        $this->toHtml('mobile');
+        $this->toHtml('dashboard');
+        $this->refreshWidget();
     }
 
     /*     * **********************Getteur Setteur*************************** */
