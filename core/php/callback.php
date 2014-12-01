@@ -20,7 +20,4 @@ $eqLogic->setConfiguration('encodedId', $users['user']['encodedId']);
 $eqLogic->setConfiguration('token', $_SESSION['fitbit_Token']);
 $eqLogic->setConfiguration('secret', $_SESSION['fitbit_Secret']);
 $eqLogic->save();
-
-
-return;
 redirect(fitbit::getCallbackUri('/index.php?v=d&p=fitbit&m=fitbit&id=' . $eqLogic->getId()));
