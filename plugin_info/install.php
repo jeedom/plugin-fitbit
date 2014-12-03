@@ -19,6 +19,9 @@
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function fitbit_install() {
+    if (!class_exists('OAuth')) {
+        @exec('sudo apt-get install -y php5-dev;sudo pecl install oauth;echo "extension=oauth.so" >> /etc/php5/cli/php.ini;echo "extension=oauth.so" >> /etc/php5/fpm/php.ini; sudo service php5-fpm restart"');
+    }
     $cron = cron::byClassAndFunction('fitbit', 'pull');
     if (!is_object($cron)) {
         $cron = new cron();
