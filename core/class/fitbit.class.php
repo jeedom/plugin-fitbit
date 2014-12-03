@@ -46,6 +46,9 @@ class fitbit extends eqLogic {
     /*     * *********************Methode d'instance************************* */
 
     public function linkToUser() {
+        if (!class_exists('OAuth')) {
+            throw new Exception('Classe OAuth non trouvée merci de l\'installer : "sudo apt-get update;sudo apt-get install -y php5-dev;sudo pecl install oauth;echo "extension=oauth.so" >> /etc/php5/cli/php.ini;echo "extension=oauth.so" >> /etc/php5/fpm/php.ini; sudo service php5-fpm restart"');
+        }
         @session_start();
         $_SESSION['fitbit_Session'] = 0;
         $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
@@ -53,6 +56,9 @@ class fitbit extends eqLogic {
     }
 
     public function getFitbit() {
+        if (!class_exists('OAuth')) {
+            throw new Exception('Classe OAuth non trouvée merci de l\'installer : "sudo apt-get update;sudo apt-get install -y php5-dev;sudo pecl install oauth;echo "extension=oauth.so" >> /etc/php5/cli/php.ini;echo "extension=oauth.so" >> /etc/php5/fpm/php.ini; sudo service php5-fpm restart"');
+        }
         $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
         $fitbit->setOAuthDetails($this->getConfiguration('token'), $this->getConfiguration('secret'));
         return $fitbit;
