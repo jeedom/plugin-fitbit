@@ -95,6 +95,18 @@ class fitbit extends eqLogic {
         $weight->setEqLogic_id($this->getId());
         $weight->save();
 
+        $refresh = $this->getCmd(null, 'refresh');
+        if (!is_object($refresh)) {
+            $refresh = new fitbitCmd();
+            $refresh->setLogicalId('refresh');
+            $refresh->setIsVisible(1);
+            $refresh->setName(__('Rafraîhir', __FILE__));
+        }
+        $refresh->setType('action');
+        $refresh->setSubType('other');
+        $refresh->setEqLogic_id($this->getId());
+        $refresh->save();
+
         $height = $this->getCmd(null, 'height');
         if (!is_object($height)) {
             $height = new fitbitCmd();
@@ -276,7 +288,11 @@ class fitbitCmd extends cmd {
     }
 
     public function execute($_options = null) {
-        return '';
+        if ($this->getType() == '') {
+            return '';
+        }
+        $eqLogic = $this->getEqlogic();
+        $eqLogic->syncWithFitbit();
     }
 
     /*     * **********************Getteur Setteur*************************** */
