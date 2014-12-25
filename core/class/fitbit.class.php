@@ -33,16 +33,6 @@ class fitbit extends eqLogic {
         }
     }
 
-    public static function getCallbackUri($_arg = '/plugins/fitbit/core/php/callback.php') {
-        $url = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-        if (strpos($url, '/plugins') !== false) {
-            $url = substr($url, 0, strpos($url, '/plugins'));
-        } else {
-            $url = substr($url, 0, strpos($url, '/index.php'));
-        }
-        return $url . $_arg;
-    }
-
     /*     * *********************Methode d'instance************************* */
 
     public function linkToUser() {
@@ -52,7 +42,7 @@ class fitbit extends eqLogic {
         @session_start();
         $_SESSION['fitbit_Session'] = 0;
         $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-        return $fitbit->initSession(self::getCallbackUri() . '?eqLogic_id=' . $this->getId());
+        return $fitbit->initSession(config::byKey('externalAddr') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
     }
 
     public function getFitbit() {

@@ -13,11 +13,11 @@ if (!is_object($eqLogic)) {
     exit();
 }
 $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-$fitbit->initSession(fitbit::getCallbackUri() . '?eqLogic_id=' . $eqLogic->getId());
-$users = json_decode(json_encode($fitbit->getProfile()),true);
+$fitbit->initSession(config::byKey('externalAddr') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $eqLogic->getId());
+$users = json_decode(json_encode($fitbit->getProfile()), true);
 
 $eqLogic->setConfiguration('encodedId', $users['user']['encodedId']);
 $eqLogic->setConfiguration('token', $_SESSION['fitbit_Token']);
 $eqLogic->setConfiguration('secret', $_SESSION['fitbit_Secret']);
 $eqLogic->save();
-redirect(fitbit::getCallbackUri('/index.php?v=d&p=fitbit&m=fitbit&id=' . $eqLogic->getId()));
+redirect(config::byKey('externalAddr') . '/index.php?v=d&p=fitbit&m=fitbit&id=' . $eqLogic->getId());
