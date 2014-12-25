@@ -20,7 +20,7 @@ $eqLogics = eqLogic::byType('fitbit');
             </ul>
         </div>
     </div>
-    
+
     <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
         <legend>{{Mes équipements Fitbit}}
         </legend>
@@ -43,7 +43,7 @@ $eqLogics = eqLogic::byType('fitbit');
             </div>
         <?php } ?>
     </div>
-    
+
     <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
         <form class="form-horizontal">
             <fieldset>
@@ -81,7 +81,7 @@ $eqLogics = eqLogic::byType('fitbit');
                 <div class="form-group">
                     <label class="col-lg-3 control-label">URL de retour</label>
                     <div class="col-lg-4">
-                        <span><?php echo fitbit::getCallbackUri(); ?></span>
+                        <span><?php echo config::byKey('externalAddr') . '/plugins/fitbit/core/php/callback.php'; ?></span>
                     </div>
                 </div>
                 <div class="form-group">
