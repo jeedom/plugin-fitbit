@@ -3,7 +3,7 @@
 require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
 include_file('core', 'authentification', 'php');
 if (!isConnect()) {
-    echo 'Vous ne pouvez appeller cette page sans être connecté. Veuillez vous connecter <a href=' . config::byKey('externalAddr') . '/index.php>ici</a> avant et refaire l\'opération de synchronisation';
+    echo 'Vous ne pouvez appeller cette page sans être connecté. Veuillez vous connecter <a href=' . cconfig::byKey('externalProtocol') .config::byKey('externalAddr').':' .config::byKey('externalPort').config::byKey('externalComplement') . '/index.php>ici</a> avant et refaire l\'opération de synchronisation';
     die();
 }
 require_once dirname(__FILE__) . '/fitbit.inc.php';
@@ -13,7 +13,7 @@ if (!is_object($eqLogic)) {
     exit();
 }
 $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-$fitbit->initSession(config::byKey('externalAddr') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $eqLogic->getId());
+$fitbit->initSession(config::byKey('externalProtocol') .config::byKey('externalAddr').':' .config::byKey('externalPort').config::byKey('externalComplement') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $eqLogic->getId());
 $users = json_decode(json_encode($fitbit->getProfile()), true);
 
 $eqLogic->setConfiguration('encodedId', $users['user']['encodedId']);

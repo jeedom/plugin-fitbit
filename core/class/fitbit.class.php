@@ -42,7 +42,7 @@ class fitbit extends eqLogic {
         @session_start();
         $_SESSION['fitbit_Session'] = 0;
         $fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-        return $fitbit->initSession(config::byKey('externalAddr') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
+        return $fitbit->initSession(config::byKey('externalProtocol') .config::byKey('externalAddr').':' .config::byKey('externalPort').config::byKey('externalComplement') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
     }
 
     public function getFitbit() {
@@ -273,7 +273,7 @@ class fitbitCmd extends cmd {
         $html = parent::toHtml($_version, $options, $_cmdColor, $_cache);
         $replace = array(
             '#goal#' => $this->getConfiguration('goal'),
-        );
+            );
         return template_replace($replace, $html);
     }
 
