@@ -20,4 +20,4 @@ $eqLogic->setConfiguration('encodedId', $users['user']['encodedId']);
 $eqLogic->setConfiguration('token', $_SESSION['fitbit_Token']);
 $eqLogic->setConfiguration('secret', $_SESSION['fitbit_Secret']);
 $eqLogic->save();
-redirect(config::byKey('externalAddr') . '/index.php?v=d&p=fitbit&m=fitbit&id=' . $eqLogic->getId());
+redirect(config::byKey('externalProtocol') .config::byKey('externalAddr').':' .config::byKey('externalPort').config::byKey('externalComplement') . '/index.php?v=d&p=fitbit&m=fitbit&id=' . $eqLogic->getId());
