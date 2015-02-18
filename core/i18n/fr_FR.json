@@ -1,0 +1,24 @@
+{
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
+        "Ajouter une personne": "Ajouter une personne",
+        "Rechercher": "Rechercher",
+        "Mes équipements Fitbit": "Mes équipements Fitbit",
+        "Général": "Général",
+        "Nom de la personne": "Nom de la personne",
+        "Objet parent": "Objet parent",
+        "Aucun": "Aucun",
+        "Activer": "Activer",
+        "Visible": "Visible",
+        "Commandes": "Commandes",
+        "Nom": "Nom",
+        "Type": "Type",
+        "Action": "Action",
+        "Supprimer": "Supprimer",
+        "Sauvegarder": "Sauvegarder"
+    },
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
+        "Historiser": "Historiser",
+        "Afficher": "Afficher",
+        "Tester": "Tester"
+    }
+}
