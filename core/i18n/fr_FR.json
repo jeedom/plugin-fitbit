@@ -20,5 +20,9 @@
         "Historiser": "Historiser",
         "Afficher": "Afficher",
         "Tester": "Tester"
+    },
+    "plugins\/fitbit\/plugin_info\/info.xml": {
+        "Plugin pour fitbit": "Plugin pour fitbit",
+        "Aucune": "Aucune"
     }
 }
