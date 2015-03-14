@@ -1,0 +1,16 @@
+== Fitbit
+
+=== Description
+Plugin permettant d'accéder aux informations de ses appareils fitbit
+
+'''
+=== Configuration
+include::configuration.asciidoc[]
+
+'''
+=== FAQ
+include::faq.asciidoc[]
+
+'''
+=== Changelog
+include::changelog.asciidoc[]
