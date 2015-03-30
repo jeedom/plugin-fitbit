@@ -210,9 +210,9 @@ class fitbit extends eqLogic {
 				$step->setConfiguration('goal', $activity['goals']['steps']);
 				$step->save();
 			}
-			if ($step->execCmd() != $step->formatValue($activity['summary']['steps'])) {
+			if ($step->execCmd() != $step->formatValue($activity['summary']['distances']['steps'])) {
 				$step->setCollectDate('');
-				$step->event($activity['summary']['steps']);
+				$step->event($activity['summary']['distances']['steps']);
 			}
 		}
 
@@ -234,9 +234,9 @@ class fitbit extends eqLogic {
 				$veryActiveMinutes->setConfiguration('goal', $activity['goals']['activeMinutes']);
 				$veryActiveMinutes->save();
 			}
-			if ($veryActiveMinutes->execCmd() != $veryActiveMinutes->formatValue($activity['summary']['veryActiveMinutes'])) {
+			if ($veryActiveMinutes->execCmd() != $veryActiveMinutes->formatValue($activity['summary']['distances']['veryActiveMinutes'])) {
 				$veryActiveMinutes->setCollectDate('');
-				$veryActiveMinutes->event($activity['summary']['veryActiveMinutes']);
+				$veryActiveMinutes->event($activity['summary']['distances']['veryActiveMinutes']);
 			}
 		}
 
@@ -246,9 +246,9 @@ class fitbit extends eqLogic {
 				$distance->setConfiguration('goal', $activity['goals']['distance']);
 				$distance->save();
 			}
-			if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances'][0]['distance'])) {
+			if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances']['activityDistance'][0]['distance'])) {
 				$distance->setCollectDate('');
-				$distance->event($activity['summary']['distances'][0]['distance']);
+				$distance->event($activity['summary']['distances']['activityDistance'][0]['distance']);
 			}
 		}
 		$mc = cache::byKey('fitbitWidgetmobile' . $this->getId());
