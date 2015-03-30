@@ -210,9 +210,9 @@ class fitbit extends eqLogic {
 				$step->setConfiguration('goal', $activity['goals']['steps']);
 				$step->save();
 			}
-			if ($step->execCmd() != $step->formatValue($activity['summary']['distances']['steps'])) {
+			if ($step->execCmd() != $step->formatValue($activity['summary']['steps'])) {
 				$step->setCollectDate('');
-				$step->event($activity['summary']['distances']['steps']);
+				$step->event($activity['summary']['steps']);
 			}
 		}
 
@@ -246,7 +246,7 @@ class fitbit extends eqLogic {
 				$distance->setConfiguration('goal', $activity['goals']['distance']);
 				$distance->save();
 			}
-			if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances']['activityDistance'][0]['distance'])) {
+			if ($distance->execCmd() != $distance->formatValue($activity['summary']['activityDistance']['activityDistance'][0]['distance'])) {
 				$distance->setCollectDate('');
 				$distance->event($activity['summary']['distances']['activityDistance'][0]['distance']);
 			}
