@@ -234,9 +234,9 @@ class fitbit extends eqLogic {
 				$veryActiveMinutes->setConfiguration('goal', $activity['goals']['activeMinutes']);
 				$veryActiveMinutes->save();
 			}
-			if ($veryActiveMinutes->execCmd() != $veryActiveMinutes->formatValue($activity['summary']['distances']['veryActiveMinutes'])) {
+			if ($veryActiveMinutes->execCmd() != $veryActiveMinutes->formatValue($activity['summary']['veryActiveMinutes'])) {
 				$veryActiveMinutes->setCollectDate('');
-				$veryActiveMinutes->event($activity['summary']['distances']['veryActiveMinutes']);
+				$veryActiveMinutes->event($activity['summary']['veryActiveMinutes']);
 			}
 		}
 
@@ -246,7 +246,7 @@ class fitbit extends eqLogic {
 				$distance->setConfiguration('goal', $activity['goals']['distance']);
 				$distance->save();
 			}
-			if ($distance->execCmd() != $distance->formatValue($activity['summary']['activityDistance']['activityDistance'][0]['distance'])) {
+			if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances']['activityDistance'][0]['distance'])) {
 				$distance->setCollectDate('');
 				$distance->event($activity['summary']['distances']['activityDistance'][0]['distance']);
 			}
