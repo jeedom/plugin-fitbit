@@ -2,7 +2,7 @@
 == Fitbit
 
 === Description
-Plugin permettant d'accéder aux informations de ses appareils Fitbit (nombre de pas, calorie, distance...)
+Plugin permettant d'accéder aux informations de ses appareils Fitbit (nombre de pas, calories, distance...)
 
 '''
 === Configuration
