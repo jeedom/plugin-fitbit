@@ -41,7 +41,7 @@ class fitbit extends eqLogic {
 		@session_start();
 		$_SESSION['fitbit_Session'] = 0;
 		$fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-		return $fitbit->initSession(config::byKey('externalProtocol') . config::byKey('externalAddr') . ':' . config::byKey('externalPort') . config::byKey('externalComplement') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
+		return $fitbit->initSession(network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
 	}
 
 	public function getFitbit() {

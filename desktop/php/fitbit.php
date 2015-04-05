@@ -1,6 +1,6 @@
 <?php
 if (!isConnect('admin')) {
-    throw new Exception('{{401 - Accès non autorisé}}');
+	throw new Exception('{{401 - Accès non autorisé}}');
 }
 sendVarToJS('eqType', 'fitbit');
 $eqLogics = eqLogic::byType('fitbit');
@@ -13,10 +13,10 @@ $eqLogics = eqLogic::byType('fitbit');
                 <a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une personne}}</a>
                 <li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
                 <?php
-                foreach ($eqLogics as $eqLogic) {
-                    echo '<li class="cursor li_eqLogic" data-eqLogic_id="' . $eqLogic->getId() . '"><a>' . $eqLogic->getHumanName(true) . '</a></li>';
-                }
-                ?>
+foreach ($eqLogics as $eqLogic) {
+	echo '<li class="cursor li_eqLogic" data-eqLogic_id="' . $eqLogic->getId() . '"><a>' . $eqLogic->getHumanName(true) . '</a></li>';
+}
+?>
             </ul>
         </div>
     </div>
@@ -25,23 +25,23 @@ $eqLogics = eqLogic::byType('fitbit');
         <legend>{{Mes équipements Fitbit}}
         </legend>
         <?php
-        if (count($eqLogics) == 0) {
-            echo "<br/><br/><br/><center><span style='color:#767676;font-size:1.2em;font-weight: bold;'>Vous n'avez encore équipement Fitbit, cliquez à gauche sur le bouton ajouter un équipement un Fitbit pour commencer</span></center>";
-        } else {
-            ?>
+if (count($eqLogics) == 0) {
+	echo "<br/><br/><br/><center><span style='color:#767676;font-size:1.2em;font-weight: bold;'>Vous n'avez encore équipement Fitbit, cliquez à gauche sur le bouton ajouter un équipement un Fitbit pour commencer</span></center>";
+} else {
+	?>
             <div class="eqLogicThumbnailContainer">
                 <?php
-                foreach ($eqLogics as $eqLogic) {
-                    echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
-                    echo "<center>";
-                    echo '<img src="plugins/fitbit/doc/images/fitbit_icon.png" height="105" width="95" />';
-                    echo "</center>";
-                    echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
-                    echo '</div>';
-                }
-                ?>
+foreach ($eqLogics as $eqLogic) {
+		echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
+		echo "<center>";
+		echo '<img src="plugins/fitbit/doc/images/fitbit_icon.png" height="105" width="95" />';
+		echo "</center>";
+		echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
+		echo '</div>';
+	}
+	?>
             </div>
-        <?php } ?>
+        <?php }?>
     </div>
 
     <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
@@ -61,10 +61,10 @@ $eqLogics = eqLogic::byType('fitbit');
                         <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
                             <option value="">{{Aucun}}</option>
                             <?php
-                            foreach (object::all() as $object) {
-                                echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
-                            }
-                            ?>
+foreach (object::all() as $object) {
+	echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
+}
+?>
                         </select>
                     </div>
                 </div>
@@ -81,16 +81,16 @@ $eqLogics = eqLogic::byType('fitbit');
                 <div class="form-group">
                     <label class="col-lg-3 control-label">URL de retour</label>
                     <div class="col-lg-4">
-                        <span><?php echo config::byKey('externalProtocol') .config::byKey('externalAddr').':' .config::byKey('externalPort').config::byKey('externalComplement') . '/plugins/fitbit/core/php/callback.php'; ?></span>
+                        <span><?php echo network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php';?></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Lier</label>
                     <div class="col-lg-2">
-                        <a class="btn btn-default" id="bt_linkToUser"><i class='fa fa-refresh'></i> lier à un utilisateur</a> 
+                        <a class="btn btn-default" id="bt_linkToUser"><i class='fa fa-refresh'></i> lier à un utilisateur</a>
                     </div>
                 </div>
-            </fieldset> 
+            </fieldset>
         </form>
 
         <legend>{{Commandes}}</legend>
@@ -116,5 +116,5 @@ $eqLogics = eqLogic::byType('fitbit');
     </div>
 </div>
 
-<?php include_file('desktop', 'fitbit', 'js', 'fitbit'); ?>
-<?php include_file('core', 'plugin.template', 'js'); ?>
+<?php include_file('desktop', 'fitbit', 'js', 'fitbit');?>
+<?php include_file('core', 'plugin.template', 'js');?>
