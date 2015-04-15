@@ -29,7 +29,7 @@ foreach ($eqLogics as $eqLogic) {
          <center>
             <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
         </center>
-        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Ajouter une personne}}</center></span>
     </div>
     <?php
 foreach ($eqLogics as $eqLogic) {
