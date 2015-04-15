@@ -4,9 +4,9 @@ image::../images/fitbit-1.JPG[]
 
 ==== Création d'un équipement et association au compte Fitbit
 
-[icon="../images/plugin/tip.JPG"]
+[icon="../images/plugin/tip.png"]
 [TIP]
-Comme à beaucoup d'endroit sur Jeedom,mettre la souris tout a coche permet de faire apparaitre un menu d'accès rapide (vous pouvez à partir de votre profils le laisser toujours visible)
+Comme à beaucoup d'endroit sur Jeedom, mettre la souris tout à gauche permet de faire apparaître un menu d'accès rapide (vous pouvez à partir de votre profils le laisser toujours visible)
 
 Cliquez sur ajouter une personne pour ajouter quelqu'un : 
 
