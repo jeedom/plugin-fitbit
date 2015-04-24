@@ -63,9 +63,40 @@ class fitbit extends eqLogic {
 		$_version = jeedom::versionAlias($_version);
 		$mc = cache::byKey('fitbitWidget' . $_version . $this->getId());
 		if ($mc->getValue() != '') {
-			return $mc->getValue();
+			//return $mc->getValue();
 		}
-		$html = parent::toHtml($_version);
+		$replace = array(
+			'#name#' => $this->getName(),
+			'#id#' => $this->getId(),
+			'#background_color#' => $this->getBackgroundColor($_version),
+			'#eqLink#' => $this->getLinkToConfiguration(),
+		);
+
+		foreach ($this->getCmd('info') as $cmd) {
+			$replace['#' . $cmd->getLogicalId() . '_history#'] = '';
+			if ($cmd->getIsVisible() == 1) {
+				$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+				$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
+				$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+				if ($cmd->getIsHistorized() == 1) {
+					$replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor';
+				}
+			} else {
+				$replace['#' . $cmd->getLogicalId() . '#'] = '';
+			}
+		}
+
+		$refresh = $this->getCmd(null, 'refresh');
+		$replace['#refresh_id#'] = $refresh->getId();
+
+		$parameters = $this->getDisplay('parameters');
+		if (is_array($parameters)) {
+			foreach ($parameters as $key => $value) {
+				$replace['#' . $key . '#'] = $value;
+			}
+		}
+
+		$html = template_replace($replace, getTemplate('core', $_version, 'fitbit', 'fitbit'));
 		cache::set('fitbitWidget' . $_version . $this->getId(), $html, 0);
 		return $html;
 	}
@@ -119,8 +150,6 @@ class fitbit extends eqLogic {
 			$step->setLogicalId('step');
 			$step->setIsVisible(1);
 			$step->setName(__('Pas', __FILE__));
-			$step->setTemplate('dashboard', 'fitbit_goal');
-			$step->setTemplate('mobile', 'fitbit_goal');
 		}
 
 		$step->setType('info');
@@ -135,8 +164,6 @@ class fitbit extends eqLogic {
 			$caloriesOut->setLogicalId('caloriesOut');
 			$caloriesOut->setIsVisible(1);
 			$caloriesOut->setName(__('Calorie', __FILE__));
-			$caloriesOut->setTemplate('dashboard', 'fitbit_goal');
-			$caloriesOut->setTemplate('mobile', 'fitbit_goal');
 		}
 		$caloriesOut->setType('info');
 		$caloriesOut->setSubType('numeric');
@@ -150,8 +177,6 @@ class fitbit extends eqLogic {
 			$veryActiveMinutes->setLogicalId('veryActiveMinutes');
 			$veryActiveMinutes->setIsVisible(1);
 			$veryActiveMinutes->setName(__('Minute active', __FILE__));
-			$veryActiveMinutes->setTemplate('dashboard', 'fitbit_goal');
-			$veryActiveMinutes->setTemplate('mobile', 'fitbit_goal');
 		}
 		$veryActiveMinutes->setType('info');
 		$veryActiveMinutes->setSubType('numeric');
@@ -166,8 +191,6 @@ class fitbit extends eqLogic {
 			$distance->setLogicalId('distance');
 			$distance->setIsVisible(1);
 			$distance->setName(__('Distance', __FILE__));
-			$distance->setTemplate('dashboard', 'fitbit_goal');
-			$distance->setTemplate('mobile', 'fitbit_goal');
 		}
 		$distance->setType('info');
 		$distance->setSubType('numeric');
@@ -176,14 +199,26 @@ class fitbit extends eqLogic {
 		$distance->setEqLogic_id($this->getId());
 		$distance->save();
 
+		$elevation = $this->getCmd(null, 'elevation');
+		if (!is_object($elevation)) {
+			$elevation = new fitbitCmd();
+			$elevation->setLogicalId('elevation');
+			$elevation->setIsVisible(1);
+			$elevation->setName(__('Elevation', __FILE__));
+		}
+		$elevation->setType('info');
+		$elevation->setSubType('numeric');
+		$elevation->setEventOnly(1);
+		$distance->setUnite('m');
+		$elevation->setEqLogic_id($this->getId());
+		$elevation->save();
+
 		$awakeCount = $this->getCmd(null, 'awakeCount');
 		if (!is_object($awakeCount)) {
 			$awakeCount = new fitbitCmd();
 			$awakeCount->setLogicalId('awakeCount');
 			$awakeCount->setIsVisible(1);
 			$awakeCount->setName(__('Nombre de reveils', __FILE__));
-			$awakeCount->setTemplate('dashboard', 'fitbit_awakeCount');
-			$awakeCount->setTemplate('mobile', 'fitbit_awakeCount');
 		}
 		$awakeCount->setType('info');
 		$awakeCount->setSubType('numeric');
@@ -197,8 +232,6 @@ class fitbit extends eqLogic {
 			$awakeDuration->setLogicalId('awakeDuration');
 			$awakeDuration->setIsVisible(1);
 			$awakeDuration->setName(__('Durée réveils', __FILE__));
-			$awakeDuration->setTemplate('dashboard', 'fitbit_awakeDuration');
-			$awakeDuration->setTemplate('mobile', 'fitbit_awakeDuration');
 		}
 		$awakeDuration->setType('info');
 		$awakeDuration->setSubType('numeric');
@@ -213,8 +246,6 @@ class fitbit extends eqLogic {
 			$sleepDuration->setLogicalId('sleepDuration');
 			$sleepDuration->setIsVisible(1);
 			$sleepDuration->setName(__('Durée de sommeil', __FILE__));
-			$sleepDuration->setTemplate('dashboard', 'fitbit_sleepDuration');
-			$sleepDuration->setTemplate('mobile', 'fitbit_sleepDuration');
 		}
 		$sleepDuration->setType('info');
 		$sleepDuration->setSubType('numeric');
@@ -222,6 +253,34 @@ class fitbit extends eqLogic {
 		$sleepDuration->setUnite('min');
 		$sleepDuration->setEqLogic_id($this->getId());
 		$sleepDuration->save();
+
+		$restlessDuration = $this->getCmd(null, 'restlessDuration');
+		if (!is_object($restlessDuration)) {
+			$restlessDuration = new fitbitCmd();
+			$restlessDuration->setLogicalId('restlessDuration');
+			$restlessDuration->setIsVisible(1);
+			$restlessDuration->setName(__('Sommeil agité', __FILE__));
+		}
+		$restlessDuration->setType('info');
+		$restlessDuration->setSubType('numeric');
+		$restlessDuration->setEventOnly(1);
+		$restlessDuration->setUnite('min');
+		$restlessDuration->setEqLogic_id($this->getId());
+		$restlessDuration->save();
+
+		$minutesToFallAsleep = $this->getCmd(null, 'minutesToFallAsleep');
+		if (!is_object($minutesToFallAsleep)) {
+			$minutesToFallAsleep = new fitbitCmd();
+			$minutesToFallAsleep->setLogicalId('minutesToFallAsleep');
+			$minutesToFallAsleep->setIsVisible(1);
+			$minutesToFallAsleep->setName(__('Temps pour s\'endormir', __FILE__));
+		}
+		$minutesToFallAsleep->setType('info');
+		$minutesToFallAsleep->setSubType('numeric');
+		$minutesToFallAsleep->setEventOnly(1);
+		$minutesToFallAsleep->setUnite('min');
+		$minutesToFallAsleep->setEqLogic_id($this->getId());
+		$minutesToFallAsleep->save();
 
 		if ($this->getConfiguration('encodedId') != '') {
 			$this->syncWithFitbit();
@@ -239,7 +298,7 @@ class fitbit extends eqLogic {
 		log::add('fitbit', 'debug', 'Users : ' . print_r($users, true));
 		log::add('fitbit', 'debug', 'Sleep : ' . print_r($sleeps, true));
 
-		$sleep = $sleeps['sleep']['sleepLog'];
+		$sleep = $sleeps['sleep'][0];
 		$awakeCount = $this->getCmd(null, 'awakeCount');
 		if (is_object($awakeCount)) {
 			if ($awakeCount->execCmd() != $awakeCount->formatValue($sleep['awakeCount'])) {
@@ -253,6 +312,22 @@ class fitbit extends eqLogic {
 			if ($awakeDuration->execCmd() != $awakeCount->formatValue($sleep['awakeDuration'])) {
 				$awakeDuration->setCollectDate('');
 				$awakeDuration->event($sleep['awakeDuration']);
+			}
+		}
+
+		$restlessDuration = $this->getCmd(null, 'restlessDuration');
+		if (is_object($restlessDuration)) {
+			if ($restlessDuration->execCmd() != $restlessDuration->formatValue($sleep['restlessDuration'])) {
+				$restlessDuration->setCollectDate('');
+				$restlessDuration->event($sleep['restlessDuration']);
+			}
+		}
+
+		$minutesToFallAsleep = $this->getCmd(null, 'minutesToFallAsleep');
+		if (is_object($minutesToFallAsleep)) {
+			if ($minutesToFallAsleep->execCmd() != $minutesToFallAsleep->formatValue($sleep['minutesToFallAsleep'] + 1)) {
+				$minutesToFallAsleep->setCollectDate('');
+				$minutesToFallAsleep->event($sleep['minutesToFallAsleep'] + 1);
 			}
 		}
 
@@ -293,6 +368,14 @@ class fitbit extends eqLogic {
 			}
 		}
 
+		$elevation = $this->getCmd(null, 'elevation');
+		if (is_object($elevation)) {
+			if ($elevation->execCmd() != $step->formatValue($activity['summary']['elevation'])) {
+				$elevation->setCollectDate('');
+				$elevation->event($activity['summary']['elevation']);
+			}
+		}
+
 		$caloriesOut = $this->getCmd(null, 'caloriesOut');
 		if (is_object($caloriesOut)) {
 			if ($caloriesOut->getConfiguration('goal') != $activity['goals']['caloriesOut']) {
@@ -323,9 +406,9 @@ class fitbit extends eqLogic {
 				$distance->setConfiguration('goal', $activity['goals']['distance']);
 				$distance->save();
 			}
-			if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances']['activityDistance'][0]['distance'])) {
+			if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances'][0]['distance'])) {
 				$distance->setCollectDate('');
-				$distance->event($activity['summary']['distances']['activityDistance'][0]['distance']);
+				$distance->event($activity['summary']['distances'][0]['distance']);
 			}
 		}
 		$mc = cache::byKey('fitbitWidgetmobile' . $this->getId());

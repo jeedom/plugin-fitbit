@@ -1,0 +1,99 @@
+<div class="eqLogic-widget eqLogic noResize" style="width: 330px;background-color: #background_color#; padding : 0px; #style#" data-eqLogic_id="#id#" data-version="dashboard" >
+    <span class="statusCmd" style="position : absolute;left : 5px; width : 30px;z-index: 1030;"></span>
+    <i class='fa fa-refresh pull-right cursor refresh' style="margin-top: 3px;margin-right: 3px;"></i>
+    <center><a href="#eqLink#" style="font-size : 1.5em;"> #name# </a></center>
+
+    <span class="cmd cmd-widget" data-cmd_id="#refresh_id#" style="display:none;"></span>
+
+    <div class="row sleep">
+        <div class="col-sm-6" style="margin-left: 10px;" >
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped minutesToFallAsleep #minutesToFallAsleep_history#" data-cmd_id="#minutesToFallAsleep_id#"></div>
+                <div class="progress-bar progress-bar-warning progress-bar-striped restlessDuration #restlessDuration_history#" data-cmd_id="#restlessDuration_id#"></div>
+                <div class="progress-bar progress-bar-success progress-bar-striped sleepDuration"></div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <i class="icon personne-sleeping4"></i> <span class="totalSleepDuration #sleepDuration_history#" data-cmd_id="#sleepDuration_id#" title="Temps total de sommeil"></span> 
+            <span class="#awakeCount_history#" data-cmd_id="#awakeCount_id#" title="Nombre de reveils (#awakeCount_collect#)"><i class="icon divers-circular114"></i> #awakeCount#</span>
+        </div>
+    </div>
+
+    <div class="row body">
+
+    </div>
+
+    <center>
+        <span class="#weight_history#" data-cmd_id="#weight_id#" title="Poids (#weight_collect#)"><i class="icon divers-weight11"></i> #weight# kg</span>
+        <span class="step #step_history#" data-cmd_id="#step_id#" title="Nombre de pas (#step_collect#)"><i class="icon loisir-runner5"></i> #step#</span>
+        <span class="caloriesOut #caloriesOut_history#" data-cmd_id="#caloriesOut_id#" title="Calories brulées (#caloriesOut_collect#)"><i class="icon nourriture-cherries"></i> #caloriesOut#</span>
+        <span class="distance #distance_history#" data-cmd_id="#distance_id#" title="Distance parcourue (#distance_collect#)"><i class="fa fa-arrows-h"></i> #distance# Km</span>
+        <span class="elevation #elevation_history#" data-cmd_id="#elevation_id#" title="Elévation (#elevation_collect#)"><i class="fa fa-arrows-v"></i> #elevation# m</span>
+    </center>
+
+    <script>
+        $('.eqLogic[data-eqLogic_id=#id#] .refresh').on('click', function () {
+            jeedom.cmd.execute({id: '#refresh_id#'});
+        });
+
+
+        if (isNaN(parseInt('#sleepDuration#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .sleep').remove();
+        } else {
+            var totalSleep = parseInt('#minutesToFallAsleep#') + parseInt('#sleepDuration#') + parseInt('#restlessDuration#');
+            var minute = (totalSleep % 60);
+            minute = minute.toString()
+            if (minute.length == 1) {
+                minute = '0' + minute;
+            }
+            $('.eqLogic[data-eqLogic_id=#id#] .totalSleepDuration').append(parseInt(totalSleep / 60) + 'h' + minute);
+
+            var minute = (parseInt('#minutesToFallAsleep#') % 60);
+            minute = minute.toString()
+            if (minute.length == 1) {
+                minute = '0' + minute;
+            }
+            $('.eqLogic[data-eqLogic_id=#id#] .minutesToFallAsleep').attr('title', 'Temps pour s\'endormir : ' + parseInt(parseInt('#minutesToFallAsleep#') / 60) + 'h' + minute + ' (#minutesToFallAsleep_collect#)');
+            $('.eqLogic[data-eqLogic_id=#id#] .minutesToFallAsleep').css('width', (parseInt('#minutesToFallAsleep#') / totalSleep * 100) + '%');
+
+            var minute = (parseInt('#sleepDuration#') % 60);
+            minute = minute.toString()
+            if (minute.length == 1) {
+                minute = '0' + minute;
+            }
+            $('.eqLogic[data-eqLogic_id=#id#] .sleepDuration').attr('title', 'Durée sommeil profond : ' + parseInt(parseInt('#sleepDuration#') / 60) + 'h' + minute + ' (#sleepDuration_collect#)');
+            $('.eqLogic[data-eqLogic_id=#id#] .sleepDuration').css('width', (parseInt('#sleepDuration#') / totalSleep * 100) + '%');
+
+            var minute = (parseInt('#restlessDuration#') % 60);
+            minute = minute.toString()
+            if (minute.length == 1) {
+                minute = '0' + minute;
+            }
+            $('.eqLogic[data-eqLogic_id=#id#] .restlessDuration').attr('title', 'Durée sommeil léger : ' + parseInt(parseInt('#restlessDuration#') / 60) + 'h' + minute + ' (#restlessDuration_collect#)');
+
+            $('.eqLogic[data-eqLogic_id=#id#] .restlessDuration').css('width', (parseInt('#restlessDuration#') / totalSleep * 100) + '%');
+        }
+
+        if (isNaN(parseInt('#measuregrps14#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .measuregrps14').remove();
+        }
+
+        if (isNaN(parseInt('#step#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .step').remove();
+        }
+        if (isNaN(parseInt('#caloriesOut#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .caloriesOut').remove();
+        }
+        if (isNaN(parseInt('#distance#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .distance').remove();
+        }
+        if (isNaN(parseInt('#elevation#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .elevation').remove();
+        }
+        if (isNaN(parseInt('#measuregrps54#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .measuregrps54').remove();
+        }
+    </script>
+
+</div>
+

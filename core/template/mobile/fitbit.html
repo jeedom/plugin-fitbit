@@ -1,0 +1,48 @@
+<div class="eqLogic-widget eqLogic noResize" style="width: 330px;background-color: #background_color#; padding : 0px; #style#" data-eqLogic_id="#id#" data-version="dashboard" >
+    <center>#name#</center>
+    <center>
+        <span class="sleep"><i class="icon personne-sleeping4"></i> <span class="totalSleep"></span> <i class="icon divers-circular114"></i> #awakeCount#<br/></span>
+        <span class="body"><i class="icon divers-weight11"></i> #weight# kg</span>
+        <span class="step"><i class="icon loisir-runner5" title="Nombre de pas"></i> #step#</span>
+        <span class="calories"><i class="icon nourriture-cherries" title="Calories brulées"></i> #caloriesOut#</span>
+        <span class="distance"><i class="fa fa-arrows-h" title="Distance parcourue"></i> #distance# Km</span>
+        <span class="elevation"><i class="fa fa-arrows-v" title="Elévation"></i> #elevation# m</span>
+    </center>
+
+    <script>
+        if (isNaN(parseInt('#sleepDuration#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .sleep').remove();
+        } else {
+            var totalSleep = parseInt('#minutesToFallAsleep#') + parseInt('#sleepDuration#') + parseInt('#restlessDuration#');
+            var minute = (totalSleep % 60);
+            minute = minute.toString()
+            if (minute.length == 1) {
+                minute = '0' + minute;
+            }
+            $('.eqLogic[data-eqLogic_id=#id#] .totalSleep').append(parseInt(totalSleep / 60) + 'h' + minute);
+        }
+        if (isNaN(parseInt('#weight#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .body').remove();
+        }
+        if (isNaN(parseInt('#measuregrps11#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .heart').remove();
+        }
+        if (isNaN(parseInt('#step#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .step').remove();
+        }
+        if (isNaN(parseInt('#caloriesOut#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .calories').remove();
+        }
+        if (isNaN(parseInt('#distance#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .distance').remove();
+        }
+        if (isNaN(parseInt('#elevation#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .elevation').remove();
+        }
+        if (isNaN(parseInt('#measuregrps54#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .measuregrps54').remove();
+        }
+    </script>
+
+</div>
+
