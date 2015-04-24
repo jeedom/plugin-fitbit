@@ -176,6 +176,53 @@ class fitbit extends eqLogic {
 		$distance->setEqLogic_id($this->getId());
 		$distance->save();
 
+		$awakeCount = $this->getCmd(null, 'awakeCount');
+		if (!is_object($awakeCount)) {
+			$awakeCount = new fitbitCmd();
+			$awakeCount->setLogicalId('awakeCount');
+			$awakeCount->setIsVisible(1);
+			$awakeCount->setName(__('Nombre de reveils', __FILE__));
+			$awakeCount->setTemplate('dashboard', 'fitbit_awakeCount');
+			$awakeCount->setTemplate('mobile', 'fitbit_awakeCount');
+		}
+		$awakeCount->setType('info');
+		$awakeCount->setSubType('numeric');
+		$awakeCount->setEventOnly(1);
+		$awakeCount->setEqLogic_id($this->getId());
+		$awakeCount->save();
+
+		$awakeDuration = $this->getCmd(null, 'awakeDuration');
+		if (!is_object($awakeDuration)) {
+			$awakeDuration = new fitbitCmd();
+			$awakeDuration->setLogicalId('awakeDuration');
+			$awakeDuration->setIsVisible(1);
+			$awakeDuration->setName(__('Durée réveils', __FILE__));
+			$awakeDuration->setTemplate('dashboard', 'fitbit_awakeDuration');
+			$awakeDuration->setTemplate('mobile', 'fitbit_awakeDuration');
+		}
+		$awakeDuration->setType('info');
+		$awakeDuration->setSubType('numeric');
+		$awakeDuration->setEventOnly(1);
+		$distance->setUnite('min');
+		$awakeDuration->setEqLogic_id($this->getId());
+		$awakeDuration->save();
+
+		$sleepDuration = $this->getCmd(null, 'sleepDuration');
+		if (!is_object($sleepDuration)) {
+			$sleepDuration = new fitbitCmd();
+			$sleepDuration->setLogicalId('sleepDuration');
+			$sleepDuration->setIsVisible(1);
+			$sleepDuration->setName(__('Durée de sommeil', __FILE__));
+			$sleepDuration->setTemplate('dashboard', 'fitbit_sleepDuration');
+			$sleepDuration->setTemplate('mobile', 'fitbit_sleepDuration');
+		}
+		$sleepDuration->setType('info');
+		$sleepDuration->setSubType('numeric');
+		$sleepDuration->setEventOnly(1);
+		$sleepDuration->setUnite('min');
+		$sleepDuration->setEqLogic_id($this->getId());
+		$sleepDuration->save();
+
 		if ($this->getConfiguration('encodedId') != '') {
 			$this->syncWithFitbit();
 		}
@@ -186,9 +233,36 @@ class fitbit extends eqLogic {
 		$fitbit->setUser($this->getConfiguration('encodedId'));
 		$activity = json_decode(json_encode($fitbit->getActivities(new DateTime())), true);
 		$users = json_decode(json_encode($fitbit->getProfile()), true);
+		$sleeps = json_decode(json_encode($fitbit->getSleep(new DateTime())), true);
 
 		log::add('fitbit', 'debug', 'Activiy : ' . print_r($activity, true));
 		log::add('fitbit', 'debug', 'Users : ' . print_r($users, true));
+		log::add('fitbit', 'debug', 'Sleep : ' . print_r($sleeps, true));
+
+		$sleep = $sleeps['sleep']['sleepLog'];
+		$awakeCount = $this->getCmd(null, 'awakeCount');
+		if (is_object($awakeCount)) {
+			if ($awakeCount->execCmd() != $awakeCount->formatValue($sleep['awakeCount'])) {
+				$awakeCount->setCollectDate('');
+				$awakeCount->event($sleep['awakeCount']);
+			}
+		}
+
+		$awakeDuration = $this->getCmd(null, 'awakeDuration');
+		if (is_object($awakeCount)) {
+			if ($awakeDuration->execCmd() != $awakeCount->formatValue($sleep['awakeDuration'])) {
+				$awakeDuration->setCollectDate('');
+				$awakeDuration->event($sleep['awakeDuration']);
+			}
+		}
+
+		$sleepDuration = $this->getCmd(null, 'sleepDuration');
+		if (is_object($sleepDuration)) {
+			if ($sleepDuration->execCmd() != $sleepDuration->formatValue($sleep['minutesAsleep'])) {
+				$sleepDuration->setCollectDate('');
+				$sleepDuration->event($sleep['minutesAsleep']);
+			}
+		}
 
 		$user = $users['user'];
 		$weight = $this->getCmd(null, 'weight');
