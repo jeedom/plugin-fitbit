@@ -24,7 +24,7 @@
     </div>
 
     <center>
-        <span class="#weight_history#" data-cmd_id="#weight_id#" title="Poids (#weight_collect#)"><i class="icon divers-weight11"></i> #weight# kg</span>
+        <span class="weight #weight_history#" data-cmd_id="#weight_id#" title="Poids (#weight_collect#)"><i class="icon divers-weight11"></i> #weight# kg</span>
         <span class="step #step_history#" data-cmd_id="#step_id#" title="Nombre de pas (#step_collect#)"><i class="icon loisir-runner5"></i> #step#</span>
         <span class="caloriesOut #caloriesOut_history#" data-cmd_id="#caloriesOut_id#" title="Calories brulées (#caloriesOut_collect#)"><i class="icon nourriture-cherries"></i> #caloriesOut#</span>
         <span class="distance #distance_history#" data-cmd_id="#distance_id#" title="Distance parcourue (#distance_collect#)"><i class="fa fa-arrows-h"></i> #distance# Km</span>
@@ -76,6 +76,10 @@
 
         if (isNaN(parseInt('#measuregrps14#'))) {
             $('.eqLogic[data-eqLogic_id=#id#] .measuregrps14').remove();
+        }
+
+        if (isNaN(parseInt('#weight#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .weight').remove();
         }
 
         if (isNaN(parseInt('#step#'))) {

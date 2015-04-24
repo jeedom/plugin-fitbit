@@ -2,7 +2,7 @@
     <center>#name#</center>
     <center>
         <span class="sleep"><i class="icon personne-sleeping4"></i> <span class="totalSleep"></span> <i class="icon divers-circular114"></i> #awakeCount#<br/></span>
-        <span class="body"><i class="icon divers-weight11"></i> #weight# kg</span>
+        <span class="weight"><i class="icon divers-weight11"></i> #weight# kg</span>
         <span class="step"><i class="icon loisir-runner5" title="Nombre de pas"></i> #step#</span>
         <span class="calories"><i class="icon nourriture-cherries" title="Calories brulées"></i> #caloriesOut#</span>
         <span class="distance"><i class="fa fa-arrows-h" title="Distance parcourue"></i> #distance# Km</span>
@@ -35,6 +35,9 @@
         }
         if (isNaN(parseInt('#distance#'))) {
             $('.eqLogic[data-eqLogic_id=#id#] .distance').remove();
+        }
+        if (isNaN(parseInt('#weight#'))) {
+            $('.eqLogic[data-eqLogic_id=#id#] .weight').remove();
         }
         if (isNaN(parseInt('#elevation#'))) {
             $('.eqLogic[data-eqLogic_id=#id#] .elevation').remove();
