@@ -63,7 +63,7 @@ class fitbit extends eqLogic {
 		$_version = jeedom::versionAlias($_version);
 		$mc = cache::byKey('fitbitWidget' . $_version . $this->getId());
 		if ($mc->getValue() != '') {
-			//return $mc->getValue();
+			return $mc->getValue();
 		}
 		$replace = array(
 			'#name#' => $this->getName(),
@@ -87,7 +87,9 @@ class fitbit extends eqLogic {
 		}
 
 		$refresh = $this->getCmd(null, 'refresh');
-		$replace['#refresh_id#'] = $refresh->getId();
+		if (is_object($refresh)) {
+			$replace['#refresh_id#'] = $refresh->getId();
+		}
 
 		$parameters = $this->getDisplay('parameters');
 		if (is_array($parameters)) {
