@@ -35,7 +35,7 @@ class fitbit extends eqLogic {
 					}
 				} catch (Exception $e) {
 					if ($fitbit->getConfiguration('fitbitNumberFailed', 0) > 3) {
-						log::add('fitbit', 'error', $e->getMessage());
+						log::add('fitbit', 'error', __('Erreur sur ', __FILE__) . $fitbit->getHumanName() . ' : ' . $e->getMessage());
 					} else {
 						$fitbit->setConfiguration('fitbitNumberFailed', $fitbit->getConfiguration('fitbitNumberFailed', 0) + 1);
 						$fitbit->save();
