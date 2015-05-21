@@ -27,7 +27,20 @@ class fitbit extends eqLogic {
 	public static function pull() {
 		foreach (self::byType('fitbit') as $fitbit) {
 			if ($fitbit->getIsEnable() == 1) {
-				$fitbit->syncWithFitbit();
+				try {
+					$fitbit->syncWithFitbit();
+					if ($fitbit->getConfiguration('fitbitNumberFailed', 0) > 0) {
+						$fitbit->setConfiguration('fitbitNumberFailed', 0);
+						$fitbit->save();
+					}
+				} catch (Exception $e) {
+					if ($fitbit->getConfiguration('fitbitNumberFailed', 0) > 3) {
+						throw $e;
+					} else {
+						$fitbit->setConfiguration('fitbitNumberFailed', $fitbit->getConfiguration('fitbitNumberFailed', 0) + 1);
+						$fitbit->save();
+					}
+				}
 			}
 		}
 	}
