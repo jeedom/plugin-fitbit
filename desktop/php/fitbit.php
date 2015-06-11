@@ -26,12 +26,12 @@ foreach ($eqLogics as $eqLogic) {
     </legend>
     <div class="eqLogicThumbnailContainer">
       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-         <center>
-            <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
-        </center>
-        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Ajouter une personne}}</center></span>
-    </div>
-    <?php
+       <center>
+        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
+    </center>
+    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Ajouter une personne}}</center></span>
+</div>
+<?php
 foreach ($eqLogics as $eqLogic) {
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
 	echo "<center>";
@@ -69,28 +69,25 @@ foreach (object::all() as $object) {
                </div>
            </div>
            <div class="form-group">
-            <label class="col-sm-3 control-label" >{{Activer}}</label>
-            <div class="col-sm-1">
-                <input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" size="16" checked/>
-            </div>
-            <label class="col-sm-1 control-label" >{{Visible}}</label>
-            <div class="col-sm-1">
-                <input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>
-            </div>
+            <label class="col-sm-3 control-label" ></label>
+            <div class="col-sm-9">
+              <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
+              <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">URL de retour</label>
+        <div class="col-lg-4">
+            <span><?php echo network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php';?></span>
         </div>
-        <div class="form-group">
-            <label class="col-lg-3 control-label">URL de retour</label>
-            <div class="col-lg-4">
-                <span><?php echo network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php';?></span>
-            </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Lier</label>
+        <div class="col-lg-2">
+            <a class="btn btn-default" id="bt_linkToUser"><i class='fa fa-refresh'></i> lier à un utilisateur</a>
         </div>
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Lier</label>
-            <div class="col-lg-2">
-                <a class="btn btn-default" id="bt_linkToUser"><i class='fa fa-refresh'></i> lier à un utilisateur</a>
-            </div>
-        </div>
-    </fieldset>
+    </div>
+</fieldset>
 </form>
 
 <legend>{{Commandes}}</legend>
