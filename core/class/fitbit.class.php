@@ -76,7 +76,7 @@ class fitbit extends eqLogic {
 		$_version = jeedom::versionAlias($_version);
 		$mc = cache::byKey('fitbitWidget' . $_version . $this->getId());
 		if ($mc->getValue() != '') {
-			return $mc->getValue();
+			//return $mc->getValue();
 		}
 		$replace = array(
 			'#name#' => $this->getName(),
@@ -149,7 +149,7 @@ class fitbit extends eqLogic {
 		if (!is_object($height)) {
 			$height = new fitbitCmd();
 			$height->setLogicalId('height');
-			$height->setIsVisible(0);
+			$height->setIsVisible(1);
 			$height->setName(__('Taille', __FILE__));
 		}
 		$height->setType('info');

@@ -2,7 +2,7 @@ Une fois le plugin Fitbit installé, allez sur :
 
 image::../images/fitbit-1.JPG[]
 
-==== Création d'un équipement et association au compte Fitbit
+=== Création d'un équipement et association au compte Fitbit
 
 [icon="../images/plugin/tip.png"]
 [TIP]
@@ -36,7 +36,7 @@ Si vous obtenez une page blanche ou une erreur, c'est que votre configuration r�
 image::../images/fitbit-6.JPG[]
 
 
-==== Configuration
+=== Configuration
 
 Voici les détails de la configuration du plugin : 
 
@@ -51,3 +51,13 @@ image::../images/fitbit-6.JPG[]
 ** Avancée (petites roues crantées) : permet d'afficher la configuration avancée de la commande
 ** Tester : permet de tester la commande pour voir sa valeur
 ** Supprimer (bouton "-") : pour supprimer la commande
+
+=== Widget
+
+Voila le widget fitbit :
+
+image::../images/fitbit-7.JPG[]
+
+
+
+

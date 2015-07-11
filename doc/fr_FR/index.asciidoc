@@ -1,13 +1,6 @@
-:icons:
-== Fitbit
+= Fitbit
 
-=== Description
 Plugin permettant d'accéder aux informations de ses appareils Fitbit (nombre de pas, calories, distance...)
 
-'''
-=== Configuration
+== Configuration
 include::configuration.asciidoc[]
-
-'''
-=== FAQ
-include::faq.asciidoc[]
