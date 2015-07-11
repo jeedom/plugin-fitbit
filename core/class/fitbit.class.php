@@ -76,7 +76,7 @@ class fitbit extends eqLogic {
 		$_version = jeedom::versionAlias($_version);
 		$mc = cache::byKey('fitbitWidget' . $_version . $this->getId());
 		if ($mc->getValue() != '') {
-			//return $mc->getValue();
+			return $mc->getValue();
 		}
 		$replace = array(
 			'#name#' => $this->getName(),
