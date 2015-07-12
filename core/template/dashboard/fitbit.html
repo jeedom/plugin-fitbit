@@ -7,10 +7,10 @@
     <div class="row" style="margin-left : 2px;margin-right : 2px;">
        <div class="col-sm-4" style="padding-right : 5px;padding-left : 5px;">
            <legend style="color:white;margin-bottom : 0px;font-size : 15px;font-weight: bold;">Sommeil</legend>
-           <span class="#sleepDuration_history#" data-cmd_id="#sleepDuration_id#">Total <strong class="tooltips" title="#sleepDuration_collect#" style="font-size:1.1em;">#sleepDuration#</strong> <span style="font-size:0.8em;">min</span><br/></span>
-           <span class="#minutesToFallAsleep_history#" data-cmd_id="#minutesToFallAsleep_id#">Endormis <strong class="tooltips" title="#minutesToFallAsleep_collect#" style="font-size:1.1em;">#minutesToFallAsleep#</strong> <span style="font-size:0.8em;">min</span><br/></span>
-           <span class="#restlessDuration_history#" data-cmd_id="#restlessDuration_id#">Agité <strong class="tooltips" title="#restlessDuration_collect#" style="font-size:1.1em;">#restlessDuration#</strong> <span style="font-size:0.8em;">min</span><br/></span>
-           <span class="#awakeCount_history#" data-cmd_id="#awakeCount_id#">Reveil <strong class="tooltips" title="#awakeCount_collect#" style="font-size:1.1em;">#awakeCount#</strong> ( <strong class="tooltips" title="#awakeDuration_collect#" style="font-size:1.1em;">#awakeDuration#</strong> <span style="font-size:0.8em;">min</span> )</span>
+           <span class="#sleepDuration_history# sleepDuration" data-cmd_id="#sleepDuration_id#">Total <strong class="tooltips" title="#sleepDuration_collect#" style="font-size:1.1em;">#sleepDuration#</strong> <span style="font-size:0.8em;">min</span><br/></span>
+           <span class="#minutesToFallAsleep_history# minutesToFallAsleep" data-cmd_id="#minutesToFallAsleep_id#">Endormis <strong class="tooltips" title="#minutesToFallAsleep_collect#" style="font-size:1.1em;">#minutesToFallAsleep#</strong> <span style="font-size:0.8em;">min</span><br/></span>
+           <span class="#restlessDuration_history# restlessDuration" data-cmd_id="#restlessDuration_id#">Agité <strong class="tooltips" title="#restlessDuration_collect#" style="font-size:1.1em;">#restlessDuration#</strong> <span style="font-size:0.8em;">min</span><br/></span>
+           <span class="#awakeCount_history# awakeDuration" data-cmd_id="#awakeCount_id#">Reveil <strong class="tooltips" title="#awakeCount_collect#" style="font-size:1.1em;">#awakeCount#</strong> ( <strong class="tooltips" title="#awakeDuration_collect#" style="font-size:1.1em;">#awakeDuration#</strong> <span style="font-size:0.8em;">min</span> )</span>
        </div>
        <div class="col-sm-4" style="padding-right : 5px;padding-left : 5px;">
            <legend style="color:white;margin-bottom : 0px;font-size : 15px;font-weight: bold;">Activité</legend>
@@ -31,15 +31,27 @@
     $('.eqLogic[data-eqLogic_id=#id#] .refresh').on('click', function () {
         jeedom.cmd.execute({id: '#refresh_id#'});
     });
-
+    if (isNaN(parseInt('#sleepDuration#'))) {
+        $('.eqLogic[data-eqLogic_id=#id#] .sleepDuration').remove();
+    }
+     if (isNaN(parseInt('#minutesToFallAsleep#'))) {
+        $('.eqLogic[data-eqLogic_id=#id#] .minutesToFallAsleep').remove();
+    }
+     if (isNaN(parseInt('#restlessDuration#'))) {
+        $('.eqLogic[data-eqLogic_id=#id#] .restlessDuration').remove();
+    }
+     if (isNaN(parseInt('#awakeDuration#'))) {
+        $('.eqLogic[data-eqLogic_id=#id#] .awakeDuration').remove();
+    }
+     if (isNaN(parseInt('#veryActiveMinutes#'))) {
+        $('.eqLogic[data-eqLogic_id=#id#] .veryActiveMinutes').remove();
+    }
     if (isNaN(parseInt('#weight#'))) {
         $('.eqLogic[data-eqLogic_id=#id#] .weight').remove();
     }
-
     if (isNaN(parseInt('#height#'))) {
         $('.eqLogic[data-eqLogic_id=#id#] .height').remove();
     }
-
     if (isNaN(parseInt('#step#'))) {
         $('.eqLogic[data-eqLogic_id=#id#] .step').remove();
     }
