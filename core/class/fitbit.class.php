@@ -81,7 +81,7 @@ class fitbit extends eqLogic {
 		$replace = array(
 			'#name#' => $this->getName(),
 			'#id#' => $this->getId(),
-			'#background_color#' => $this->getBackgroundColor($_version),
+			'#background_color#' => '#2f3f43',
 			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
 		);
 
