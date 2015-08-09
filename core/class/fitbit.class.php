@@ -24,7 +24,7 @@ class fitbit extends eqLogic {
 
 	/*     * ***********************Methode static*************************** */
 
-	public static function pull() {
+	public static function cron30() {
 		foreach (self::byType('fitbit') as $fitbit) {
 			if ($fitbit->getIsEnable() == 1) {
 				try {

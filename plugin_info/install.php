@@ -18,36 +18,11 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
-function fitbit_install() {
-    $cron = cron::byClassAndFunction('fitbit', 'pull');
-    if (!is_object($cron)) {
-        $cron = new cron();
-        $cron->setClass('fitbit');
-        $cron->setFunction('pull');
-        $cron->setEnable(1);
-        $cron->setSchedule('*/30 * * * *');
-        $cron->save();
-    }
-}
-
 function fitbit_update() {
-    $cron = cron::byClassAndFunction('fitbit', 'pull');
-    if (!is_object($cron)) {
-        $cron = new cron();
-        $cron->setClass('fitbit');
-        $cron->setFunction('pull');
-        $cron->setEnable(1);
-        $cron->setSchedule('*/30 * * * *');
-        $cron->save();
-    }
-    $cron->stop();
-}
-
-function fitbit_remove() {
-    $cron = cron::byClassAndFunction('fitbit', 'pull');
-    if (is_object($cron)) {
-        $cron->remove();
-    }
+	$cron = cron::byClassAndFunction('fitbit', 'pull');
+	if (is_object($cron)) {
+		$cron->remove();
+	}
 }
 
 ?>
