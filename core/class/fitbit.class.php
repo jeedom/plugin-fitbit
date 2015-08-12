@@ -308,10 +308,9 @@ class fitbit extends eqLogic {
 		$activity = json_decode(json_encode($fitbit->getActivities(new DateTime())), true);
 		$users = json_decode(json_encode($fitbit->getProfile()), true);
 		$sleeps = json_decode(json_encode($fitbit->getSleep(new DateTime())), true);
+		//$hearths = json_decode(json_encode($fitbit->getHeartRate()), true);
 
-		log::add('fitbit', 'debug', 'Activiy : ' . print_r($activity, true));
-		log::add('fitbit', 'debug', 'Users : ' . print_r($users, true));
-		log::add('fitbit', 'debug', 'Sleep : ' . print_r($sleeps, true));
+		print_r($hearths);
 		if (isset($sleeps['sleep'][0])) {
 			$sleep = $sleeps['sleep'][0];
 			$awakeCount = $this->getCmd(null, 'awakeCount');
