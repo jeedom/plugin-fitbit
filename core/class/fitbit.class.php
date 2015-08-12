@@ -312,45 +312,46 @@ class fitbit extends eqLogic {
 		log::add('fitbit', 'debug', 'Activiy : ' . print_r($activity, true));
 		log::add('fitbit', 'debug', 'Users : ' . print_r($users, true));
 		log::add('fitbit', 'debug', 'Sleep : ' . print_r($sleeps, true));
-
-		$sleep = $sleeps['sleep'][0];
-		$awakeCount = $this->getCmd(null, 'awakeCount');
-		if (is_object($awakeCount)) {
-			if ($awakeCount->execCmd() != $awakeCount->formatValue($sleep['awakeCount'])) {
-				$awakeCount->setCollectDate('');
-				$awakeCount->event($sleep['awakeCount']);
+		if (isset($sleeps['sleep'][0])) {
+			$sleep = $sleeps['sleep'][0];
+			$awakeCount = $this->getCmd(null, 'awakeCount');
+			if (is_object($awakeCount)) {
+				if ($awakeCount->execCmd() != $awakeCount->formatValue($sleep['awakeCount'])) {
+					$awakeCount->setCollectDate('');
+					$awakeCount->event($sleep['awakeCount']);
+				}
 			}
-		}
 
-		$awakeDuration = $this->getCmd(null, 'awakeDuration');
-		if (is_object($awakeCount)) {
-			if ($awakeDuration->execCmd() != $awakeCount->formatValue($sleep['awakeDuration'])) {
-				$awakeDuration->setCollectDate('');
-				$awakeDuration->event($sleep['awakeDuration']);
+			$awakeDuration = $this->getCmd(null, 'awakeDuration');
+			if (is_object($awakeCount)) {
+				if ($awakeDuration->execCmd() != $awakeCount->formatValue($sleep['awakeDuration'])) {
+					$awakeDuration->setCollectDate('');
+					$awakeDuration->event($sleep['awakeDuration']);
+				}
 			}
-		}
 
-		$restlessDuration = $this->getCmd(null, 'restlessDuration');
-		if (is_object($restlessDuration)) {
-			if ($restlessDuration->execCmd() != $restlessDuration->formatValue($sleep['restlessDuration'])) {
-				$restlessDuration->setCollectDate('');
-				$restlessDuration->event($sleep['restlessDuration']);
+			$restlessDuration = $this->getCmd(null, 'restlessDuration');
+			if (is_object($restlessDuration)) {
+				if ($restlessDuration->execCmd() != $restlessDuration->formatValue($sleep['restlessDuration'])) {
+					$restlessDuration->setCollectDate('');
+					$restlessDuration->event($sleep['restlessDuration']);
+				}
 			}
-		}
 
-		$minutesToFallAsleep = $this->getCmd(null, 'minutesToFallAsleep');
-		if (is_object($minutesToFallAsleep)) {
-			if ($minutesToFallAsleep->execCmd() != $minutesToFallAsleep->formatValue($sleep['minutesToFallAsleep'] + 1)) {
-				$minutesToFallAsleep->setCollectDate('');
-				$minutesToFallAsleep->event($sleep['minutesToFallAsleep'] + 1);
+			$minutesToFallAsleep = $this->getCmd(null, 'minutesToFallAsleep');
+			if (is_object($minutesToFallAsleep)) {
+				if ($minutesToFallAsleep->execCmd() != $minutesToFallAsleep->formatValue($sleep['minutesToFallAsleep'] + 1)) {
+					$minutesToFallAsleep->setCollectDate('');
+					$minutesToFallAsleep->event($sleep['minutesToFallAsleep'] + 1);
+				}
 			}
-		}
 
-		$sleepDuration = $this->getCmd(null, 'sleepDuration');
-		if (is_object($sleepDuration)) {
-			if ($sleepDuration->execCmd() != $sleepDuration->formatValue($sleep['minutesAsleep'])) {
-				$sleepDuration->setCollectDate('');
-				$sleepDuration->event($sleep['minutesAsleep']);
+			$sleepDuration = $this->getCmd(null, 'sleepDuration');
+			if (is_object($sleepDuration)) {
+				if ($sleepDuration->execCmd() != $sleepDuration->formatValue($sleep['minutesAsleep'])) {
+					$sleepDuration->setCollectDate('');
+					$sleepDuration->event($sleep['minutesAsleep']);
+				}
 			}
 		}
 
