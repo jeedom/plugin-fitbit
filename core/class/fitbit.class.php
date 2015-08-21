@@ -133,6 +133,37 @@ class fitbit extends eqLogic {
 		$weight->setEqLogic_id($this->getId());
 		$weight->save();
 
+		$fat = $this->getCmd(null, 'fat');
+		if (!is_object($fat)) {
+			$fat = new fitbitCmd();
+			$fat->setLogicalId('fat');
+			$fat->setIsVisible(1);
+			$fat->setName(__('Masse grasse', __FILE__));
+			$fat->setTemplate('dashboard', 'tile');
+			$fat->setTemplate('mobile', 'tile');
+		}
+		$fat->setType('info');
+		$fat->setSubType('numeric');
+		$fat->setUnite('%');
+		$fat->setEventOnly(1);
+		$fat->setEqLogic_id($this->getId());
+		$fat->save();
+
+		$bmi = $this->getCmd(null, 'bmi');
+		if (!is_object($bmi)) {
+			$bmi = new fitbitCmd();
+			$bmi->setLogicalId('bmi');
+			$bmi->setIsVisible(1);
+			$bmi->setName(__('IMC', __FILE__));
+			$bmi->setTemplate('dashboard', 'tile');
+			$bmi->setTemplate('mobile', 'tile');
+		}
+		$bmi->setType('info');
+		$bmi->setSubType('numeric');
+		$bmi->setEventOnly(1);
+		$bmi->setEqLogic_id($this->getId());
+		$bmi->save();
+
 		$refresh = $this->getCmd(null, 'refresh');
 		if (!is_object($refresh)) {
 			$refresh = new fitbitCmd();
@@ -308,67 +339,69 @@ class fitbit extends eqLogic {
 		$activity = json_decode(json_encode($fitbit->getActivities(new DateTime())), true);
 		$users = json_decode(json_encode($fitbit->getProfile()), true);
 		$sleeps = json_decode(json_encode($fitbit->getSleep(new DateTime())), true);
-		//$hearths = json_decode(json_encode($fitbit->getHeartRate()), true);
+		$bodies = json_decode(json_encode($fitbit->getBody(new DateTime())), true);
 
-		print_r($hearths);
+		//$hearths = json_decode(json_encode($fitbit->getHeartRate()), true);
+		//print_r($hearths);
+
 		if (isset($sleeps['sleep'][0])) {
 			$sleep = $sleeps['sleep'][0];
 			$awakeCount = $this->getCmd(null, 'awakeCount');
-			if (is_object($awakeCount)) {
-				if ($awakeCount->execCmd() != $awakeCount->formatValue($sleep['awakeCount'])) {
-					$awakeCount->setCollectDate('');
-					$awakeCount->event($sleep['awakeCount']);
-				}
+			if (is_object($awakeCount) && $awakeCount->execCmd() != $awakeCount->formatValue($sleep['awakeCount'])) {
+				$awakeCount->setCollectDate('');
+				$awakeCount->event($sleep['awakeCount']);
 			}
 
 			$awakeDuration = $this->getCmd(null, 'awakeDuration');
-			if (is_object($awakeCount)) {
-				if ($awakeDuration->execCmd() != $awakeCount->formatValue($sleep['awakeDuration'])) {
-					$awakeDuration->setCollectDate('');
-					$awakeDuration->event($sleep['awakeDuration']);
-				}
+			if (is_object($awakeCount) && $awakeDuration->execCmd() != $awakeCount->formatValue($sleep['awakeDuration'])) {
+				$awakeDuration->setCollectDate('');
+				$awakeDuration->event($sleep['awakeDuration']);
 			}
 
 			$restlessDuration = $this->getCmd(null, 'restlessDuration');
-			if (is_object($restlessDuration)) {
-				if ($restlessDuration->execCmd() != $restlessDuration->formatValue($sleep['restlessDuration'])) {
-					$restlessDuration->setCollectDate('');
-					$restlessDuration->event($sleep['restlessDuration']);
-				}
+			if (is_object($restlessDuration) && $restlessDuration->execCmd() != $restlessDuration->formatValue($sleep['restlessDuration'])) {
+				$restlessDuration->setCollectDate('');
+				$restlessDuration->event($sleep['restlessDuration']);
 			}
 
 			$minutesToFallAsleep = $this->getCmd(null, 'minutesToFallAsleep');
-			if (is_object($minutesToFallAsleep)) {
-				if ($minutesToFallAsleep->execCmd() != $minutesToFallAsleep->formatValue($sleep['minutesToFallAsleep'] + 1)) {
-					$minutesToFallAsleep->setCollectDate('');
-					$minutesToFallAsleep->event($sleep['minutesToFallAsleep'] + 1);
-				}
+			if (is_object($minutesToFallAsleep) && $minutesToFallAsleep->execCmd() != $minutesToFallAsleep->formatValue($sleep['minutesToFallAsleep'] + 1)) {
+				$minutesToFallAsleep->setCollectDate('');
+				$minutesToFallAsleep->event($sleep['minutesToFallAsleep'] + 1);
 			}
 
 			$sleepDuration = $this->getCmd(null, 'sleepDuration');
-			if (is_object($sleepDuration)) {
-				if ($sleepDuration->execCmd() != $sleepDuration->formatValue($sleep['minutesAsleep'])) {
-					$sleepDuration->setCollectDate('');
-					$sleepDuration->event($sleep['minutesAsleep']);
-				}
+			if (is_object($sleepDuration) && $sleepDuration->execCmd() != $sleepDuration->formatValue($sleep['minutesAsleep'])) {
+				$sleepDuration->setCollectDate('');
+				$sleepDuration->event($sleep['minutesAsleep']);
 			}
+
+		}
+
+		$body = $bodies['body'];
+		$weight = $this->getCmd(null, 'weight');
+		if (is_object($weight) && $weight->execCmd() != $weight->formatValue($body['weight'])) {
+			$weight->setCollectDate('');
+			$weight->event($body['weight']);
+		}
+
+		$fat = $this->getCmd(null, 'fat');
+		if (is_object($fat) && $fat->execCmd() != $fat->formatValue($body['fat'])) {
+			$fat->setCollectDate('');
+			$fat->event($body['fat']);
+		}
+
+		$bmi = $this->getCmd(null, 'bmi');
+		if (is_object($bmi) && $bmi->execCmd() != $bmi->formatValue($body['bmi'])) {
+			$bmi->setCollectDate('');
+			$bmi->event($body['bmi']);
 		}
 
 		$user = $users['user'];
-		$weight = $this->getCmd(null, 'weight');
-		if (is_object($weight)) {
-			if ($weight->execCmd() != $weight->formatValue($user['weight'])) {
-				$weight->setCollectDate('');
-				$weight->event($user['weight']);
-			}
-		}
-
 		$height = $this->getCmd(null, 'height');
-		if (is_object($height)) {
-			if ($height->execCmd() != $height->formatValue($user['height'])) {
-				$height->setCollectDate('');
-				$height->event($user['height']);
-			}
+		if (is_object($height) && $height->execCmd() != $height->formatValue($user['height'])) {
+			$height->setCollectDate('');
+			$height->event($user['height']);
 		}
 
 		$step = $this->getCmd(null, 'step');
@@ -384,11 +417,9 @@ class fitbit extends eqLogic {
 		}
 
 		$elevation = $this->getCmd(null, 'elevation');
-		if (is_object($elevation)) {
-			if ($elevation->execCmd() != $step->formatValue($activity['summary']['elevation'])) {
-				$elevation->setCollectDate('');
-				$elevation->event($activity['summary']['elevation']);
-			}
+		if (is_object($elevation) && $elevation->execCmd() != $step->formatValue($activity['summary']['elevation'])) {
+			$elevation->setCollectDate('');
+			$elevation->event($activity['summary']['elevation']);
 		}
 
 		$caloriesOut = $this->getCmd(null, 'caloriesOut');
