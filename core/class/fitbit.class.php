@@ -380,19 +380,19 @@ class fitbit extends eqLogic {
 
 		$body = $bodies['body'];
 		$weight = $this->getCmd(null, 'weight');
-		if (is_object($weight) && $weight->execCmd() != $weight->formatValue($body['weight'])) {
+		if ($body['weight'] != 0 && is_object($weight) && $weight->execCmd() != $weight->formatValue($body['weight'])) {
 			$weight->setCollectDate('');
 			$weight->event($body['weight']);
 		}
 
 		$fat = $this->getCmd(null, 'fat');
-		if (is_object($fat) && $fat->execCmd() != $fat->formatValue($body['fat'])) {
+		if ($body['fat'] != 0 && is_object($fat) && $fat->execCmd() != $fat->formatValue($body['fat'])) {
 			$fat->setCollectDate('');
 			$fat->event($body['fat']);
 		}
 
 		$bmi = $this->getCmd(null, 'bmi');
-		if (is_object($bmi) && $bmi->execCmd() != $bmi->formatValue($body['bmi'])) {
+		if ($body['bmi'] != 0 && is_object($bmi) && $bmi->execCmd() != $bmi->formatValue($body['bmi'])) {
 			$bmi->setCollectDate('');
 			$bmi->event($body['bmi']);
 		}
