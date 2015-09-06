@@ -74,6 +74,9 @@ class fitbit extends eqLogic {
 			return '';
 		}
 		$_version = jeedom::versionAlias($_version);
+		if ($this->getDisplay('hideOn' . $_version) == 1) {
+			return '';
+		}
 		$mc = cache::byKey('fitbitWidget' . $_version . $this->getId());
 		if ($mc->getValue() != '') {
 			return $mc->getValue();
@@ -87,7 +90,7 @@ class fitbit extends eqLogic {
 
 		foreach ($this->getCmd('info') as $cmd) {
 			$replace['#' . $cmd->getLogicalId() . '_history#'] = '';
-			if ($cmd->getIsVisible() == 1) {
+			if ($cmd->getIsVisible() == 1 && $cmd->getDisplay('hideOn' . $_version) != 1) {
 				$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
 				$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
 				$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
