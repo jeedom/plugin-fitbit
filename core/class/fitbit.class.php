@@ -86,7 +86,7 @@ class fitbit extends eqLogic {
 			'#id#' => $this->getId(),
 			'#background_color#' => '#2f3f43',
 			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
-			'#uid#' => 'sonos' . $this->getId() . self::UIDDELIMITER . mt_rand() . self::UIDDELIMITER,
+			'#uid#' => 'fitbit' . $this->getId() . self::UIDDELIMITER . mt_rand() . self::UIDDELIMITER,
 		);
 
 		foreach ($this->getCmd('info') as $cmd) {
