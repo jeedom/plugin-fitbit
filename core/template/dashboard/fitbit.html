@@ -1,4 +1,4 @@
-<div class="eqLogic-widget eqLogic" style="width: 400px;background-color: #background_color#;#style#" data-eqLogic_id="#id#" data-version="dashboard" >
+<div class="eqLogic-widget eqLogic" style="width: 400px;background-color: #background_color#;#style#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard" >
   <span class="statusCmd" style="position : absolute;left : 5px; width : 30px;z-index: 1030;"></span>
   <i class='fa fa-refresh pull-right cursor refresh' style="margin-top: 3px;margin-right: 3px;"></i>
   <center><a href="#eqLink#" style="font-size : 1.5em;"> #name# </a></center>
@@ -30,44 +30,44 @@
  </div>
 
  <script>
-  $('.eqLogic[data-eqLogic_id=#id#] .refresh').on('click', function () {
+  $('.eqLogic[data-eqLogic_id=#uid#] .refresh').on('click', function () {
     jeedom.cmd.execute({id: '#refresh_id#'});
   });
   if (isNaN(parseInt('#sleepDuration#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .sleepDuration').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .sleepDuration').remove();
   }
   if (isNaN(parseInt('#minutesToFallAsleep#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .minutesToFallAsleep').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .minutesToFallAsleep').remove();
   }
   if (isNaN(parseInt('#restlessDuration#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .restlessDuration').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .restlessDuration').remove();
   }
   if (isNaN(parseInt('#awakeDuration#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .awakeDuration').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .awakeDuration').remove();
   }
   if (isNaN(parseInt('#veryActiveMinutes#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .veryActiveMinutes').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .veryActiveMinutes').remove();
   }
   if (isNaN(parseInt('#weight#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .weight').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .weight').remove();
   }
   if (isNaN(parseInt('#height#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .height').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .height').remove();
   }
   if (isNaN(parseInt('#step#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .step').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .step').remove();
   }
   if (isNaN(parseInt('#caloriesOut#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .caloriesOut').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .caloriesOut').remove();
   }
   if (isNaN(parseInt('#distance#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .distance').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .distance').remove();
   }
   if (isNaN(parseInt('#elevation#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .elevation').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .elevation').remove();
   }
   if (isNaN(parseInt('#measuregrps54#'))) {
-    $('.eqLogic[data-eqLogic_id=#id#] .measuregrps54').remove();
+    $('.eqLogic[data-eqLogic_id=#uid#] .measuregrps54').remove();
   }
 </script>
 
