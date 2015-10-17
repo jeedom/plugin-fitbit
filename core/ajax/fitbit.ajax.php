@@ -15,26 +15,26 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
-
+header('Access-Control-Allow-Origin: *');
 try {
-    require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
-    include_file('core', 'authentification', 'php');
+	require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+	include_file('core', 'authentification', 'php');
 
-    if (!isConnect('admin')) {
-        throw new Exception(__('401 - Accès non autorisé', __FILE__));
-    }
+	if (!isConnect('admin')) {
+		throw new Exception(__('401 - Accès non autorisé', __FILE__));
+	}
 
-    if (init('action') == 'linkToUser') {
-        $eqLogic = eqLogic::byId(init('id'));
-        if (!is_object($eqLogic)) {
-            throw new Exception(__('EqLogic non trouvé : ', __FILE__) . init('id'));
-        }
-        ajax::success(array('redirect' => $eqLogic->linkToUser()));
-    }
+	if (init('action') == 'linkToUser') {
+		$eqLogic = eqLogic::byId(init('id'));
+		if (!is_object($eqLogic)) {
+			throw new Exception(__('EqLogic non trouvé : ', __FILE__) . init('id'));
+		}
+		ajax::success(array('redirect' => $eqLogic->linkToUser()));
+	}
 
-    throw new Exception(__('Aucune methode correspondante à : ', __FILE__) . init('action'));
-    /*     * *********Catch exeption*************** */
+	throw new Exception(__('Aucune methode correspondante à : ', __FILE__) . init('action'));
+	/*     * *********Catch exeption*************** */
 } catch (Exception $e) {
-    ajax::error(displayExeption($e), $e->getCode());
+	ajax::error(displayExeption($e), $e->getCode());
 }
 ?>

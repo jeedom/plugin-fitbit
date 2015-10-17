@@ -17,6 +17,6 @@
  */
 
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+require_once dirname(__FILE__) . '/../../vendor/autoload.php';
 include_file('core', 'fitbit', 'class', 'fitbit');
-include_file('3rdparty', 'fitbit/fitbit.class', 'php', 'fitbit');
 ?>
