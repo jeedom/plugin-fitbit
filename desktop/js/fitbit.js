@@ -36,7 +36,8 @@ $('#bt_linkToUser').on('click', function () {
                 return;
             }
             if (isset(data.result.redirect)) {
-                window.location.href = data.result.redirect;
+                console.log(data.result.redirect);
+                window.location.href = data.result.redirect.scheme+'://'+data.result.redirect.host+data.result.redirect.path+'?'+data.result.redirect.query;
             } else {
                 $('#div_alert').showAlert({message: 'Synchronisation réussie', level: 'success'});
             }

@@ -12,12 +12,21 @@ if (!is_object($eqLogic)) {
 	echo 'Impossible de trouver l\'équipement correspondant à : ' . init('eqLogic_id');
 	exit();
 }
-$fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-$fitbit->initSession(network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $eqLogic->getId());
-$users = json_decode(json_encode($fitbit->getProfile()), true);
+$factory = new \Fitbit\ApiGatewayFactory;
+$factory->setCallbackURL(network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $eqLogic->getId());
+$factory->setCredentials(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
+$adapter = new \OAuth\Common\Storage\Session();
+$factory->setStorageAdapter($adapter);
+$auth_gateway = $factory->getAuthenticationGateway();
+$auth_gateway->authenticateUser($_GET['oauth_token'], $_GET['oauth_verifier']);
+$user_gateway = $factory->getUserGateway();
+$user_profile = $user_gateway->getProfile();
 
-$eqLogic->setConfiguration('encodedId', $users['user']['encodedId']);
-$eqLogic->setConfiguration('token', $_SESSION['fitbit_Token']);
-$eqLogic->setConfiguration('secret', $_SESSION['fitbit_Secret']);
+$storage = $factory->getStorageAdapter();
+$token = $storage->retrieveAccessToken('FitBit');
+
+$eqLogic->setConfiguration('encodedId', $user_profile->user->encodedId);
+$eqLogic->setConfiguration('token', $token->getRequestToken());
+$eqLogic->setConfiguration('secret', $token->getRequestTokenSecret());
 $eqLogic->save();
 redirect(network::getNetworkAccess() . '/index.php?v=d&p=fitbit&m=fitbit&id=' . $eqLogic->getId());

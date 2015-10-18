@@ -30,7 +30,7 @@
  </div>
 
  <script>
-  $('.eqLogic[data-eqLogic_id=#uid#] .refresh').on('click', function () {
+  $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {
     jeedom.cmd.execute({id: '#refresh_id#'});
   });
   if (isNaN(parseInt('#sleepDuration#'))) {

@@ -48,22 +48,29 @@ class fitbit extends eqLogic {
 	/*     * *********************Methode d'instance************************* */
 
 	public function linkToUser() {
-		if (!class_exists('OAuth')) {
-			throw new Exception('Classe OAuth non trouvée merci de l\'installer : "sudo apt-get update;sudo apt-get install -y php5-dev;sudo pecl install oauth;echo "extension=oauth.so" >> /etc/php5/cli/php.ini;echo "extension=oauth.so" >> /etc/php5/fpm/php.ini; sudo service php5-fpm restart"');
-		}
 		@session_start();
-		$_SESSION['fitbit_Session'] = 0;
-		$fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-		return $fitbit->initSession(network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
+		$factory = new \Fitbit\ApiGatewayFactory;
+		$factory->setCallbackURL(network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
+		$factory->setCredentials(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
+		$adapter = new \OAuth\Common\Storage\Session();
+		$factory->setStorageAdapter($adapter);
+		$auth_gateway = $factory->getAuthenticationGateway();
+		return utils::o2a($auth_gateway->initiateLogin());
 	}
 
-	public function getFitbit() {
-		if (!class_exists('OAuth')) {
-			throw new Exception('Classe OAuth non trouvée merci de l\'installer : "sudo apt-get update;sudo apt-get install -y php5-dev;sudo pecl install oauth;echo "extension=oauth.so" >> /etc/php5/cli/php.ini;echo "extension=oauth.so" >> /etc/php5/fpm/php.ini; sudo service php5-fpm restart"');
-		}
-		$fitbit = new FitBitPHP(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-		$fitbit->setOAuthDetails($this->getConfiguration('token'), $this->getConfiguration('secret'));
-		return $fitbit;
+	public function getFactory() {
+		$factory = new \Fitbit\ApiGatewayFactory;
+		$factory->setCallbackURL(network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
+		$factory->setCredentials(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
+		$token = new \OAuth\OAuth1\Token\StdOAuth1Token();
+		$token->setRequestToken($this->getConfiguration('token'));
+		$token->setRequestTokenSecret($this->getConfiguration('secret'));
+		$token->setAccessToken($this->getConfiguration('token'));
+		$token->setAccessTokenSecret($this->getConfiguration('secret'));
+		$adapter = new \OAuth\Common\Storage\Memory();
+		$adapter->storeAccessToken('FitBit', $token);
+		$factory->setStorageAdapter($adapter);
+		return $factory;
 	}
 
 	public function toHtml($_version = 'dashboard') {
@@ -338,15 +345,22 @@ class fitbit extends eqLogic {
 	}
 
 	public function syncWithFitbit() {
-		$fitbit = $this->getFitbit();
-		$fitbit->setUser($this->getConfiguration('encodedId'));
-		$activity = json_decode(json_encode($fitbit->getActivities(new DateTime())), true);
-		$users = json_decode(json_encode($fitbit->getProfile()), true);
-		$sleeps = json_decode(json_encode($fitbit->getSleep(new DateTime())), true);
-		$bodies = json_decode(json_encode($fitbit->getBody(new DateTime())), true);
+		$factory = $this->getFactory();
+		$user_gateway = $factory->getUserGateway();
+		$users = json_decode(json_encode($user_gateway->getProfile()), true);
+		$activity_gateway = $factory->getActivityGateway();
+		$activity = json_decode(json_encode($activity_gateway->getActivities(new DateTime())), true);
+		$sleep_gateway = $factory->getSleepGateway();
+		$sleeps = json_decode(json_encode($sleep_gateway->getSleep(new DateTime())), true);
+		$body_gateway = $factory->getBodyGateway();
+		$bodies = json_decode(json_encode($body_gateway->getBody(new DateTime())), true);
 
-		//$hearths = json_decode(json_encode($fitbit->getHeartRate()), true);
-		//print_r($hearths);
+		$user = $users['user'];
+		$height = $this->getCmd(null, 'height');
+		if (is_object($height) && $height->execCmd() != $height->formatValue($user['height'])) {
+			$height->setCollectDate('');
+			$height->event($user['height']);
+		}
 
 		if (isset($sleeps['sleep'][0])) {
 			$sleep = $sleeps['sleep'][0];
@@ -399,13 +413,6 @@ class fitbit extends eqLogic {
 		if ($body['bmi'] != 0 && is_object($bmi) && $bmi->execCmd() != $bmi->formatValue($body['bmi'])) {
 			$bmi->setCollectDate('');
 			$bmi->event($body['bmi']);
-		}
-
-		$user = $users['user'];
-		$height = $this->getCmd(null, 'height');
-		if (is_object($height) && $height->execCmd() != $height->formatValue($user['height'])) {
-			$height->setCollectDate('');
-			$height->event($user['height']);
 		}
 
 		$step = $this->getCmd(null, 'step');
