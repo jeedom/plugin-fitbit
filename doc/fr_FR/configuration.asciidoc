@@ -4,7 +4,6 @@ image::../images/fitbit-1.JPG[]
 
 === Création d'un équipement et association au compte Fitbit
 
-[icon="../images/plugin/tip.png"]
 [TIP]
 Comme à beaucoup d'endroit sur Jeedom, mettre la souris tout à gauche permet de faire apparaître un menu d'accès rapide (vous pouvez à partir de votre profils le laisser toujours visible)
 
@@ -20,10 +19,11 @@ Vous devez ensuite avoir cette page :
 
 image::../images/fitbit-4.JPG[]
 
-[icon="../images/plugin/important.png"]
 [IMPORTANT]
 Le premier truc à vérifier est "URL de retour". Celle-ci doit être validée et accessible de l'extérieure sinon vous ne pourrez pas associer Jeedom à votre compte Fitbit. Si ce n'est pas le cas, mettez à jour vos paramètres de configuration réseaux dans Général -> Administration -> Configuration puis partie "réseaux", voir https://www.jeedom.fr/doc/documentation/core/fr_FR/doc-core-administration.html.html#administration[ici]
 
+[NOTE]
+Il est recommandé lors du lien entre Jeedom et Fitbit d'etre connecté à Jeedom par l'ip externe
 
 Cliquez sur "Lier à un utilisateur" pour lier cet équipement à votre compte Fitbit : 
 
