@@ -140,7 +140,6 @@ class fitbit extends eqLogic {
 		$weight->setType('info');
 		$weight->setSubType('numeric');
 		$weight->setUnite('kg');
-		$weight->setEventOnly(1);
 		$weight->setEqLogic_id($this->getId());
 		$weight->save();
 
@@ -156,7 +155,6 @@ class fitbit extends eqLogic {
 		$fat->setType('info');
 		$fat->setSubType('numeric');
 		$fat->setUnite('%');
-		$fat->setEventOnly(1);
 		$fat->setEqLogic_id($this->getId());
 		$fat->save();
 
@@ -171,7 +169,6 @@ class fitbit extends eqLogic {
 		}
 		$bmi->setType('info');
 		$bmi->setSubType('numeric');
-		$bmi->setEventOnly(1);
 		$bmi->setEqLogic_id($this->getId());
 		$bmi->save();
 
@@ -197,7 +194,6 @@ class fitbit extends eqLogic {
 		$height->setType('info');
 		$height->setSubType('numeric');
 		$height->setUnite('cm');
-		$height->setEventOnly(1);
 		$height->setEqLogic_id($this->getId());
 		$height->save();
 
@@ -211,7 +207,6 @@ class fitbit extends eqLogic {
 
 		$step->setType('info');
 		$step->setSubType('numeric');
-		$step->setEventOnly(1);
 		$step->setEqLogic_id($this->getId());
 		$step->save();
 
@@ -224,7 +219,6 @@ class fitbit extends eqLogic {
 		}
 		$caloriesOut->setType('info');
 		$caloriesOut->setSubType('numeric');
-		$caloriesOut->setEventOnly(1);
 		$caloriesOut->setEqLogic_id($this->getId());
 		$caloriesOut->save();
 
@@ -237,7 +231,6 @@ class fitbit extends eqLogic {
 		}
 		$veryActiveMinutes->setType('info');
 		$veryActiveMinutes->setSubType('numeric');
-		$veryActiveMinutes->setEventOnly(1);
 		$veryActiveMinutes->setUnite('min');
 		$veryActiveMinutes->setEqLogic_id($this->getId());
 		$veryActiveMinutes->save();
@@ -251,7 +244,6 @@ class fitbit extends eqLogic {
 		}
 		$distance->setType('info');
 		$distance->setSubType('numeric');
-		$distance->setEventOnly(1);
 		$distance->setUnite('km');
 		$distance->setEqLogic_id($this->getId());
 		$distance->save();
@@ -265,7 +257,6 @@ class fitbit extends eqLogic {
 		}
 		$elevation->setType('info');
 		$elevation->setSubType('numeric');
-		$elevation->setEventOnly(1);
 		$distance->setUnite('m');
 		$elevation->setEqLogic_id($this->getId());
 		$elevation->save();
@@ -279,7 +270,6 @@ class fitbit extends eqLogic {
 		}
 		$awakeCount->setType('info');
 		$awakeCount->setSubType('numeric');
-		$awakeCount->setEventOnly(1);
 		$awakeCount->setEqLogic_id($this->getId());
 		$awakeCount->save();
 
@@ -292,7 +282,6 @@ class fitbit extends eqLogic {
 		}
 		$awakeDuration->setType('info');
 		$awakeDuration->setSubType('numeric');
-		$awakeDuration->setEventOnly(1);
 		$distance->setUnite('min');
 		$awakeDuration->setEqLogic_id($this->getId());
 		$awakeDuration->save();
@@ -306,7 +295,6 @@ class fitbit extends eqLogic {
 		}
 		$sleepDuration->setType('info');
 		$sleepDuration->setSubType('numeric');
-		$sleepDuration->setEventOnly(1);
 		$sleepDuration->setUnite('min');
 		$sleepDuration->setEqLogic_id($this->getId());
 		$sleepDuration->save();
@@ -320,7 +308,6 @@ class fitbit extends eqLogic {
 		}
 		$restlessDuration->setType('info');
 		$restlessDuration->setSubType('numeric');
-		$restlessDuration->setEventOnly(1);
 		$restlessDuration->setUnite('min');
 		$restlessDuration->setEqLogic_id($this->getId());
 		$restlessDuration->save();
@@ -334,7 +321,6 @@ class fitbit extends eqLogic {
 		}
 		$minutesToFallAsleep->setType('info');
 		$minutesToFallAsleep->setSubType('numeric');
-		$minutesToFallAsleep->setEventOnly(1);
 		$minutesToFallAsleep->setUnite('min');
 		$minutesToFallAsleep->setEqLogic_id($this->getId());
 		$minutesToFallAsleep->save();
