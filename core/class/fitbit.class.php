@@ -22,6 +22,8 @@ require_once dirname(__FILE__) . '/../../core/php/fitbit.inc.php';
 class fitbit extends eqLogic {
 	/*     * *************************Attributs****************************** */
 
+	public static $_widgetPossibility = array('custom' => true);
+
 	/*     * ***********************Methode static*************************** */
 
 	public static function cron30() {
@@ -74,28 +76,11 @@ class fitbit extends eqLogic {
 	}
 
 	public function toHtml($_version = 'dashboard') {
-		if ($this->getIsEnable() != 1) {
-			return '';
-		}
-		if (!$this->hasRight('r')) {
-			return '';
+		$replace = $this->preToHtml($_version, 'fitbitWidget', array('#background-color#' => '#2f3f43'));
+		if (!is_array($replace)) {
+			return $replace;
 		}
 		$_version = jeedom::versionAlias($_version);
-		if ($this->getDisplay('hideOn' . $_version) == 1) {
-			return '';
-		}
-		$mc = cache::byKey('fitbitWidget' . $_version . $this->getId());
-		if ($mc->getValue() != '') {
-			return preg_replace("/" . preg_quote(self::UIDDELIMITER) . "(.*?)" . preg_quote(self::UIDDELIMITER) . "/", self::UIDDELIMITER . mt_rand() . self::UIDDELIMITER, $mc->getValue());
-		}
-		$replace = array(
-			'#name#' => $this->getName(),
-			'#id#' => $this->getId(),
-			'#background_color#' => '#2f3f43',
-			'#eqLink#' => ($this->hasRight('w')) ? $this->getLinkToConfiguration() : '#',
-			'#uid#' => 'fitbit' . $this->getId() . self::UIDDELIMITER . mt_rand() . self::UIDDELIMITER,
-		);
-
 		foreach ($this->getCmd('info') as $cmd) {
 			$replace['#' . $cmd->getLogicalId() . '_history#'] = '';
 			if ($cmd->getIsVisible() == 1 && $cmd->getDisplay('hideOn' . $_version) != 1) {
@@ -109,19 +94,10 @@ class fitbit extends eqLogic {
 				$replace['#' . $cmd->getLogicalId() . '#'] = '';
 			}
 		}
-
 		$refresh = $this->getCmd(null, 'refresh');
 		if (is_object($refresh)) {
 			$replace['#refresh_id#'] = $refresh->getId();
 		}
-
-		$parameters = $this->getDisplay('parameters');
-		if (is_array($parameters)) {
-			foreach ($parameters as $key => $value) {
-				$replace['#' . $key . '#'] = $value;
-			}
-		}
-
 		$html = template_replace($replace, getTemplate('core', $_version, 'fitbit', 'fitbit'));
 		cache::set('fitbitWidget' . $_version . $this->getId(), $html, 0);
 		return $html;
