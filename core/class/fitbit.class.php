@@ -76,7 +76,7 @@ class fitbit extends eqLogic {
 	}
 
 	public function toHtml($_version = 'dashboard') {
-		$replace = $this->preToHtml($_version, 'fitbitWidget', array('#background-color#' => '#2f3f43'));
+		$replace = $this->preToHtml($_version, array('#background-color#' => '#2f3f43'));
 		if (!is_array($replace)) {
 			return $replace;
 		}
@@ -99,7 +99,7 @@ class fitbit extends eqLogic {
 			$replace['#refresh_id#'] = $refresh->getId();
 		}
 		$html = template_replace($replace, getTemplate('core', $_version, 'fitbit', 'fitbit'));
-		cache::set('fitbitWidget' . $_version . $this->getId(), $html, 0);
+		cache::set('widgetHtml' . $_version . $this->getId(), $html, 0);
 		return $html;
 	}
 
