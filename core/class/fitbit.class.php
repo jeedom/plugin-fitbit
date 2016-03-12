@@ -430,12 +430,6 @@ class fitbit extends eqLogic {
 				$distance->event($activity['summary']['distances'][0]['distance']);
 			}
 		}
-		$mc = cache::byKey('fitbitWidgetmobile' . $this->getId());
-		$mc->remove();
-		$mc = cache::byKey('fitbitWidgetdashboard' . $this->getId());
-		$mc->remove();
-		$this->toHtml('mobile');
-		$this->toHtml('dashboard');
 		$this->refreshWidget();
 	}
 
