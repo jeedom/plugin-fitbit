@@ -440,6 +440,8 @@ class fitbit extends eqLogic {
 class fitbitCmd extends cmd {
 	/*     * *************************Attributs****************************** */
 
+	public static $_widgetPossibility = array('custom' => false);
+
 	/*     * ***********************Methode static*************************** */
 
 	/*     * *********************Methode d'instance************************* */
