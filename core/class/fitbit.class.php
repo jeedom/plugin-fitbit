@@ -80,7 +80,7 @@ class fitbit extends eqLogic {
 		if (!is_array($replace)) {
 			return $replace;
 		}
-		$_version = jeedom::versionAlias($_version);
+		$version = jeedom::versionAlias($_version);
 		foreach ($this->getCmd('info') as $cmd) {
 			$replace['#' . $cmd->getLogicalId() . '_history#'] = '';
 			if ($cmd->getIsVisible() == 1 && $cmd->getDisplay('hideOn' . $_version) != 1) {
@@ -98,7 +98,7 @@ class fitbit extends eqLogic {
 		if (is_object($refresh)) {
 			$replace['#refresh_id#'] = $refresh->getId();
 		}
-		$html = template_replace($replace, getTemplate('core', $_version, 'fitbit', 'fitbit'));
+		$html = template_replace($replace, getTemplate('core', $version, 'fitbit', 'fitbit'));
 		cache::set('widgetHtml' . $_version . $this->getId(), $html, 0);
 		return $html;
 	}
