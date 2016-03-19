@@ -81,9 +81,10 @@ class fitbit extends eqLogic {
 			return $replace;
 		}
 		$version = jeedom::versionAlias($_version);
+		$version2 = jeedom::versionAlias($_version, false);
 		foreach ($this->getCmd('info') as $cmd) {
 			$replace['#' . $cmd->getLogicalId() . '_history#'] = '';
-			if ($cmd->getIsVisible() == 1 && $cmd->getDisplay('hideOn' . $_version) != 1) {
+			if ($cmd->getIsVisible() == 1 && $cmd->getDisplay('hideOn' . $version2) != 1) {
 				$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
 				$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
 				$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
