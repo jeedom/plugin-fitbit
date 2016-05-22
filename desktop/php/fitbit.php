@@ -80,13 +80,13 @@ foreach (object::all() as $object) {
       <div class="form-group">
         <label class="col-lg-3 control-label">URL de retour</label>
         <div class="col-lg-4">
-            <span><?php echo network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php';?></span>
+            <span><?php echo network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php'; ?></span>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-3 control-label">Lier</label>
         <div class="col-lg-2">
-            <a class="btn btn-default" id="bt_linkToUser"><i class='fa fa-refresh'></i> lier à un utilisateur</a>
+            <a class="btn btn-default" id="bt_linkToUser"><i class='fa fa-refresh'></i> Lier à un utilisateur</a>
         </div>
     </div>
 </fieldset>
