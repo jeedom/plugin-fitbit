@@ -3,12 +3,10 @@
     <id>fitbit</id>
     <name>Fitbit</name>
     <description>Plugin pour fitbit</description>
-    <icon>icon loisir-weightlift</icon>
     <licence>AGPL</licence>
-    <author>Loïc Gevrey</author>
+    <author>Loïc</author>
     <installation>Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)</installation>
     <require>2.2</require>
-    <version>1.0</version>
     <category>health</category>
     <include type="php">fitbit.inc</include>
 </info>
