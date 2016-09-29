@@ -1,0 +1,6 @@
+= Fitbit
+
+Plugin permettant d'accéder aux informations de ses appareils Fitbit (nombre de pas, calories, distance...)
+
+== Configuration
+include::configuration.asciidoc[]

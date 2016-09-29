@@ -1,0 +1,28 @@
+{
+    "plugins/fitbit/desktop/php/fitbit.php": {
+        "Ajouter une personne": "Añadir una persona",
+        "Rechercher": "Buscar",
+        "Mes équipements Fitbit": "Mis dispositivos Fitbit",
+        "Général": "General",
+        "Nom de la personne": "Apellido de la persona",
+        "Objet parent": "Objeto padre",
+        "Aucun": "Ningún",
+        "Activer": "Activar",
+        "Visible": "Visible",
+        "Commandes": "Comandos",
+        "Nom": "Nombre",
+        "Type": "Tipo",
+        "Action": "Acción",
+        "Supprimer": "Borrar",
+        "Sauvegarder": "Guardar"
+    },
+    "plugins/fitbit/desktop/js/fitbit.js": {
+        "Historiser": "Guardar historial",
+        "Afficher": "Mostrar",
+        "Tester": "Probar"
+    },
+    "plugins/fitbit/plugin_info/info.xml": {
+        "Plugin pour fitbit": "Plugin para Fitbit",
+        "Aucune": "Ninguna"
+    }
+}

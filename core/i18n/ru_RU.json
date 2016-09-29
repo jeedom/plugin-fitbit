@@ -1,0 +1,28 @@
+{
+    "plugins/fitbit/desktop/php/fitbit.php": {
+        "Ajouter une personne": "Добавить другого человека",
+        "Rechercher": "Искать",
+        "Mes équipements Fitbit": "Оборудование моего Fitbit",
+        "Général": "Главная",
+        "Nom de la personne": "Имя человека",
+        "Objet parent": "Родительский объект",
+        "Aucun": "Нет",
+        "Activer": "Активировать",
+        "Visible": "Видимый",
+        "Commandes": "Команды",
+        "Nom": "Имя",
+        "Type": "Тип",
+        "Action": "Действие",
+        "Supprimer": "Удалить",
+        "Sauvegarder": "Сохранить"
+    },
+    "plugins/fitbit/desktop/js/fitbit.js": {
+        "Historiser": "История",
+        "Afficher": "Отобразить",
+        "Tester": "Тест"
+    },
+    "plugins/fitbit/plugin_info/info.xml": {
+        "Plugin pour fitbit": "Плагин для Fitbit",
+        "Aucune": "Нет"
+    }
+}

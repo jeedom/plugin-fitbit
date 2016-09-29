@@ -1,0 +1,28 @@
+{
+    "plugins/fitbit/desktop/php/fitbit.php": {
+        "Ajouter une personne": "Tambahan orang",
+        "Rechercher": "Mencari",
+        "Mes équipements Fitbit": "Peralatanku Fitbit",
+        "Général": "Umum",
+        "Nom de la personne": "Nama orang",
+        "Objet parent": "Objek induk",
+        "Aucun": "Tak ada",
+        "Activer": "Mengaktifkan",
+        "Visible": "Terlihat",
+        "Commandes": "Perintah",
+        "Nom": "Nama",
+        "Type": "Jenis",
+        "Action": "Tindakan",
+        "Supprimer": "Menghapus",
+        "Sauvegarder": "Menyimpan"
+    },
+    "plugins/fitbit/desktop/js/fitbit.js": {
+        "Historiser": "Historicize",
+        "Afficher": "Memenitikan",
+        "Tester": "Coba"
+    },
+    "plugins/fitbit/plugin_info/info.xml": {
+        "Plugin pour fitbit": "Plugin buat Fitbit",
+        "Aucune": "Tak ada"
+    }
+}
