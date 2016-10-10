@@ -482,121 +482,37 @@ class fitbit extends eqLogic {
 		$bodies = $this->request('GET', '/1/user/-/body/date/' . date('Y-m-d') . '.json');
 
 		$user = $users['user'];
-		$height = $this->getCmd(null, 'height');
-		if (is_object($height) && $height->execCmd() != $height->formatValue($user['height'])) {
-			$height->setCollectDate('');
-			$height->event($user['height']);
-		}
+		$body = $bodies['body'];
+
+		$this->checkAndUpdateCmd('height', $user['height']);
 
 		if (isset($sleeps['sleep'][0])) {
 			$sleep = $sleeps['sleep'][0];
-			$awakeCount = $this->getCmd(null, 'awakeCount');
-			if (is_object($awakeCount) && $awakeCount->execCmd() != $awakeCount->formatValue($sleep['awakeCount'])) {
-				$awakeCount->setCollectDate('');
-				$awakeCount->event($sleep['awakeCount']);
-			}
-
-			$awakeDuration = $this->getCmd(null, 'awakeDuration');
-			if (is_object($awakeCount) && $awakeDuration->execCmd() != $awakeCount->formatValue($sleep['awakeDuration'])) {
-				$awakeDuration->setCollectDate('');
-				$awakeDuration->event($sleep['awakeDuration']);
-			}
-
-			$restlessDuration = $this->getCmd(null, 'restlessDuration');
-			if (is_object($restlessDuration) && $restlessDuration->execCmd() != $restlessDuration->formatValue($sleep['restlessDuration'])) {
-				$restlessDuration->setCollectDate('');
-				$restlessDuration->event($sleep['restlessDuration']);
-			}
-
-			$minutesToFallAsleep = $this->getCmd(null, 'minutesToFallAsleep');
-			if (is_object($minutesToFallAsleep) && $minutesToFallAsleep->execCmd() != $minutesToFallAsleep->formatValue($sleep['minutesToFallAsleep'] + 1)) {
-				$minutesToFallAsleep->setCollectDate('');
-				$minutesToFallAsleep->event($sleep['minutesToFallAsleep'] + 1);
-			}
-
-			$sleepDuration = $this->getCmd(null, 'sleepDuration');
-			if (is_object($sleepDuration) && $sleepDuration->execCmd() != $sleepDuration->formatValue($sleep['minutesAsleep'])) {
-				$sleepDuration->setCollectDate('');
-				$sleepDuration->event($sleep['minutesAsleep']);
-			}
-
+			$this->checkAndUpdateCmd('awakeCount', $sleep['awakeCount']);
+			$this->checkAndUpdateCmd('awakeDuration', $sleep['awakeDuration']);
+			$this->checkAndUpdateCmd('minutesToFallAsleep', $sleep['minutesToFallAsleep'] + 1);
+			$this->checkAndUpdateCmd('sleepDuration', $sleep['minutesAsleep']);
+			$this->checkAndUpdateCmd('restlessDuration', $sleep['restlessDuration']);
 		}
 
 		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
 			$heart = $hearts['activities-heart'][0]['value'];
-			$restingHeartRate = $this->getCmd(null, 'restingHeartRate');
-			if (is_object($restingHeartRate) && $restingHeartRate->execCmd() != $restingHeartRate->formatValue($heart['restingHeartRate'])) {
-				$restingHeartRate->setCollectDate('');
-				$restingHeartRate->event($heart['restingHeartRate']);
-			}
-
-			$heartOutOfRange = $this->getCmd(null, 'heartOutOfRange');
-			if (is_object($heartOutOfRange) && $heartOutOfRange->execCmd() != $heartOutOfRange->formatValue($heart['heartRateZones'][0]['minutes'])) {
-				$heartOutOfRange->setCollectDate('');
-				$heartOutOfRange->event($heart['heartRateZones'][0]['minutes']);
-			}
-
-			$heartFatBurn = $this->getCmd(null, 'heartFatBurn');
-			if (is_object($heartFatBurn) && $heartFatBurn->execCmd() != $heartFatBurn->formatValue($heart['heartRateZones'][1]['minutes'])) {
-				$heartFatBurn->setCollectDate('');
-				$heartFatBurn->event($heart['heartRateZones'][1]['minutes']);
-			}
-
-			$heartCardio = $this->getCmd(null, 'heartCardio');
-			if (is_object($heartCardio) && $heartCardio->execCmd() != $heartCardio->formatValue($heart['heartRateZones'][2]['minutes'])) {
-				$heartCardio->setCollectDate('');
-				$heartCardio->event($heart['heartRateZones'][2]['minutes']);
-			}
-
-			$heartPeak = $this->getCmd(null, 'heartPeak');
-			if (is_object($heartPeak) && $heartPeak->execCmd() != $heartPeak->formatValue($heart['heartRateZones'][3]['minutes'])) {
-				$heartPeak->setCollectDate('');
-				$heartPeak->event($heart['heartRateZones'][3]['minutes']);
-			}
-
-			$heartOutOfRangeCalories = $this->getCmd(null, 'heartOutOfRangeCalories');
-			if (is_object($heartOutOfRangeCalories) && $heartOutOfRangeCalories->execCmd() != $heartOutOfRangeCalories->formatValue($heart['heartRateZones'][0]['caloriesOut'])) {
-				$heartOutOfRangeCalories->setCollectDate('');
-				$heartOutOfRangeCalories->event($heart['heartRateZones'][0]['caloriesOut']);
-			}
-
-			$heartFatBurnCalories = $this->getCmd(null, 'heartFatBurnCalories');
-			if (is_object($heartFatBurnCalories) && $heartFatBurnCalories->execCmd() != $heartFatBurnCalories->formatValue($heart['heartRateZones'][1]['caloriesOut'])) {
-				$heartFatBurnCalories->setCollectDate('');
-				$heartFatBurnCalories->event($heart['heartRateZones'][1]['caloriesOut']);
-			}
-
-			$heartCardioCalories = $this->getCmd(null, 'heartCardioCalories');
-			if (is_object($heartCardioCalories) && $heartCardioCalories->execCmd() != $heartCardioCalories->formatValue($heart['heartRateZones'][2]['caloriesOut'])) {
-				$heartCardioCalories->setCollectDate('');
-				$heartCardioCalories->event($heart['heartRateZones'][2]['caloriesOut']);
-			}
-
-			$heartPeakCalories = $this->getCmd(null, 'heartPeakCalories');
-			if (is_object($heartPeakCalories) && $heartPeakCalories->execCmd() != $heartPeakCalories->formatValue($heart['heartRateZones'][3]['caloriesOut'])) {
-				$heartPeakCalories->setCollectDate('');
-				$heartPeakCalories->event($heart['heartRateZones'][3]['caloriesOut']);
-			}
+			$this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
+			$this->checkAndUpdateCmd('heartOutOfRange', $heart['heartRateZones'][0]['minutes']);
+			$this->checkAndUpdateCmd('heartFatBurn', $heart['heartRateZones'][1]['minutes']);
+			$this->checkAndUpdateCmd('heartCardio', $heart['heartRateZones'][2]['minutes']);
+			$this->checkAndUpdateCmd('heartPeak', $heart['heartRateZones'][3]['minutes']);
+			$this->checkAndUpdateCmd('heartOutOfRangeCalories', $heart['heartRateZones'][0]['caloriesOut']);
+			$this->checkAndUpdateCmd('heartFatBurnCalories', $heart['heartRateZones'][1]['caloriesOut']);
+			$this->checkAndUpdateCmd('heartCardioCalories', $heart['heartRateZones'][2]['caloriesOut']);
+			$this->checkAndUpdateCmd('heartPeakCalories', $heart['heartRateZones'][3]['caloriesOut']);
 		}
 
-		$body = $bodies['body'];
-		$weight = $this->getCmd(null, 'weight');
-		if ($body['weight'] != 0 && is_object($weight) && $weight->execCmd() != $weight->formatValue($body['weight'])) {
-			$weight->setCollectDate('');
-			$weight->event($body['weight']);
-		}
+		$this->checkAndUpdateCmd('weight', $body['weight']);
+		$this->checkAndUpdateCmd('fat', $body['fat']);
+		$this->checkAndUpdateCmd('bmi', $body['bmi']);
 
-		$fat = $this->getCmd(null, 'fat');
-		if ($body['fat'] != 0 && is_object($fat) && $fat->execCmd() != $fat->formatValue($body['fat'])) {
-			$fat->setCollectDate('');
-			$fat->event($body['fat']);
-		}
-
-		$bmi = $this->getCmd(null, 'bmi');
-		if ($body['bmi'] != 0 && is_object($bmi) && $bmi->execCmd() != $bmi->formatValue($body['bmi'])) {
-			$bmi->setCollectDate('');
-			$bmi->event($body['bmi']);
-		}
+		$this->checkAndUpdateCmd('elevation', $activity['summary']['elevation']);
 
 		$step = $this->getCmd(null, 'step');
 		if (is_object($step)) {
@@ -604,16 +520,7 @@ class fitbit extends eqLogic {
 				$step->setConfiguration('goal', $activity['goals']['steps']);
 				$step->save();
 			}
-			if ($step->execCmd() != $step->formatValue($activity['summary']['steps'])) {
-				$step->setCollectDate('');
-				$step->event($activity['summary']['steps']);
-			}
-		}
-
-		$elevation = $this->getCmd(null, 'elevation');
-		if (is_object($elevation) && $elevation->execCmd() != $step->formatValue($activity['summary']['elevation'])) {
-			$elevation->setCollectDate('');
-			$elevation->event($activity['summary']['elevation']);
+			$this->checkAndUpdateCmd('step', $activity['summary']['steps']);
 		}
 
 		$caloriesOut = $this->getCmd(null, 'caloriesOut');
@@ -622,10 +529,7 @@ class fitbit extends eqLogic {
 				$caloriesOut->setConfiguration('goal', $activity['goals']['caloriesOut']);
 				$caloriesOut->save();
 			}
-			if ($caloriesOut->execCmd() != $caloriesOut->formatValue($activity['summary']['caloriesOut'])) {
-				$caloriesOut->setCollectDate('');
-				$caloriesOut->event($activity['summary']['caloriesOut']);
-			}
+			$this->checkAndUpdateCmd('caloriesOut', $activity['summary']['caloriesOut']);
 		}
 
 		$veryActiveMinutes = $this->getCmd(null, 'veryActiveMinutes');
@@ -634,10 +538,7 @@ class fitbit extends eqLogic {
 				$veryActiveMinutes->setConfiguration('goal', $activity['goals']['activeMinutes']);
 				$veryActiveMinutes->save();
 			}
-			if ($veryActiveMinutes->execCmd() != $veryActiveMinutes->formatValue($activity['summary']['veryActiveMinutes'])) {
-				$veryActiveMinutes->setCollectDate('');
-				$veryActiveMinutes->event($activity['summary']['veryActiveMinutes']);
-			}
+			$this->checkAndUpdateCmd('veryActiveMinutes', $activity['summary']['veryActiveMinutes']);
 		}
 
 		$distance = $this->getCmd(null, 'distance');
@@ -646,10 +547,7 @@ class fitbit extends eqLogic {
 				$distance->setConfiguration('goal', $activity['goals']['distance']);
 				$distance->save();
 			}
-			if ($distance->execCmd() != $distance->formatValue($activity['summary']['distances'][0]['distance'])) {
-				$distance->setCollectDate('');
-				$distance->event($activity['summary']['distances'][0]['distance']);
-			}
+			$this->checkAndUpdateCmd('distance', $activity['summary']['distances'][0]['distance']);
 		}
 		$this->refreshWidget();
 	}
