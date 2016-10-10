@@ -16,12 +16,12 @@
  */
 
 
-$("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
-$('#bt_linkToUser').on('click', function () {
-    $.ajax({// fonction permettant de faire de l'ajax
-        type: "POST", // methode de transmission des données au fichier php
-        url: "plugins/fitbit/core/ajax/fitbit.ajax.php", // url du fichier php
+ $('#bt_linkToUser').on('click', function () {
+    $.ajax({
+        type: "POST", 
+        url: "plugins/fitbit/core/ajax/fitbit.ajax.php", 
         data: {
             action: "linkToUser",
             id: $('.eqLogic .eqLogicAttr[data-l1key=id]').value()
@@ -30,13 +30,13 @@ $('#bt_linkToUser').on('click', function () {
         error: function (request, status, error) {
             handleAjaxError(request, status, error);
         },
-        success: function (data) { // si l'appel a bien fonctionné
+        success: function (data) {
             if (data.state != 'ok') {
                 $('#div_alert').showAlert({message: data.result, level: 'danger'});
                 return;
             }
             if (isset(data.result.redirect)) {
-                window.location.href = data.result.redirect.scheme+'://'+data.result.redirect.host+data.result.redirect.path+'?'+data.result.redirect.query;
+                window.location.href = data.result.redirect;
             } else {
                 $('#div_alert').showAlert({message: 'Synchronisation réussie', level: 'success'});
             }
@@ -44,8 +44,7 @@ $('#bt_linkToUser').on('click', function () {
     });
 });
 
-
-function addCmdToTable(_cmd) {
+ function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         var _cmd = {configuration: {}};
     }
@@ -54,8 +53,8 @@ function addCmdToTable(_cmd) {
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="id" style="display : none;">';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="name"></td>';
     tr += '<td>';
-    tr += '<span><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isHistorized" data-label-text="{{Historiser}}" data-size="mini" /></span> ';
-    tr += '<span><input type="checkbox" class="cmdAttr bootstrapSwitch" data-l1key="isVisible" data-label-text="{{Afficher}}" data-size="mini" checked/></span>';
+    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
+    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
     tr += '</td>';
     tr += '<td>';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="type" style="display : none;">';
@@ -64,9 +63,13 @@ function addCmdToTable(_cmd) {
         tr += '<a class="btn btn-default btn-xs cmdAction expertModeVisible" data-action="configure"><i class="fa fa-cogs"></i></a> ';
         tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
     }
-    tr += '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
+    tr += '</td>';
     tr += '</tr>';
     $('#table_cmd tbody').append(tr);
     $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
+}
+
+function printEqLogic(_eqLogic) {
+    $('#span_fitbitCallbackId').empty().append(_eqLogic.id);
 }

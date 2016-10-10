@@ -17,7 +17,12 @@
  */
 
 /* * ***************************Includes********************************* */
-require_once dirname(__FILE__) . '/../../core/php/fitbit.inc.php';
+use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use League\OAuth2\Client\Provider\ResourceOwnerInterface;
+use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
+use Psr\Http\Message\ResponseInterface;
 
 class fitbit extends eqLogic {
 	/*     * *************************Attributs****************************** */
@@ -49,59 +54,45 @@ class fitbit extends eqLogic {
 
 	/*     * *********************Methode d'instance************************* */
 
+	public function getProvider() {
+		return new FitbitProvider([
+			'clientId' => $this->getConfiguration('client_id'),
+			'clientSecret' => $this->getConfiguration('client_secret'),
+			'redirectUri' => network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId(),
+		]);
+	}
+
 	public function linkToUser() {
 		@session_start();
-		$factory = new \Fitbit\ApiGatewayFactory;
-		$factory->setCallbackURL(network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
-		$factory->setCredentials(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-		$adapter = new \OAuth\Common\Storage\Session();
-		$factory->setStorageAdapter($adapter);
-		$auth_gateway = $factory->getAuthenticationGateway();
-		return utils::o2a($auth_gateway->initiateLogin());
+		$provider = $this->getProvider();
+		$authorizationUrl = $provider->getAuthorizationUrl();
+		$_SESSION['oauth2state'] = $provider->getState();
+		return $authorizationUrl;
 	}
 
-	public function getFactory() {
-		$factory = new \Fitbit\ApiGatewayFactory;
-		$factory->setCallbackURL(network::getNetworkAccess() . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId());
-		$factory->setCredentials(config::byKey('client_key', 'fitbit'), config::byKey('secret_key', 'fitbit'));
-		$token = new \OAuth\OAuth1\Token\StdOAuth1Token();
-		$token->setRequestToken($this->getConfiguration('token'));
-		$token->setRequestTokenSecret($this->getConfiguration('secret'));
-		$token->setAccessToken($this->getConfiguration('token'));
-		$token->setAccessTokenSecret($this->getConfiguration('secret'));
-		$adapter = new \OAuth\Common\Storage\Memory();
-		$adapter->storeAccessToken('FitBit', $token);
-		$factory->setStorageAdapter($adapter);
-		return $factory;
+	public function getAccessToken() {
+		$provider = $this->getProvider();
+		$existingAccessToken = new AccessToken($this->getConfiguration('accessToken'));
+		if ($existingAccessToken->hasExpired()) {
+			$newAccessToken = $provider->getAccessToken('refresh_token', [
+				'refresh_token' => $existingAccessToken->getRefreshToken(),
+			]);
+			$this->setConfiguration('accessToken', $newAccessToken->jsonSerialize());
+			$this->save();
+			return $newAccessToken;
+		}
+		return $existingAccessToken;
 	}
 
-	public function toHtml($_version = 'dashboard') {
-		$replace = $this->preToHtml($_version, array('#background-color#' => '#2f3f43'));
-		if (!is_array($replace)) {
-			return $replace;
-		}
-		$version = jeedom::versionAlias($_version);
-		$version2 = jeedom::versionAlias($_version, false);
-		foreach ($this->getCmd('info') as $cmd) {
-			$replace['#' . $cmd->getLogicalId() . '_history#'] = '';
-			if ($cmd->getIsVisible() == 1 && $cmd->getDisplay('hideOn' . $version2) != 1) {
-				$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
-				$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
-				$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
-				if ($cmd->getIsHistorized() == 1) {
-					$replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor';
-				}
-			} else {
-				$replace['#' . $cmd->getLogicalId() . '#'] = '';
-			}
-		}
-		$refresh = $this->getCmd(null, 'refresh');
-		if (is_object($refresh)) {
-			$replace['#refresh_id#'] = $refresh->getId();
-		}
-		$html = template_replace($replace, getTemplate('core', $version, 'fitbit', 'fitbit'));
-		cache::set('widgetHtml' . $_version . $this->getId(), $html, 0);
-		return $html;
+	public function request($_type, $_request) {
+
+		$headers = array(
+			'Accept-Language' => 'fr_FR',
+			'Accept-Locale' => 'fr_FR',
+		);
+		$provider = $this->getProvider();
+		$request = $provider->getAuthenticatedRequest($_type, FitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(), array('headers' => $headers));
+		return $provider->getResponse($request);
 	}
 
 	public function postSave() {
@@ -110,9 +101,10 @@ class fitbit extends eqLogic {
 			$weight = new fitbitCmd();
 			$weight->setLogicalId('weight');
 			$weight->setIsVisible(1);
+			$weight->setOrder(1);
 			$weight->setName(__('Poids', __FILE__));
-			$weight->setTemplate('dashboard', 'tile');
-			$weight->setTemplate('mobile', 'tile');
+			$weight->setTemplate('dashboard', 'line');
+			$weight->setTemplate('mobile', 'line');
 		}
 		$weight->setType('info');
 		$weight->setSubType('numeric');
@@ -125,9 +117,10 @@ class fitbit extends eqLogic {
 			$fat = new fitbitCmd();
 			$fat->setLogicalId('fat');
 			$fat->setIsVisible(1);
+			$fat->setOrder(2);
 			$fat->setName(__('Masse grasse', __FILE__));
-			$fat->setTemplate('dashboard', 'tile');
-			$fat->setTemplate('mobile', 'tile');
+			$fat->setTemplate('dashboard', 'line');
+			$fat->setTemplate('mobile', 'line');
 		}
 		$fat->setType('info');
 		$fat->setSubType('numeric');
@@ -140,33 +133,25 @@ class fitbit extends eqLogic {
 			$bmi = new fitbitCmd();
 			$bmi->setLogicalId('bmi');
 			$bmi->setIsVisible(1);
+			$bmi->setOrder(3);
 			$bmi->setName(__('IMC', __FILE__));
-			$bmi->setTemplate('dashboard', 'tile');
-			$bmi->setTemplate('mobile', 'tile');
+			$bmi->setTemplate('dashboard', 'line');
+			$bmi->setTemplate('mobile', 'line');
 		}
 		$bmi->setType('info');
 		$bmi->setSubType('numeric');
 		$bmi->setEqLogic_id($this->getId());
 		$bmi->save();
 
-		$refresh = $this->getCmd(null, 'refresh');
-		if (!is_object($refresh)) {
-			$refresh = new fitbitCmd();
-			$refresh->setLogicalId('refresh');
-			$refresh->setIsVisible(1);
-			$refresh->setName(__('Rafraîhir', __FILE__));
-		}
-		$refresh->setType('action');
-		$refresh->setSubType('other');
-		$refresh->setEqLogic_id($this->getId());
-		$refresh->save();
-
 		$height = $this->getCmd(null, 'height');
 		if (!is_object($height)) {
 			$height = new fitbitCmd();
 			$height->setLogicalId('height');
 			$height->setIsVisible(1);
+			$height->setOrder(4);
 			$height->setName(__('Taille', __FILE__));
+			$height->setTemplate('dashboard', 'line');
+			$height->setTemplate('mobile', 'line');
 		}
 		$height->setType('info');
 		$height->setSubType('numeric');
@@ -179,7 +164,10 @@ class fitbit extends eqLogic {
 			$step = new fitbitCmd();
 			$step->setLogicalId('step');
 			$step->setIsVisible(1);
+			$step->setOrder(5);
 			$step->setName(__('Pas', __FILE__));
+			$step->setTemplate('dashboard', 'line');
+			$step->setTemplate('mobile', 'line');
 		}
 
 		$step->setType('info');
@@ -192,7 +180,10 @@ class fitbit extends eqLogic {
 			$caloriesOut = new fitbitCmd();
 			$caloriesOut->setLogicalId('caloriesOut');
 			$caloriesOut->setIsVisible(1);
+			$caloriesOut->setOrder(6);
 			$caloriesOut->setName(__('Calorie', __FILE__));
+			$caloriesOut->setTemplate('dashboard', 'line');
+			$caloriesOut->setTemplate('mobile', 'line');
 		}
 		$caloriesOut->setType('info');
 		$caloriesOut->setSubType('numeric');
@@ -204,7 +195,10 @@ class fitbit extends eqLogic {
 			$veryActiveMinutes = new fitbitCmd();
 			$veryActiveMinutes->setLogicalId('veryActiveMinutes');
 			$veryActiveMinutes->setIsVisible(1);
+			$veryActiveMinutes->setOrder(7);
 			$veryActiveMinutes->setName(__('Minute active', __FILE__));
+			$veryActiveMinutes->setTemplate('dashboard', 'line');
+			$veryActiveMinutes->setTemplate('mobile', 'line');
 		}
 		$veryActiveMinutes->setType('info');
 		$veryActiveMinutes->setSubType('numeric');
@@ -217,7 +211,10 @@ class fitbit extends eqLogic {
 			$distance = new fitbitCmd();
 			$distance->setLogicalId('distance');
 			$distance->setIsVisible(1);
+			$distance->setOrder(8);
 			$distance->setName(__('Distance', __FILE__));
+			$distance->setTemplate('dashboard', 'line');
+			$distance->setTemplate('mobile', 'line');
 		}
 		$distance->setType('info');
 		$distance->setSubType('numeric');
@@ -230,11 +227,14 @@ class fitbit extends eqLogic {
 			$elevation = new fitbitCmd();
 			$elevation->setLogicalId('elevation');
 			$elevation->setIsVisible(1);
+			$elevation->setOrder(9);
 			$elevation->setName(__('Elevation', __FILE__));
+			$elevation->setTemplate('dashboard', 'line');
+			$elevation->setTemplate('mobile', 'line');
 		}
 		$elevation->setType('info');
 		$elevation->setSubType('numeric');
-		$distance->setUnite('m');
+		$elevation->setUnite('m');
 		$elevation->setEqLogic_id($this->getId());
 		$elevation->save();
 
@@ -243,7 +243,10 @@ class fitbit extends eqLogic {
 			$awakeCount = new fitbitCmd();
 			$awakeCount->setLogicalId('awakeCount');
 			$awakeCount->setIsVisible(1);
+			$awakeCount->setOrder(10);
 			$awakeCount->setName(__('Nombre de reveils', __FILE__));
+			$awakeCount->setTemplate('dashboard', 'line');
+			$awakeCount->setTemplate('mobile', 'line');
 		}
 		$awakeCount->setType('info');
 		$awakeCount->setSubType('numeric');
@@ -255,11 +258,14 @@ class fitbit extends eqLogic {
 			$awakeDuration = new fitbitCmd();
 			$awakeDuration->setLogicalId('awakeDuration');
 			$awakeDuration->setIsVisible(1);
+			$awakeDuration->setOrder(11);
 			$awakeDuration->setName(__('Durée réveils', __FILE__));
+			$awakeDuration->setTemplate('dashboard', 'line');
+			$awakeDuration->setTemplate('mobile', 'line');
 		}
 		$awakeDuration->setType('info');
 		$awakeDuration->setSubType('numeric');
-		$distance->setUnite('min');
+		$awakeDuration->setUnite('min');
 		$awakeDuration->setEqLogic_id($this->getId());
 		$awakeDuration->save();
 
@@ -268,7 +274,10 @@ class fitbit extends eqLogic {
 			$sleepDuration = new fitbitCmd();
 			$sleepDuration->setLogicalId('sleepDuration');
 			$sleepDuration->setIsVisible(1);
+			$sleepDuration->setOrder(12);
 			$sleepDuration->setName(__('Durée de sommeil', __FILE__));
+			$sleepDuration->setTemplate('dashboard', 'line');
+			$sleepDuration->setTemplate('mobile', 'line');
 		}
 		$sleepDuration->setType('info');
 		$sleepDuration->setSubType('numeric');
@@ -281,7 +290,10 @@ class fitbit extends eqLogic {
 			$restlessDuration = new fitbitCmd();
 			$restlessDuration->setLogicalId('restlessDuration');
 			$restlessDuration->setIsVisible(1);
+			$restlessDuration->setOrder(13);
 			$restlessDuration->setName(__('Sommeil agité', __FILE__));
+			$restlessDuration->setTemplate('dashboard', 'line');
+			$restlessDuration->setTemplate('mobile', 'line');
 		}
 		$restlessDuration->setType('info');
 		$restlessDuration->setSubType('numeric');
@@ -294,7 +306,10 @@ class fitbit extends eqLogic {
 			$minutesToFallAsleep = new fitbitCmd();
 			$minutesToFallAsleep->setLogicalId('minutesToFallAsleep');
 			$minutesToFallAsleep->setIsVisible(1);
+			$minutesToFallAsleep->setOrder(14);
 			$minutesToFallAsleep->setName(__('Temps pour s\'endormir', __FILE__));
+			$minutesToFallAsleep->setTemplate('dashboard', 'line');
+			$minutesToFallAsleep->setTemplate('mobile', 'line');
 		}
 		$minutesToFallAsleep->setType('info');
 		$minutesToFallAsleep->setSubType('numeric');
@@ -302,22 +317,24 @@ class fitbit extends eqLogic {
 		$minutesToFallAsleep->setEqLogic_id($this->getId());
 		$minutesToFallAsleep->save();
 
-		if ($this->getConfiguration('encodedId') != '') {
-			$this->syncWithFitbit();
+		$refresh = $this->getCmd(null, 'refresh');
+		if (!is_object($refresh)) {
+			$refresh = new fitbitCmd();
+			$refresh->setLogicalId('refresh');
+			$refresh->setIsVisible(1);
+			$refresh->setName(__('Rafraîhir', __FILE__));
 		}
+		$refresh->setType('action');
+		$refresh->setSubType('other');
+		$refresh->setEqLogic_id($this->getId());
+		$refresh->save();
 	}
 
 	public function syncWithFitbit() {
-		$factory = $this->getFactory();
-		$user_gateway = $factory->getUserGateway();
-		$users = json_decode(json_encode($user_gateway->getProfile()), true);
-		$activity_gateway = $factory->getActivityGateway();
-		$activity = json_decode(json_encode($activity_gateway->getActivities(new DateTime())), true);
-		$sleep_gateway = $factory->getSleepGateway();
-		$sleeps = json_decode(json_encode($sleep_gateway->getSleep(new DateTime())), true);
-		$body_gateway = $factory->getBodyGateway();
-		$bodies = json_decode(json_encode($body_gateway->getBody(new DateTime())), true);
-
+		$users = $this->request('GET', '/1/user/-/profile.json');
+		$activity = $this->request('GET', '/1/user/-/activities/date/' . date('Y-m-d') . '.json');
+		$sleeps = $this->request('GET', '/1/user/-/sleep/date/' . date('Y-m-d') . '.json');
+		$bodies = $this->request('GET', '/1/user/-/body/date/' . date('Y-m-d') . '.json');
 		$user = $users['user'];
 		$height = $this->getCmd(null, 'height');
 		if (is_object($height) && $height->execCmd() != $height->formatValue($user['height'])) {
@@ -455,4 +472,90 @@ class fitbitCmd extends cmd {
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
+}
+
+class FitbitProvider extends AbstractProvider {
+	use BearerAuthorizationTrait;
+	const BASE_FITBIT_URL = 'https://www.fitbit.com';
+	const BASE_FITBIT_API_URL = 'https://api.fitbit.com';
+
+	public function getBaseAuthorizationUrl() {
+		return static::BASE_FITBIT_URL . '/oauth2/authorize';
+	}
+
+	public function getBaseAccessTokenUrl(array $params) {
+		return static::BASE_FITBIT_API_URL . '/oauth2/token';
+	}
+
+	public function getResourceOwnerDetailsUrl(AccessToken $token) {
+		return static::BASE_FITBIT_API_URL . '/1/user/-/profile.json';
+	}
+
+	protected function getDefaultScopes() {
+		return ['activity', 'heartrate', 'location', 'profile', 'settings', 'sleep', 'social', 'weight'];
+	}
+
+	protected function getScopeSeparator() {
+		return ' ';
+	}
+
+	protected function getAuthorizationParameters(array $options) {
+		$params = parent::getAuthorizationParameters($options);
+		unset($params['approval_prompt']);
+		if (!empty($options['prompt'])) {
+			$params['prompt'] = $options['prompt'];
+		}
+		return $params;
+	}
+
+	protected function getAccessTokenOptions(array $params) {
+		$options = parent::getAccessTokenOptions($params);
+		$options['headers']['Authorization'] = 'Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret);
+		return $options;
+	}
+
+	public function createResourceOwner(array $response, AccessToken $token) {
+		return new FitbitOwnerInterface($response);
+	}
+
+	protected function checkResponse(ResponseInterface $response, $data) {
+		if ($response->getStatusCode() >= 400) {
+			$errorMessage = '';
+			if (!empty($data['errors'])) {
+				foreach ($data['errors'] as $error) {
+					if (!empty($errorMessage)) {
+						$errorMessage .= ' , ';
+					}
+					$errorMessage .= implode(' - ', $error);
+				}
+			} else {
+				$errorMessage = $response->getReasonPhrase();
+			}
+			throw new IdentityProviderException(
+				$errorMessage,
+				$response->getStatusCode(),
+				$response
+			);
+		}
+	}
+
+}
+
+class FitbitOwnerInterface implements ResourceOwnerInterface {
+	protected $userInfo = [];
+
+	public function __construct(array $response) {
+		$this->userInfo = $response['user'];
+	}
+	public function getId() {
+		return $this->userInfo['encodedId'];
+	}
+
+	public function getDisplayName() {
+		return $this->userInfo['displayName'];
+	}
+
+	public function toArray() {
+		return $this->userInfo;
+	}
 }

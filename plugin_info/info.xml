@@ -5,9 +5,7 @@
     <description>Plugin pour fitbit</description>
     <licence>AGPL</licence>
     <author>Loïc</author>
-    <installation>Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)</installation>
     <require>2.2</require>
     <category>health</category>
-    <include type="php">fitbit.inc</include>
 </info>
 
