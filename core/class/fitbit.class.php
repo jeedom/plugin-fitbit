@@ -85,7 +85,6 @@ class fitbit extends eqLogic {
 	}
 
 	public function request($_type, $_request) {
-
 		$headers = array(
 			'Accept-Language' => 'fr_FR',
 			'Accept-Locale' => 'fr_FR',
@@ -475,81 +474,46 @@ class fitbit extends eqLogic {
 	}
 
 	public function syncWithFitbit() {
+		$changed = false;
 		$hearts = $this->request('GET', '/1/user/-/activities/heart/date/' . date('Y-m-d') . '/1d.json');
 		$users = $this->request('GET', '/1/user/-/profile.json');
 		$activity = $this->request('GET', '/1/user/-/activities/date/' . date('Y-m-d') . '.json');
 		$sleeps = $this->request('GET', '/1/user/-/sleep/date/' . date('Y-m-d') . '.json');
 		$bodies = $this->request('GET', '/1/user/-/body/date/' . date('Y-m-d') . '.json');
-
 		$user = $users['user'];
 		$body = $bodies['body'];
-
-		$this->checkAndUpdateCmd('height', $user['height']);
-
+		$changed = $changed || $this->checkAndUpdateCmd('height', $user['height']);
 		if (isset($sleeps['sleep'][0])) {
 			$sleep = $sleeps['sleep'][0];
-			$this->checkAndUpdateCmd('awakeCount', $sleep['awakeCount']);
-			$this->checkAndUpdateCmd('awakeDuration', $sleep['awakeDuration']);
-			$this->checkAndUpdateCmd('minutesToFallAsleep', $sleep['minutesToFallAsleep'] + 1);
-			$this->checkAndUpdateCmd('sleepDuration', $sleep['minutesAsleep']);
-			$this->checkAndUpdateCmd('restlessDuration', $sleep['restlessDuration']);
+			$changed = $changed || $this->checkAndUpdateCmd('awakeCount', $sleep['awakeCount']);
+			$changed = $changed || $this->checkAndUpdateCmd('awakeDuration', $sleep['awakeDuration']);
+			$changed = $changed || $this->checkAndUpdateCmd('minutesToFallAsleep', $sleep['minutesToFallAsleep'] + 1);
+			$changed = $changed || $this->checkAndUpdateCmd('sleepDuration', $sleep['minutesAsleep']);
+			$changed = $changed || $this->checkAndUpdateCmd('restlessDuration', $sleep['restlessDuration']);
 		}
-
 		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
 			$heart = $hearts['activities-heart'][0]['value'];
-			$this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
-			$this->checkAndUpdateCmd('heartOutOfRange', $heart['heartRateZones'][0]['minutes']);
-			$this->checkAndUpdateCmd('heartFatBurn', $heart['heartRateZones'][1]['minutes']);
-			$this->checkAndUpdateCmd('heartCardio', $heart['heartRateZones'][2]['minutes']);
-			$this->checkAndUpdateCmd('heartPeak', $heart['heartRateZones'][3]['minutes']);
-			$this->checkAndUpdateCmd('heartOutOfRangeCalories', $heart['heartRateZones'][0]['caloriesOut']);
-			$this->checkAndUpdateCmd('heartFatBurnCalories', $heart['heartRateZones'][1]['caloriesOut']);
-			$this->checkAndUpdateCmd('heartCardioCalories', $heart['heartRateZones'][2]['caloriesOut']);
-			$this->checkAndUpdateCmd('heartPeakCalories', $heart['heartRateZones'][3]['caloriesOut']);
+			$changed = $changed || $this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
+			$changed = $changed || $this->checkAndUpdateCmd('heartOutOfRange', $heart['heartRateZones'][0]['minutes']);
+			$changed = $changed || $this->checkAndUpdateCmd('heartFatBurn', $heart['heartRateZones'][1]['minutes']);
+			$changed = $changed || $this->checkAndUpdateCmd('heartCardio', $heart['heartRateZones'][2]['minutes']);
+			$changed = $changed || $this->checkAndUpdateCmd('heartPeak', $heart['heartRateZones'][3]['minutes']);
+			$changed = $changed || $this->checkAndUpdateCmd('heartOutOfRangeCalories', $heart['heartRateZones'][0]['caloriesOut']);
+			$changed = $changed || $this->checkAndUpdateCmd('heartFatBurnCalories', $heart['heartRateZones'][1]['caloriesOut']);
+			$changed = $changed || $this->checkAndUpdateCmd('heartCardioCalories', $heart['heartRateZones'][2]['caloriesOut']);
+			$changed = $changed || $this->checkAndUpdateCmd('heartPeakCalories', $heart['heartRateZones'][3]['caloriesOut']);
 		}
-
-		$this->checkAndUpdateCmd('weight', $body['weight']);
-		$this->checkAndUpdateCmd('fat', $body['fat']);
-		$this->checkAndUpdateCmd('bmi', $body['bmi']);
-
-		$this->checkAndUpdateCmd('elevation', $activity['summary']['elevation']);
-
-		$step = $this->getCmd(null, 'step');
-		if (is_object($step)) {
-			if ($step->getConfiguration('goal') != $activity['goals']['steps']) {
-				$step->setConfiguration('goal', $activity['goals']['steps']);
-				$step->save();
-			}
-			$this->checkAndUpdateCmd('step', $activity['summary']['steps']);
+		$changed = $changed || $this->checkAndUpdateCmd('weight', $body['weight']);
+		$changed = $changed || $this->checkAndUpdateCmd('fat', $body['fat']);
+		$changed = $changed || $this->checkAndUpdateCmd('bmi', $body['bmi']);
+		$changed = $changed || $this->checkAndUpdateCmd('elevation', $activity['summary']['elevation']);
+		$changed = $changed || $this->checkAndUpdateCmd('step', $activity['summary']['steps']);
+		$changed = $changed || $this->checkAndUpdateCmd('caloriesOut', $activity['summary']['caloriesOut']);
+		$changed = $changed || $this->checkAndUpdateCmd('veryActiveMinutes', $activity['summary']['veryActiveMinutes']);
+		$changed = $changed || $this->checkAndUpdateCmd('distance', $activity['summary']['distances'][0]['distance']);
+		if ($changed) {
+			$this->refreshWidget();
 		}
-
-		$caloriesOut = $this->getCmd(null, 'caloriesOut');
-		if (is_object($caloriesOut)) {
-			if ($caloriesOut->getConfiguration('goal') != $activity['goals']['caloriesOut']) {
-				$caloriesOut->setConfiguration('goal', $activity['goals']['caloriesOut']);
-				$caloriesOut->save();
-			}
-			$this->checkAndUpdateCmd('caloriesOut', $activity['summary']['caloriesOut']);
-		}
-
-		$veryActiveMinutes = $this->getCmd(null, 'veryActiveMinutes');
-		if (is_object($veryActiveMinutes)) {
-			if ($veryActiveMinutes->getConfiguration('goal') != $activity['goals']['activeMinutes']) {
-				$veryActiveMinutes->setConfiguration('goal', $activity['goals']['activeMinutes']);
-				$veryActiveMinutes->save();
-			}
-			$this->checkAndUpdateCmd('veryActiveMinutes', $activity['summary']['veryActiveMinutes']);
-		}
-
-		$distance = $this->getCmd(null, 'distance');
-		if (is_object($distance)) {
-			if ($distance->getConfiguration('goal') != $activity['goals']['distance']) {
-				$distance->setConfiguration('goal', $activity['goals']['distance']);
-				$distance->save();
-			}
-			$this->checkAndUpdateCmd('distance', $activity['summary']['distances'][0]['distance']);
-		}
-		$this->refreshWidget();
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
@@ -557,8 +521,6 @@ class fitbit extends eqLogic {
 
 class fitbitCmd extends cmd {
 	/*     * *************************Attributs****************************** */
-
-	public static $_widgetPossibility = array('custom' => false);
 
 	/*     * ***********************Methode static*************************** */
 
