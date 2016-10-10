@@ -51,6 +51,9 @@ Si vous avez mis une subscription il faut (attention a bien faire toute ces éta
 * Sur le site Fitbit lancer la vérification de la subscription
 * Puis "Lier à un utilisateur" l'équipement jeedom, comme ci-dessous
 
+[IMPORTANT]
+Actuellement Fitbit support mal le https, donc si vous êtes en https il y peu de chance que cela marche
+
 Cliquez sur "Lier à un utilisateur" pour lier cet équipement à votre compte Fitbit : 
 
 image::../images/fitbit-5.JPG[]
