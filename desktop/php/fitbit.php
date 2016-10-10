@@ -90,8 +90,8 @@ foreach (object::all() as $object) {
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">{{URL de retour}}</label>
-          <div class="col-lg-4">
-            <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?eqLogic_id='; ?><span id="span_fitbitCallbackId"></span></span>
+          <div class="col-lg-9">
+            <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?apikey=' . config::byKey('api') . '&eqLogic_id='; ?><span class="span_fitbitCallbackId"></span></span>
           </div>
         </div>
 
@@ -105,6 +105,12 @@ foreach (object::all() as $object) {
           <label class="col-sm-3 control-label">{{Secret key}}</label>
           <div class="col-sm-3">
             <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="client_secret"/>
+          </div>
+        </div>
+          <div class="form-group">
+          <label class="col-lg-3 control-label">{{URL de subscription}}</label>
+          <div class="col-lg-9">
+            <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?update=1&apikey=' . config::byKey('api') . '&eqLogic_id='; ?><span class="span_fitbitCallbackId"></span></span>
           </div>
         </div>
          <div class="form-group">

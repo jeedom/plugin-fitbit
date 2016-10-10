@@ -25,6 +25,32 @@ Le premier truc à vérifier est "URL de retour". Celle-ci doit être validée e
 [NOTE]
 Il est recommandé lors du lien entre Jeedom et Fitbit d'etre connecté à Jeedom par l'ip externe
 
+Pour lieer votre compte Fitbit à Jeedom il vous tout d'abord vous creez un compte developpeur chez Fitbit en allant https://dev.fitbit.com/fr[ici], ensuite il vous faut vous connecter puis faire : "Register an app". Il faut ensuite remplir les informations :
+
+* Application Name : Jeedom
+* Description : Jeedom
+* Application Website : https://jeedom.com
+* Organization : jeedom
+* Organization Website : https://jeedom.com
+* OAuth 2.0 Application Type : Server
+* Callback URL : Il faut mettre celle que jeedom vous donne lors de la création d'un équipement Fitbit, attention si vous ne mettez pas la bonne la connexion ne pourra se faire
+* Default Access Type : Read & Write
+
+Vous pouvez aussi ajouter une subscription, cela permet à Fitbit de pousser une mise à jour directement dans Jeedom (au lieu d'attendre que Jeedom mette à jour les informations) : 
+
+* Default : oui
+* Endpoint URL : celle donnée par jeedom
+* Type : JSON body
+* Subscriber ID :  ne rien mettre
+
+Si vous avez mis une subscription il faut (attention a bien faire toute ces étapes dans l'ordre) : 
+
+* Mettre le numéro de subscription dans l'équipement Fitbit sur Jeedom
+* Mettre le code de subscription dans l'équipement Fitbit sur Jeedom
+* Sauvegarder l'équipement
+* Sur le site Fitbit lancer la vérification de la subscription
+* Puis "Lier à un utilisateur" l'équipement jeedom, comme ci-dessous
+
 Cliquez sur "Lier à un utilisateur" pour lier cet équipement à votre compte Fitbit : 
 
 image::../images/fitbit-5.JPG[]
@@ -35,6 +61,8 @@ Si vous obtenez une page blanche ou une erreur, c'est que votre configuration r�
 
 image::../images/fitbit-6.JPG[]
 
+
+Pour la subscription il faut en
 
 === Configuration
 

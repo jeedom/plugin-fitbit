@@ -71,5 +71,5 @@
 }
 
 function printEqLogic(_eqLogic) {
-    $('#span_fitbitCallbackId').empty().append(_eqLogic.id);
+    $('.span_fitbitCallbackId').empty().append(_eqLogic.id);
 }
