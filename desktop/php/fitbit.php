@@ -89,7 +89,7 @@ foreach (object::all() as $object) {
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-3 control-label">URL de retour</label>
+          <label class="col-lg-3 control-label">{{URL de retour}}</label>
           <div class="col-lg-4">
             <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?eqLogic_id='; ?><span id="span_fitbitCallbackId"></span></span>
           </div>

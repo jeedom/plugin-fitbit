@@ -96,245 +96,331 @@ class fitbit extends eqLogic {
 	}
 
 	public function postSave() {
-		$weight = $this->getCmd(null, 'weight');
-		if (!is_object($weight)) {
-			$weight = new fitbitCmd();
-			$weight->setLogicalId('weight');
-			$weight->setIsVisible(1);
-			$weight->setOrder(1);
-			$weight->setName(__('Poids', __FILE__));
-			$weight->setTemplate('dashboard', 'line');
-			$weight->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'weight');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('weight');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(1);
+			$cmd->setName(__('Poids', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$weight->setType('info');
-		$weight->setSubType('numeric');
-		$weight->setUnite('kg');
-		$weight->setEqLogic_id($this->getId());
-		$weight->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('kg');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$fat = $this->getCmd(null, 'fat');
-		if (!is_object($fat)) {
-			$fat = new fitbitCmd();
-			$fat->setLogicalId('fat');
-			$fat->setIsVisible(1);
-			$fat->setOrder(2);
-			$fat->setName(__('Masse grasse', __FILE__));
-			$fat->setTemplate('dashboard', 'line');
-			$fat->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'fat');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('fat');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(2);
+			$cmd->setName(__('Masse grasse', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$fat->setType('info');
-		$fat->setSubType('numeric');
-		$fat->setUnite('%');
-		$fat->setEqLogic_id($this->getId());
-		$fat->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('%');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$bmi = $this->getCmd(null, 'bmi');
-		if (!is_object($bmi)) {
-			$bmi = new fitbitCmd();
-			$bmi->setLogicalId('bmi');
-			$bmi->setIsVisible(1);
-			$bmi->setOrder(3);
-			$bmi->setName(__('IMC', __FILE__));
-			$bmi->setTemplate('dashboard', 'line');
-			$bmi->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'bmi');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('bmi');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(3);
+			$cmd->setName(__('IMC', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$bmi->setType('info');
-		$bmi->setSubType('numeric');
-		$bmi->setEqLogic_id($this->getId());
-		$bmi->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$height = $this->getCmd(null, 'height');
-		if (!is_object($height)) {
-			$height = new fitbitCmd();
-			$height->setLogicalId('height');
-			$height->setIsVisible(1);
-			$height->setOrder(4);
-			$height->setName(__('Taille', __FILE__));
-			$height->setTemplate('dashboard', 'line');
-			$height->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'height');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('height');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(4);
+			$cmd->setName(__('Taille', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$height->setType('info');
-		$height->setSubType('numeric');
-		$height->setUnite('cm');
-		$height->setEqLogic_id($this->getId());
-		$height->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('cm');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$step = $this->getCmd(null, 'step');
-		if (!is_object($step)) {
+		$cmd = $this->getCmd(null, 'step');
+		if (!is_object($cmd)) {
 			$step = new fitbitCmd();
-			$step->setLogicalId('step');
-			$step->setIsVisible(1);
-			$step->setOrder(5);
-			$step->setName(__('Pas', __FILE__));
-			$step->setTemplate('dashboard', 'line');
-			$step->setTemplate('mobile', 'line');
+			$cmd->setLogicalId('step');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(5);
+			$cmd->setName(__('Pas', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
 
-		$step->setType('info');
-		$step->setSubType('numeric');
-		$step->setEqLogic_id($this->getId());
-		$step->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$caloriesOut = $this->getCmd(null, 'caloriesOut');
-		if (!is_object($caloriesOut)) {
-			$caloriesOut = new fitbitCmd();
-			$caloriesOut->setLogicalId('caloriesOut');
-			$caloriesOut->setIsVisible(1);
-			$caloriesOut->setOrder(6);
-			$caloriesOut->setName(__('Calorie', __FILE__));
-			$caloriesOut->setTemplate('dashboard', 'line');
-			$caloriesOut->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'caloriesOut');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('caloriesOut');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(6);
+			$cmd->setName(__('Calorie', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$caloriesOut->setType('info');
-		$caloriesOut->setSubType('numeric');
-		$caloriesOut->setEqLogic_id($this->getId());
-		$caloriesOut->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$veryActiveMinutes = $this->getCmd(null, 'veryActiveMinutes');
-		if (!is_object($veryActiveMinutes)) {
-			$veryActiveMinutes = new fitbitCmd();
-			$veryActiveMinutes->setLogicalId('veryActiveMinutes');
-			$veryActiveMinutes->setIsVisible(1);
-			$veryActiveMinutes->setOrder(7);
-			$veryActiveMinutes->setName(__('Minute active', __FILE__));
-			$veryActiveMinutes->setTemplate('dashboard', 'line');
-			$veryActiveMinutes->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'veryActiveMinutes');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('veryActiveMinutes');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Minute active', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$veryActiveMinutes->setType('info');
-		$veryActiveMinutes->setSubType('numeric');
-		$veryActiveMinutes->setUnite('min');
-		$veryActiveMinutes->setEqLogic_id($this->getId());
-		$veryActiveMinutes->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$distance = $this->getCmd(null, 'distance');
-		if (!is_object($distance)) {
-			$distance = new fitbitCmd();
-			$distance->setLogicalId('distance');
-			$distance->setIsVisible(1);
-			$distance->setOrder(8);
-			$distance->setName(__('Distance', __FILE__));
-			$distance->setTemplate('dashboard', 'line');
-			$distance->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'restingHeartRate');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('restingHeartRate');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Fréquence cardiaque au repos', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$distance->setType('info');
-		$distance->setSubType('numeric');
-		$distance->setUnite('km');
-		$distance->setEqLogic_id($this->getId());
-		$distance->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('bpm');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$elevation = $this->getCmd(null, 'elevation');
-		if (!is_object($elevation)) {
-			$elevation = new fitbitCmd();
-			$elevation->setLogicalId('elevation');
-			$elevation->setIsVisible(1);
-			$elevation->setOrder(9);
-			$elevation->setName(__('Elevation', __FILE__));
-			$elevation->setTemplate('dashboard', 'line');
-			$elevation->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'heartOutOfRange');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('heartOutOfRange');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Coeur au repos', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$elevation->setType('info');
-		$elevation->setSubType('numeric');
-		$elevation->setUnite('m');
-		$elevation->setEqLogic_id($this->getId());
-		$elevation->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$awakeCount = $this->getCmd(null, 'awakeCount');
-		if (!is_object($awakeCount)) {
-			$awakeCount = new fitbitCmd();
-			$awakeCount->setLogicalId('awakeCount');
-			$awakeCount->setIsVisible(1);
-			$awakeCount->setOrder(10);
-			$awakeCount->setName(__('Nombre de reveils', __FILE__));
-			$awakeCount->setTemplate('dashboard', 'line');
-			$awakeCount->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'heartFatBurn');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('heartFatBurn');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Coeur perte de graisse', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$awakeCount->setType('info');
-		$awakeCount->setSubType('numeric');
-		$awakeCount->setEqLogic_id($this->getId());
-		$awakeCount->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$awakeDuration = $this->getCmd(null, 'awakeDuration');
-		if (!is_object($awakeDuration)) {
-			$awakeDuration = new fitbitCmd();
-			$awakeDuration->setLogicalId('awakeDuration');
-			$awakeDuration->setIsVisible(1);
-			$awakeDuration->setOrder(11);
-			$awakeDuration->setName(__('Durée réveils', __FILE__));
-			$awakeDuration->setTemplate('dashboard', 'line');
-			$awakeDuration->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'heartCardio');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('heartCardio');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Coeur cardio', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$awakeDuration->setType('info');
-		$awakeDuration->setSubType('numeric');
-		$awakeDuration->setUnite('min');
-		$awakeDuration->setEqLogic_id($this->getId());
-		$awakeDuration->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$sleepDuration = $this->getCmd(null, 'sleepDuration');
-		if (!is_object($sleepDuration)) {
-			$sleepDuration = new fitbitCmd();
-			$sleepDuration->setLogicalId('sleepDuration');
-			$sleepDuration->setIsVisible(1);
-			$sleepDuration->setOrder(12);
-			$sleepDuration->setName(__('Durée de sommeil', __FILE__));
-			$sleepDuration->setTemplate('dashboard', 'line');
-			$sleepDuration->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'heartPeak');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('heartPeak');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Coeur maximum', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$sleepDuration->setType('info');
-		$sleepDuration->setSubType('numeric');
-		$sleepDuration->setUnite('min');
-		$sleepDuration->setEqLogic_id($this->getId());
-		$sleepDuration->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$restlessDuration = $this->getCmd(null, 'restlessDuration');
-		if (!is_object($restlessDuration)) {
-			$restlessDuration = new fitbitCmd();
-			$restlessDuration->setLogicalId('restlessDuration');
-			$restlessDuration->setIsVisible(1);
-			$restlessDuration->setOrder(13);
-			$restlessDuration->setName(__('Sommeil agité', __FILE__));
-			$restlessDuration->setTemplate('dashboard', 'line');
-			$restlessDuration->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'distance');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('distance');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(8);
+			$cmd->setName(__('Distance', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$restlessDuration->setType('info');
-		$restlessDuration->setSubType('numeric');
-		$restlessDuration->setUnite('min');
-		$restlessDuration->setEqLogic_id($this->getId());
-		$restlessDuration->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('km');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$minutesToFallAsleep = $this->getCmd(null, 'minutesToFallAsleep');
-		if (!is_object($minutesToFallAsleep)) {
-			$minutesToFallAsleep = new fitbitCmd();
-			$minutesToFallAsleep->setLogicalId('minutesToFallAsleep');
-			$minutesToFallAsleep->setIsVisible(1);
-			$minutesToFallAsleep->setOrder(14);
-			$minutesToFallAsleep->setName(__('Temps pour s\'endormir', __FILE__));
-			$minutesToFallAsleep->setTemplate('dashboard', 'line');
-			$minutesToFallAsleep->setTemplate('mobile', 'line');
+		$cmd = $this->getCmd(null, 'elevation');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('elevation');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(9);
+			$cmd->setName(__('Elevation', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$minutesToFallAsleep->setType('info');
-		$minutesToFallAsleep->setSubType('numeric');
-		$minutesToFallAsleep->setUnite('min');
-		$minutesToFallAsleep->setEqLogic_id($this->getId());
-		$minutesToFallAsleep->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('m');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 
-		$refresh = $this->getCmd(null, 'refresh');
-		if (!is_object($refresh)) {
-			$refresh = new fitbitCmd();
-			$refresh->setLogicalId('refresh');
-			$refresh->setIsVisible(1);
-			$refresh->setName(__('Rafraîhir', __FILE__));
+		$cmd = $this->getCmd(null, 'awakeCount');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('awakeCount');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(10);
+			$cmd->setName(__('Nombre de reveils', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
 		}
-		$refresh->setType('action');
-		$refresh->setSubType('other');
-		$refresh->setEqLogic_id($this->getId());
-		$refresh->save();
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'awakeDuration');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('awakeDuration');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(11);
+			$cmd->setName(__('Durée réveils', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
+		}
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'sleepDuration');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('sleepDuration');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(12);
+			$cmd->setName(__('Durée de sommeil', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
+		}
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'restlessDuration');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('restlessDuration');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(13);
+			$cmd->setName(__('Sommeil agité', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
+		}
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'minutesToFallAsleep');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('minutesToFallAsleep');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(14);
+			$cmd->setName(__('Temps pour s\'endormir', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
+		}
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'refresh');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('refresh');
+			$cmd->setIsVisible(1);
+			$cmd->setName(__('Rafraîhir', __FILE__));
+		}
+		$cmd->setType('action');
+		$cmd->setSubType('other');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
 	}
 
 	public function syncWithFitbit() {
+		$hearts = $this->request('GET', '/1/user/-/activities/heart/date/2016-09-22/1d.json');
+		print_r($hearts);
+
+		return;
+
 		$users = $this->request('GET', '/1/user/-/profile.json');
 		$activity = $this->request('GET', '/1/user/-/activities/date/' . date('Y-m-d') . '.json');
 		$sleeps = $this->request('GET', '/1/user/-/sleep/date/' . date('Y-m-d') . '.json');
 		$bodies = $this->request('GET', '/1/user/-/body/date/' . date('Y-m-d') . '.json');
+
 		$user = $users['user'];
 		$height = $this->getCmd(null, 'height');
 		if (is_object($height) && $height->execCmd() != $height->formatValue($user['height'])) {
@@ -374,6 +460,39 @@ class fitbit extends eqLogic {
 				$sleepDuration->event($sleep['minutesAsleep']);
 			}
 
+		}
+
+		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
+			$heart = $hearts['activities-heart'][0]['value'];
+			$restingHeartRate = $this->getCmd(null, 'restingHeartRate');
+			if (is_object($restingHeartRate) && $restingHeartRate->execCmd() != $restingHeartRate->formatValue($heart['restingHeartRate'])) {
+				$restingHeartRate->setCollectDate('');
+				$restingHeartRate->event($heart['awakeCount']);
+			}
+
+			$heartOutOfRange = $this->getCmd(null, 'heartOutOfRange');
+			if (is_object($heartOutOfRange) && $heartOutOfRange->execCmd() != $heartOutOfRange->formatValue($heart['heartRateZones'][0]['minutes'])) {
+				$heartOutOfRange->setCollectDate('');
+				$heartOutOfRange->event($heart['awakeDuration']);
+			}
+
+			$heartFatBurn = $this->getCmd(null, 'heartFatBurn');
+			if (is_object($heartFatBurn) && $heartFatBurn->execCmd() != $heartFatBurn->formatValue($heart['heartRateZones'][1]['minutes'])) {
+				$heartFatBurn->setCollectDate('');
+				$heartFatBurn->event($heart['heartFatBurn']);
+			}
+
+			$heartCardio = $this->getCmd(null, 'heartCardio');
+			if (is_object($heartCardio) && $heartCardio->execCmd() != $heartCardio->formatValue($heart['heartRateZones'][2]['minutes'])) {
+				$heartCardio->setCollectDate('');
+				$heartCardio->event($heart['minutesToFallAsleep'] + 1);
+			}
+
+			$heartPeak = $this->getCmd(null, 'heartPeak');
+			if (is_object($heartPeak) && $heartPeak->execCmd() != $heartPeak->formatValue($heart['heartRateZones'][3]['minutes'])) {
+				$heartPeak->setCollectDate('');
+				$heartPeak->event($heart['minutesAsleep']);
+			}
 		}
 
 		$body = $bodies['body'];
