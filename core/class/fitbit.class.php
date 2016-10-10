@@ -411,11 +411,7 @@ class fitbit extends eqLogic {
 	}
 
 	public function syncWithFitbit() {
-		$hearts = $this->request('GET', '/1/user/-/activities/heart/date/2016-09-22/1d.json');
-		print_r($hearts);
-
-		return;
-
+		$hearts = $this->request('GET', '/1/user/-/activities/heart/date/' . date('Y-m-d') . '/1d.json');
 		$users = $this->request('GET', '/1/user/-/profile.json');
 		$activity = $this->request('GET', '/1/user/-/activities/date/' . date('Y-m-d') . '.json');
 		$sleeps = $this->request('GET', '/1/user/-/sleep/date/' . date('Y-m-d') . '.json');
@@ -463,35 +459,37 @@ class fitbit extends eqLogic {
 		}
 
 		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
+
 			$heart = $hearts['activities-heart'][0]['value'];
+			print_r($heart);
 			$restingHeartRate = $this->getCmd(null, 'restingHeartRate');
 			if (is_object($restingHeartRate) && $restingHeartRate->execCmd() != $restingHeartRate->formatValue($heart['restingHeartRate'])) {
 				$restingHeartRate->setCollectDate('');
-				$restingHeartRate->event($heart['awakeCount']);
+				$restingHeartRate->event($heart['restingHeartRate']);
 			}
 
 			$heartOutOfRange = $this->getCmd(null, 'heartOutOfRange');
 			if (is_object($heartOutOfRange) && $heartOutOfRange->execCmd() != $heartOutOfRange->formatValue($heart['heartRateZones'][0]['minutes'])) {
 				$heartOutOfRange->setCollectDate('');
-				$heartOutOfRange->event($heart['awakeDuration']);
+				$heartOutOfRange->event($heart['heartRateZones'][0]['minutes']);
 			}
 
 			$heartFatBurn = $this->getCmd(null, 'heartFatBurn');
 			if (is_object($heartFatBurn) && $heartFatBurn->execCmd() != $heartFatBurn->formatValue($heart['heartRateZones'][1]['minutes'])) {
 				$heartFatBurn->setCollectDate('');
-				$heartFatBurn->event($heart['heartFatBurn']);
+				$heartFatBurn->event($heart['heartRateZones'][1]['minutes']);
 			}
 
 			$heartCardio = $this->getCmd(null, 'heartCardio');
 			if (is_object($heartCardio) && $heartCardio->execCmd() != $heartCardio->formatValue($heart['heartRateZones'][2]['minutes'])) {
 				$heartCardio->setCollectDate('');
-				$heartCardio->event($heart['minutesToFallAsleep'] + 1);
+				$heartCardio->event($heart['heartRateZones'][2]['minutes']);
 			}
 
 			$heartPeak = $this->getCmd(null, 'heartPeak');
 			if (is_object($heartPeak) && $heartPeak->execCmd() != $heartPeak->formatValue($heart['heartRateZones'][3]['minutes'])) {
 				$heartPeak->setCollectDate('');
-				$heartPeak->event($heart['minutesAsleep']);
+				$heartPeak->event($heart['heartRateZones'][3]['minutes']);
 			}
 		}
 
