@@ -107,6 +107,18 @@ foreach (object::all() as $object) {
             <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="client_secret"/>
           </div>
         </div>
+         <div class="form-group">
+          <label class="col-sm-3 control-label">{{Subscription id}}</label>
+          <div class="col-sm-3">
+            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="subscription_id"/>
+          </div>
+        </div>
+         <div class="form-group">
+          <label class="col-sm-3 control-label">{{Subscription code}}</label>
+          <div class="col-sm-3">
+            <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="subscription_code"/>
+          </div>
+        </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Lier</label>
           <div class="col-lg-2">

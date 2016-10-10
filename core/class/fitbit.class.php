@@ -84,14 +84,21 @@ class fitbit extends eqLogic {
 		return $existingAccessToken;
 	}
 
-	public function request($_type, $_request) {
-		$headers = array(
-			'Accept-Language' => 'fr_FR',
-			'Accept-Locale' => 'fr_FR',
+	public function request($_type, $_request, $_options = array()) {
+		$options = array(
+			'headers' => array(
+				'Accept-Language' => config::byKey('language'),
+				'Accept-Locale' => config::byKey('language'),
+			),
 		);
+		$options = array_merge_recursive($options, $_options);
 		$provider = $this->getProvider();
-		$request = $provider->getAuthenticatedRequest($_type, FitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(), array('headers' => $headers));
+		$request = $provider->getAuthenticatedRequest($_type, FitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(), $options);
 		return $provider->getResponse($request);
+	}
+
+	public function subscribe() {
+		$this->request('POST', '/1/user/-/apiSubscriptions/' . $this->getConfiguration('subscription_id') . '.json');
 	}
 
 	public function postSave() {
@@ -494,14 +501,17 @@ class fitbit extends eqLogic {
 		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
 			$heart = $hearts['activities-heart'][0]['value'];
 			$changed = $changed || $this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
-			$changed = $changed || $this->checkAndUpdateCmd('heartOutOfRange', $heart['heartRateZones'][0]['minutes']);
-			$changed = $changed || $this->checkAndUpdateCmd('heartFatBurn', $heart['heartRateZones'][1]['minutes']);
-			$changed = $changed || $this->checkAndUpdateCmd('heartCardio', $heart['heartRateZones'][2]['minutes']);
-			$changed = $changed || $this->checkAndUpdateCmd('heartPeak', $heart['heartRateZones'][3]['minutes']);
-			$changed = $changed || $this->checkAndUpdateCmd('heartOutOfRangeCalories', $heart['heartRateZones'][0]['caloriesOut']);
-			$changed = $changed || $this->checkAndUpdateCmd('heartFatBurnCalories', $heart['heartRateZones'][1]['caloriesOut']);
-			$changed = $changed || $this->checkAndUpdateCmd('heartCardioCalories', $heart['heartRateZones'][2]['caloriesOut']);
-			$changed = $changed || $this->checkAndUpdateCmd('heartPeakCalories', $heart['heartRateZones'][3]['caloriesOut']);
+			if (count($heart['heartRateZones']) == 4 && isset($heart['heartRateZones'][0]['minutes'])) {
+				$changed = $changed || $this->checkAndUpdateCmd('heartOutOfRange', $heart['heartRateZones'][0]['minutes']);
+				$changed = $changed || $this->checkAndUpdateCmd('heartFatBurn', $heart['heartRateZones'][1]['minutes']);
+				$changed = $changed || $this->checkAndUpdateCmd('heartCardio', $heart['heartRateZones'][2]['minutes']);
+				$changed = $changed || $this->checkAndUpdateCmd('heartPeak', $heart['heartRateZones'][3]['minutes']);
+				$changed = $changed || $this->checkAndUpdateCmd('heartOutOfRangeCalories', $heart['heartRateZones'][0]['caloriesOut']);
+				$changed = $changed || $this->checkAndUpdateCmd('heartFatBurnCalories', $heart['heartRateZones'][1]['caloriesOut']);
+				$changed = $changed || $this->checkAndUpdateCmd('heartCardioCalories', $heart['heartRateZones'][2]['caloriesOut']);
+				$changed = $changed || $this->checkAndUpdateCmd('heartPeakCalories', $heart['heartRateZones'][3]['caloriesOut']);
+			}
+
 		}
 		$changed = $changed || $this->checkAndUpdateCmd('weight', $body['weight']);
 		$changed = $changed || $this->checkAndUpdateCmd('fat', $body['fat']);
@@ -551,7 +561,7 @@ class FitbitProvider extends AbstractProvider {
 	}
 
 	protected function getDefaultScopes() {
-		return ['activity', 'heartrate', 'location', 'profile', 'settings', 'sleep', 'social', 'weight'];
+		return ['activity', 'heartrate', 'location', 'profile', 'settings', 'sleep', 'social', 'weight', 'nutrition'];
 	}
 
 	protected function getScopeSeparator() {
