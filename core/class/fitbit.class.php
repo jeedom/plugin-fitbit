@@ -527,11 +527,7 @@ class fitbitCmd extends cmd {
 	/*     * *********************Methode d'instance************************* */
 
 	public function execute($_options = null) {
-		if ($this->getType() == '') {
-			return '';
-		}
-		$eqLogic = $this->getEqlogic();
-		$eqLogic->syncWithFitbit();
+		$this->getEqlogic()->syncWithFitbit();
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
