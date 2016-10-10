@@ -228,7 +228,7 @@ class fitbit extends eqLogic {
 			$cmd->setLogicalId('heartOutOfRange');
 			$cmd->setIsVisible(1);
 			$cmd->setOrder(7);
-			$cmd->setName(__('Coeur au repos', __FILE__));
+			$cmd->setName(__('Coeur temps au repos', __FILE__));
 			$cmd->setTemplate('dashboard', 'line');
 			$cmd->setTemplate('mobile', 'line');
 		}
@@ -244,7 +244,7 @@ class fitbit extends eqLogic {
 			$cmd->setLogicalId('heartFatBurn');
 			$cmd->setIsVisible(1);
 			$cmd->setOrder(7);
-			$cmd->setName(__('Coeur perte de graisse', __FILE__));
+			$cmd->setName(__('Coeur temps perte de graisse', __FILE__));
 			$cmd->setTemplate('dashboard', 'line');
 			$cmd->setTemplate('mobile', 'line');
 		}
@@ -260,7 +260,7 @@ class fitbit extends eqLogic {
 			$cmd->setLogicalId('heartCardio');
 			$cmd->setIsVisible(1);
 			$cmd->setOrder(7);
-			$cmd->setName(__('Coeur cardio', __FILE__));
+			$cmd->setName(__('Coeur temps cardio', __FILE__));
 			$cmd->setTemplate('dashboard', 'line');
 			$cmd->setTemplate('mobile', 'line');
 		}
@@ -276,7 +276,71 @@ class fitbit extends eqLogic {
 			$cmd->setLogicalId('heartPeak');
 			$cmd->setIsVisible(1);
 			$cmd->setOrder(7);
-			$cmd->setName(__('Coeur maximum', __FILE__));
+			$cmd->setName(__('Coeur temps maximum', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
+		}
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'heartOutOfRangeCalories');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('heartOutOfRangeCalories');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Coeur calories au repos', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
+		}
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'heartFatBurnCalories');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('heartFatBurnCalories');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Coeur calories perte de graisse', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
+		}
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'heartCardioCalories');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('heartCardioCalories');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Coeur calories cardio', __FILE__));
+			$cmd->setTemplate('dashboard', 'line');
+			$cmd->setTemplate('mobile', 'line');
+		}
+		$cmd->setType('info');
+		$cmd->setSubType('numeric');
+		$cmd->setUnite('min');
+		$cmd->setEqLogic_id($this->getId());
+		$cmd->save();
+
+		$cmd = $this->getCmd(null, 'heartPeakCalories');
+		if (!is_object($cmd)) {
+			$cmd = new fitbitCmd();
+			$cmd->setLogicalId('heartPeakCalories');
+			$cmd->setIsVisible(1);
+			$cmd->setOrder(7);
+			$cmd->setName(__('Coeur calories maximum', __FILE__));
 			$cmd->setTemplate('dashboard', 'line');
 			$cmd->setTemplate('mobile', 'line');
 		}
@@ -459,9 +523,7 @@ class fitbit extends eqLogic {
 		}
 
 		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
-
 			$heart = $hearts['activities-heart'][0]['value'];
-			print_r($heart);
 			$restingHeartRate = $this->getCmd(null, 'restingHeartRate');
 			if (is_object($restingHeartRate) && $restingHeartRate->execCmd() != $restingHeartRate->formatValue($heart['restingHeartRate'])) {
 				$restingHeartRate->setCollectDate('');
@@ -490,6 +552,30 @@ class fitbit extends eqLogic {
 			if (is_object($heartPeak) && $heartPeak->execCmd() != $heartPeak->formatValue($heart['heartRateZones'][3]['minutes'])) {
 				$heartPeak->setCollectDate('');
 				$heartPeak->event($heart['heartRateZones'][3]['minutes']);
+			}
+
+			$heartOutOfRangeCalories = $this->getCmd(null, 'heartOutOfRangeCalories');
+			if (is_object($heartOutOfRangeCalories) && $heartOutOfRangeCalories->execCmd() != $heartOutOfRangeCalories->formatValue($heart['heartRateZones'][0]['caloriesOut'])) {
+				$heartOutOfRangeCalories->setCollectDate('');
+				$heartOutOfRangeCalories->event($heart['heartRateZones'][0]['caloriesOut']);
+			}
+
+			$heartFatBurnCalories = $this->getCmd(null, 'heartFatBurnCalories');
+			if (is_object($heartFatBurnCalories) && $heartFatBurnCalories->execCmd() != $heartFatBurnCalories->formatValue($heart['heartRateZones'][1]['caloriesOut'])) {
+				$heartFatBurnCalories->setCollectDate('');
+				$heartFatBurnCalories->event($heart['heartRateZones'][1]['caloriesOut']);
+			}
+
+			$heartCardioCalories = $this->getCmd(null, 'heartCardioCalories');
+			if (is_object($heartCardioCalories) && $heartCardioCalories->execCmd() != $heartCardioCalories->formatValue($heart['heartRateZones'][2]['caloriesOut'])) {
+				$heartCardioCalories->setCollectDate('');
+				$heartCardioCalories->event($heart['heartRateZones'][2]['caloriesOut']);
+			}
+
+			$heartPeakCalories = $this->getCmd(null, 'heartPeakCalories');
+			if (is_object($heartPeakCalories) && $heartPeakCalories->execCmd() != $heartPeakCalories->formatValue($heart['heartRateZones'][3]['caloriesOut'])) {
+				$heartPeakCalories->setCollectDate('');
+				$heartPeakCalories->event($heart['heartRateZones'][3]['caloriesOut']);
 			}
 		}
 
