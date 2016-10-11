@@ -500,7 +500,7 @@ class fitbit extends eqLogic {
 		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
 			$heart = $hearts['activities-heart'][0]['value'];
 			$this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
-			if (count($heart['heartRateZones']) == 4 && isset($heart['heartRateZones'][0]['minutes'])) {
+			if (isset($heart['heartRateZones']) && count($heart['heartRateZones']) == 4 && isset($heart['heartRateZones'][0]['minutes'])) {
 				$this->checkAndUpdateCmd('heartOutOfRange', $heart['heartRateZones'][0]['minutes']);
 				$this->checkAndUpdateCmd('heartFatBurn', $heart['heartRateZones'][1]['minutes']);
 				$this->checkAndUpdateCmd('heartCardio', $heart['heartRateZones'][2]['minutes']);
