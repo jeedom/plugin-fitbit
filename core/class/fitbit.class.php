@@ -579,7 +579,7 @@ class FitbitProvider extends AbstractProvider {
 	}
 
 	public function createResourceOwner(array $response, AccessToken $token) {
-		return new FitbitOwnerInterface($response);
+		return new FitbitOwner($response);
 	}
 
 	protected function checkResponse(ResponseInterface $response, $data) {
@@ -605,7 +605,7 @@ class FitbitProvider extends AbstractProvider {
 
 }
 
-class FitbitOwnerInterface implements ResourceOwnerInterface {
+class FitbitOwner implements ResourceOwnerInterface {
 	protected $userInfo = [];
 
 	public function __construct(array $response) {
