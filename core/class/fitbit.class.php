@@ -481,7 +481,6 @@ class fitbit extends eqLogic {
 	}
 
 	public function syncWithFitbit() {
-		$changed = false;
 		$hearts = $this->request('GET', '/1/user/-/activities/heart/date/' . date('Y-m-d') . '/1d.json');
 		$users = $this->request('GET', '/1/user/-/profile.json');
 		$activity = $this->request('GET', '/1/user/-/activities/date/' . date('Y-m-d') . '.json');
@@ -489,41 +488,37 @@ class fitbit extends eqLogic {
 		$bodies = $this->request('GET', '/1/user/-/body/date/' . date('Y-m-d') . '.json');
 		$user = $users['user'];
 		$body = $bodies['body'];
-		$changed = $changed || $this->checkAndUpdateCmd('height', $user['height']);
+		$this->checkAndUpdateCmd('height', $user['height']);
 		if (isset($sleeps['sleep'][0])) {
 			$sleep = $sleeps['sleep'][0];
-			$changed = $changed || $this->checkAndUpdateCmd('awakeCount', $sleep['awakeCount']);
-			$changed = $changed || $this->checkAndUpdateCmd('awakeDuration', $sleep['awakeDuration']);
-			$changed = $changed || $this->checkAndUpdateCmd('minutesToFallAsleep', $sleep['minutesToFallAsleep'] + 1);
-			$changed = $changed || $this->checkAndUpdateCmd('sleepDuration', $sleep['minutesAsleep']);
-			$changed = $changed || $this->checkAndUpdateCmd('restlessDuration', $sleep['restlessDuration']);
+			$this->checkAndUpdateCmd('awakeCount', $sleep['awakeCount']);
+			$this->checkAndUpdateCmd('awakeDuration', $sleep['awakeDuration']);
+			$this->checkAndUpdateCmd('minutesToFallAsleep', $sleep['minutesToFallAsleep'] + 1);
+			$this->checkAndUpdateCmd('sleepDuration', $sleep['minutesAsleep']);
+			$this->checkAndUpdateCmd('restlessDuration', $sleep['restlessDuration']);
 		}
 		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
 			$heart = $hearts['activities-heart'][0]['value'];
-			$changed = $changed || $this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
+			$this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
 			if (count($heart['heartRateZones']) == 4 && isset($heart['heartRateZones'][0]['minutes'])) {
-				$changed = $changed || $this->checkAndUpdateCmd('heartOutOfRange', $heart['heartRateZones'][0]['minutes']);
-				$changed = $changed || $this->checkAndUpdateCmd('heartFatBurn', $heart['heartRateZones'][1]['minutes']);
-				$changed = $changed || $this->checkAndUpdateCmd('heartCardio', $heart['heartRateZones'][2]['minutes']);
-				$changed = $changed || $this->checkAndUpdateCmd('heartPeak', $heart['heartRateZones'][3]['minutes']);
-				$changed = $changed || $this->checkAndUpdateCmd('heartOutOfRangeCalories', $heart['heartRateZones'][0]['caloriesOut']);
-				$changed = $changed || $this->checkAndUpdateCmd('heartFatBurnCalories', $heart['heartRateZones'][1]['caloriesOut']);
-				$changed = $changed || $this->checkAndUpdateCmd('heartCardioCalories', $heart['heartRateZones'][2]['caloriesOut']);
-				$changed = $changed || $this->checkAndUpdateCmd('heartPeakCalories', $heart['heartRateZones'][3]['caloriesOut']);
+				$this->checkAndUpdateCmd('heartOutOfRange', $heart['heartRateZones'][0]['minutes']);
+				$this->checkAndUpdateCmd('heartFatBurn', $heart['heartRateZones'][1]['minutes']);
+				$this->checkAndUpdateCmd('heartCardio', $heart['heartRateZones'][2]['minutes']);
+				$this->checkAndUpdateCmd('heartPeak', $heart['heartRateZones'][3]['minutes']);
+				$this->checkAndUpdateCmd('heartOutOfRangeCalories', $heart['heartRateZones'][0]['caloriesOut']);
+				$this->checkAndUpdateCmd('heartFatBurnCalories', $heart['heartRateZones'][1]['caloriesOut']);
+				$this->checkAndUpdateCmd('heartCardioCalories', $heart['heartRateZones'][2]['caloriesOut']);
+				$this->checkAndUpdateCmd('heartPeakCalories', $heart['heartRateZones'][3]['caloriesOut']);
 			}
-
 		}
-		$changed = $changed || $this->checkAndUpdateCmd('weight', $body['weight']);
-		$changed = $changed || $this->checkAndUpdateCmd('fat', $body['fat']);
-		$changed = $changed || $this->checkAndUpdateCmd('bmi', $body['bmi']);
-		$changed = $changed || $this->checkAndUpdateCmd('elevation', $activity['summary']['elevation']);
-		$changed = $changed || $this->checkAndUpdateCmd('step', $activity['summary']['steps']);
-		$changed = $changed || $this->checkAndUpdateCmd('caloriesOut', $activity['summary']['caloriesOut']);
-		$changed = $changed || $this->checkAndUpdateCmd('veryActiveMinutes', $activity['summary']['veryActiveMinutes']);
-		$changed = $changed || $this->checkAndUpdateCmd('distance', $activity['summary']['distances'][0]['distance']);
-		if ($changed) {
-			$this->refreshWidget();
-		}
+		$this->checkAndUpdateCmd('weight', $body['weight']);
+		$this->checkAndUpdateCmd('fat', $body['fat']);
+		$this->checkAndUpdateCmd('bmi', $body['bmi']);
+		$this->checkAndUpdateCmd('elevation', $activity['summary']['elevation']);
+		$this->checkAndUpdateCmd('step', $activity['summary']['steps']);
+		$this->checkAndUpdateCmd('caloriesOut', $activity['summary']['caloriesOut']);
+		$this->checkAndUpdateCmd('veryActiveMinutes', $activity['summary']['veryActiveMinutes']);
+		$this->checkAndUpdateCmd('distance', $activity['summary']['distances'][0]['distance']);
 	}
 
 	/*     * **********************Getteur Setteur*************************** */
