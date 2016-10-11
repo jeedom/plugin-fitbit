@@ -94,7 +94,6 @@ foreach (object::all() as $object) {
             <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?apikey=' . config::byKey('api') . '&eqLogic_id='; ?><span class="span_fitbitCallbackId"></span></span>
           </div>
         </div>
-
         <div class="form-group">
           <label class="col-sm-3 control-label">{{Client ID}}</label>
           <div class="col-sm-3">
