@@ -55,7 +55,7 @@ class fitbit extends eqLogic {
 	/*     * *********************Methode d'instance************************* */
 
 	public function getProvider() {
-		return new FitbitProvider([
+		return new fitbitProvider([
 			'clientId' => $this->getConfiguration('client_id'),
 			'clientSecret' => $this->getConfiguration('client_secret'),
 			'redirectUri' => network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?eqLogic_id=' . $this->getId(),
@@ -93,7 +93,7 @@ class fitbit extends eqLogic {
 		);
 		$options = array_merge_recursive($options, $_options);
 		$provider = $this->getProvider();
-		$request = $provider->getAuthenticatedRequest($_type, FitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(), $options);
+		$request = $provider->getAuthenticatedRequest($_type, fitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(), $options);
 		return $provider->getResponse($request);
 	}
 
@@ -538,7 +538,7 @@ class fitbitCmd extends cmd {
 	/*     * **********************Getteur Setteur*************************** */
 }
 
-class FitbitProvider extends AbstractProvider {
+class fitbitProvider extends AbstractProvider {
 	use BearerAuthorizationTrait;
 	const BASE_FITBIT_URL = 'https://www.fitbit.com';
 	const BASE_FITBIT_API_URL = 'https://api.fitbit.com';
@@ -579,7 +579,7 @@ class FitbitProvider extends AbstractProvider {
 	}
 
 	public function createResourceOwner(array $response, AccessToken $token) {
-		return new FitbitOwner($response);
+		return new fitbitOwner($response);
 	}
 
 	protected function checkResponse(ResponseInterface $response, $data) {
@@ -605,7 +605,7 @@ class FitbitProvider extends AbstractProvider {
 
 }
 
-class FitbitOwner implements ResourceOwnerInterface {
+class fitbitOwner implements ResourceOwnerInterface {
 	protected $userInfo = [];
 
 	public function __construct(array $response) {
