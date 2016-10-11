@@ -497,7 +497,7 @@ class fitbit extends eqLogic {
 			$this->checkAndUpdateCmd('sleepDuration', $sleep['minutesAsleep']);
 			$this->checkAndUpdateCmd('restlessDuration', $sleep['restlessDuration']);
 		}
-		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value'])) {
+		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value']) && isset($hearts['activities-heart'][0]['restingHeartRate'])) {
 			$heart = $hearts['activities-heart'][0]['value'];
 			$this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
 			if (isset($heart['heartRateZones']) && count($heart['heartRateZones']) == 4 && isset($heart['heartRateZones'][0]['minutes'])) {
