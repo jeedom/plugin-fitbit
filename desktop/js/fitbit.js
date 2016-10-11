@@ -35,11 +35,7 @@
                 $('#div_alert').showAlert({message: data.result, level: 'danger'});
                 return;
             }
-            if (isset(data.result.redirect)) {
-                window.location.href = data.result.redirect;
-            } else {
-                $('#div_alert').showAlert({message: 'Synchronisation réussie', level: 'success'});
-            }
+            window.location.href = data.result.redirect;
         }
     });
 });
