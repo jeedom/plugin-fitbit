@@ -1,4 +1,8 @@
 {
+    "plugins/fitbit/plugin_info/info.xml": {
+        "Plugin pour fitbit": "Plugin para Fitbit",
+        "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)": "Asegúrese de que ha configurado correctamente la sección General -> Administración -> Configuración y redes. Es necesario que su Jeedom sea accesible desde el exterior cuando se combina una cuenta Fitbit a su Jeedom"
+    },
     "plugins/fitbit/desktop/php/fitbit.php": {
         "Ajouter une personne": "Añadir una persona",
         "Rechercher": "Buscar",
@@ -14,15 +18,30 @@
         "Type": "Tipo",
         "Action": "Acción",
         "Supprimer": "Borrar",
-        "Sauvegarder": "Guardar"
+        "Sauvegarder": "Guardar",
+        "Client ID": "Cliente ID",
+        "Secret key": "Secret key"
     },
     "plugins/fitbit/desktop/js/fitbit.js": {
         "Historiser": "Guardar historial",
         "Afficher": "Mostrar",
         "Tester": "Probar"
     },
-    "plugins/fitbit/plugin_info/info.xml": {
-        "Plugin pour fitbit": "Plugin para Fitbit",
-        "Aucune": "Ninguna"
+    "plugins/fitbit/core/class/fitbit.class.php": {
+        "Poids": "Peso",
+        "Masse grasse": "Grasa corporal",
+        "IMC": "IMC",
+        "Rafraîhir": "Refrescar",
+        "Taille": "Tamaño",
+        "Pas": "Pasos",
+        "Calorie": "Caloría",
+        "Minute active": "Minuto activo",
+        "Distance": "Distancia",
+        "Elevation": "Elevación",
+        "Nombre de reveils": "Cantidad de despiertos",
+        "Durée réveils": "Duracion de los despiertos",
+        "Durée de sommeil": "Duración del sueño",
+        "Sommeil agité": "Sueño agitado",
+        "Temps pour s'endormir": "Tiempo para dormirse"
     }
 }

@@ -423,6 +423,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_widget">1.3. Widget</a></li>
 </ul>
 </li>
+<li><a href="#_changelog">2. Changelog</a></li>
 </ul>
 </div>
 </div>
@@ -508,6 +509,90 @@ Il est recommandé lors du lien entre Jeedom et Fitbit d&#8217;etre connecté à
 </table>
 </div>
 <div class="paragraph">
+<p>Pour lieer votre compte Fitbit à Jeedom il vous tout d&#8217;abord vous creez un compte developpeur chez Fitbit en allant <a href="https://dev.fitbit.com/fr">ici</a>, ensuite il vous faut vous connecter puis faire : "Register an app". Il faut ensuite remplir les informations :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Application Name : Jeedom</p>
+</li>
+<li>
+<p>Description : Jeedom</p>
+</li>
+<li>
+<p>Application Website : <a href="https://jeedom.com" class="bare">https://jeedom.com</a></p>
+</li>
+<li>
+<p>Organization : jeedom</p>
+</li>
+<li>
+<p>Organization Website : <a href="https://jeedom.com" class="bare">https://jeedom.com</a></p>
+</li>
+<li>
+<p>OAuth 2.0 Application Type : Server</p>
+</li>
+<li>
+<p>Callback URL : Il faut mettre celle que jeedom vous donne lors de la création d&#8217;un équipement Fitbit, attention si vous ne mettez pas la bonne la connexion ne pourra se faire</p>
+</li>
+<li>
+<p>Default Access Type : Read &amp; Write</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Vous pouvez aussi ajouter une subscription, cela permet à Fitbit de pousser une mise à jour directement dans Jeedom (au lieu d&#8217;attendre que Jeedom mette à jour les informations) :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Default : oui</p>
+</li>
+<li>
+<p>Endpoint URL : celle donnée par jeedom</p>
+</li>
+<li>
+<p>Type : JSON body</p>
+</li>
+<li>
+<p>Subscriber ID :  ne rien mettre</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Si vous avez mis une subscription il faut (attention a bien faire toute ces étapes dans l&#8217;ordre) :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mettre le numéro de subscription dans l&#8217;équipement Fitbit sur Jeedom</p>
+</li>
+<li>
+<p>Mettre le code de subscription dans l&#8217;équipement Fitbit sur Jeedom</p>
+</li>
+<li>
+<p>Sauvegarder l&#8217;équipement</p>
+</li>
+<li>
+<p>Sur le site Fitbit lancer la vérification de la subscription</p>
+</li>
+<li>
+<p>Puis "Lier à un utilisateur" l&#8217;équipement jeedom, comme ci-dessous</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Actuellement Fitbit support mal le https, donc si vous êtes en https il y peu de chance que cela marche
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
 <p>Cliquez sur "Lier à un utilisateur" pour lier cet équipement à votre compte Fitbit :</p>
 </div>
 <div class="imageblock">
@@ -525,6 +610,9 @@ Il est recommandé lors du lien entre Jeedom et Fitbit d&#8217;etre connecté à
 <div class="content">
 <img src="../images/fitbit-6.JPG" alt="fitbit 6">
 </div>
+</div>
+<div class="paragraph">
+<p>Pour la subscription il faut en</p>
 </div>
 </div>
 <div class="sect2">
@@ -583,6 +671,25 @@ Il est recommandé lors du lien entre Jeedom et Fitbit d&#8217;etre connecté à
 <img src="../images/fitbit-7.JPG" alt="fitbit 7">
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">2. Changelog</h2>
+<div class="sectionbody">
+<hr>
+<div class="ulist">
+<ul>
+<li>
+<p>Passage sur la nouvelle API fitbit</p>
+</li>
+<li>
+<p>Utilisation d&#8217;un widget standard</p>
+</li>
+<li>
+<p>Ajout de l&#8217;information sur le rythme cardiaque</p>
+</li>
+</ul>
 </div>
 </div>
 </div>

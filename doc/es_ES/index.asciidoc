@@ -4,3 +4,7 @@ Plugin permettant d'accéder aux informations de ses appareils Fitbit (nombre de
 
 == Configuration
 include::configuration.asciidoc[]
+
+== Changelog
+'''
+include::changelog.asciidoc[]
