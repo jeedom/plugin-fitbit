@@ -91,7 +91,7 @@ foreach (object::all() as $object) {
         <div class="form-group">
           <label class="col-lg-3 control-label">{{URL de retour}}</label>
           <div class="col-lg-9">
-            <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?apikey=' . config::byKey('api') . '&eqLogic_id='; ?><span class="span_fitbitCallbackId"></span></span>
+            <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?apikey=' . jeedom::getApiKey('fitbit') . '&eqLogic_id='; ?><span class="span_fitbitCallbackId"></span></span>
           </div>
         </div>
         <div class="form-group">
@@ -109,7 +109,7 @@ foreach (object::all() as $object) {
           <div class="form-group">
           <label class="col-lg-3 control-label">{{URL de subscription}}</label>
           <div class="col-lg-9">
-            <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?update=1&apikey=' . config::byKey('api') . '&eqLogic_id='; ?><span class="span_fitbitCallbackId"></span></span>
+            <span><?php echo network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?update=1&apikey=' . jeedom::getApiKey('fitbit') . '&eqLogic_id='; ?><span class="span_fitbitCallbackId"></span></span>
           </div>
         </div>
          <div class="form-group">

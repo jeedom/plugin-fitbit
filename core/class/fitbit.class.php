@@ -58,7 +58,7 @@ class fitbit extends eqLogic {
 		return new fitbitProvider([
 			'clientId' => $this->getConfiguration('client_id'),
 			'clientSecret' => $this->getConfiguration('client_secret'),
-			'redirectUri' => network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?apikey=' . config::byKey('api') . '&eqLogic_id=' . $this->getId(),
+			'redirectUri' => network::getNetworkAccess('external') . '/plugins/fitbit/core/php/callback.php?apikey=' . jeedom::getApiKey('fitbit') . '&eqLogic_id=' . $this->getId(),
 		]);
 	}
 
