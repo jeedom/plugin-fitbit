@@ -1,7 +1,7 @@
 {
     "plugins/fitbit/plugin_info/info.xml": {
         "Plugin pour fitbit": "Plugin for fitbit",
-        "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)": "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)"
+        "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)": "Make sure you have properly configured the part General -> Administration -> Configuration and networks. Indeed, it is necessary when combining Jeedom to Fitbit account that your Jeedom is accessible from the outside (then it is no longer necessary)"
     },
     "plugins/fitbit/desktop/php/fitbit.php": {
         "Ajouter une personne": "Add a person",
@@ -28,20 +28,20 @@
         "Tester": "Tester"
     },
     "plugins/fitbit/core/class/fitbit.class.php": {
-        "Poids": "Poids",
-        "Masse grasse": "Masse grasse",
-        "IMC": "IMC",
-        "Rafraîhir": "Rafraîhir",
-        "Taille": "Taille",
-        "Pas": "Pas",
-        "Calorie": "Calorie",
-        "Minute active": "Minute active",
+        "Poids": "Weight",
+        "Masse grasse": "Fat mass",
+        "IMC": "BMI",
+        "Rafraîhir": "Refresh",
+        "Taille": "Size",
+        "Pas": "Steps",
+        "Calorie": "Calories",
+        "Minute active": "Active minutes",
         "Distance": "Distance",
         "Elevation": "Elevation",
-        "Nombre de reveils": "Nombre de reveils",
-        "Durée réveils": "Durée réveils",
-        "Durée de sommeil": "Durée de sommeil",
-        "Sommeil agité": "Sommeil agité",
-        "Temps pour s'endormir": "Temps pour s'endormir"
+        "Nombre de reveils": "Number of awakenings",
+        "Durée réveils": "Awakening duration",
+        "Durée de sommeil": "Sleep duration",
+        "Sommeil agité": "Fitfully sleep",
+        "Temps pour s'endormir": "Time to sleep"
     }
 }

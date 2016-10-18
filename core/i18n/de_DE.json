@@ -1,7 +1,7 @@
 {
     "plugins/fitbit/plugin_info/info.xml": {
         "Plugin pour fitbit": "Plugin für fitbit",
-        "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)": "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)"
+        "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)": "Achten Sie darauf, dass das Gerät richtig konfiguriert ist Allgemein -> Verwaltung -> Konfiguration und Netzwerke, es ist nötig, wenn Jeedom mit Ihrem Fitbit-Konto Vereint werden soll, das Jeedom von außen zugänglich ist (dann ist das nicht mehr notwendig)"
     },
     "plugins/fitbit/desktop/php/fitbit.php": {
         "Ajouter une personne": "Person hinzufügen",
@@ -19,8 +19,8 @@
         "Action": "Aktion",
         "Supprimer": "Löschen",
         "Sauvegarder": "Speichern",
-        "Client ID": "Client ID",
-        "Secret key": "Secret key"
+        "Client ID": "Kunden ID",
+        "Secret key": "Geheimer Schlüssel"
     },
     "plugins/fitbit/desktop/js/fitbit.js": {
         "Historiser": "Chronik",
@@ -28,20 +28,20 @@
         "Tester": "Test"
     },
     "plugins/fitbit/core/class/fitbit.class.php": {
-        "Poids": "Poids",
-        "Masse grasse": "Masse grasse",
+        "Poids": "Gewicht",
+        "Masse grasse": "Fettmasse",
         "IMC": "IMC",
-        "Rafraîhir": "Rafraîhir",
-        "Taille": "Taille",
-        "Pas": "Pas",
-        "Calorie": "Calorie",
-        "Minute active": "Minute active",
-        "Distance": "Distance",
-        "Elevation": "Elevation",
-        "Nombre de reveils": "Nombre de reveils",
-        "Durée réveils": "Durée réveils",
-        "Durée de sommeil": "Durée de sommeil",
-        "Sommeil agité": "Sommeil agité",
-        "Temps pour s'endormir": "Temps pour s'endormir"
+        "Rafraîhir": "Aktualisieren",
+        "Taille": "Größe",
+        "Pas": "nicht",
+        "Calorie": "Kalorie",
+        "Minute active": "aktive Minute",
+        "Distance": "Entfernung",
+        "Elevation": "Höhe",
+        "Nombre de reveils": "Häufigkeit des Erwachens",
+        "Durée réveils": "Alarmdauer",
+        "Durée de sommeil": "Schlafdauer",
+        "Sommeil agité": "Unruhiger Schlaf",
+        "Temps pour s'endormir": "Zeit um einzuschlafen "
     }
 }
