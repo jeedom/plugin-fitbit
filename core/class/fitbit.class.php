@@ -167,7 +167,7 @@ class fitbit extends eqLogic {
 
 		$cmd = $this->getCmd(null, 'step');
 		if (!is_object($cmd)) {
-			$step = new fitbitCmd();
+			$cmd = new fitbitCmd();
 			$cmd->setLogicalId('step');
 			$cmd->setIsVisible(1);
 			$cmd->setOrder(5);
