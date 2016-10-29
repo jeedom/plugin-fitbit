@@ -70,10 +70,10 @@ class fitbit extends eqLogic {
 		return $authorizationUrl;
 	}
 
-	public function getAccessToken() {
+	public function getAccessToken($_forceRefresh = false) {
 		$provider = $this->getProvider();
 		$existingAccessToken = new AccessToken($this->getConfiguration('accessToken'));
-		if ($existingAccessToken->hasExpired()) {
+		if ($existingAccessToken->hasExpired() || $_forceRefresh) {
 			$newAccessToken = $provider->getAccessToken('refresh_token', [
 				'refresh_token' => $existingAccessToken->getRefreshToken(),
 			]);
@@ -93,7 +93,13 @@ class fitbit extends eqLogic {
 		);
 		$options = array_merge_recursive($options, $_options);
 		$provider = $this->getProvider();
-		$request = $provider->getAuthenticatedRequest($_type, fitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(), $options);
+		try {
+			$request = $provider->getAuthenticatedRequest($_type, fitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(), $options);
+			return $provider->getResponse($request);
+		} catch (Exception $e) {
+
+		}
+		$request = $provider->getAuthenticatedRequest($_type, fitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(true), $options);
 		return $provider->getResponse($request);
 	}
 
