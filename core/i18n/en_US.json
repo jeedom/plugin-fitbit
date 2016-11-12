@@ -1,47 +1,40 @@
 {
-    "plugins/fitbit/plugin_info/info.xml": {
-        "Plugin pour fitbit": "Plugin for fitbit",
-        "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)": "Make sure you have properly configured the part General -> Administration -> Configuration and networks. Indeed, it is necessary when combining Jeedom to Fitbit account that your Jeedom is accessible from the outside (then it is no longer necessary)"
+    "plugins/fitbit/plugin_info/info.json": {
+        "Plugin pour Fitbit": "Plugin pour Fitbit"
+    },
+    "plugins/fitbit/core/class/fitbit.class.php": {
+        "Erreur sur ": "Error on"
     },
     "plugins/fitbit/desktop/php/fitbit.php": {
         "Ajouter une personne": "Add a person",
         "Rechercher": "Search",
         "Mes équipements Fitbit": "My Fitbit devices",
+        "Sauvegarder": "Save",
+        "Supprimer": "Delete",
+        "Equipement": "Device",
+        "Commandes": "Commands",
         "Général": "Main",
         "Nom de la personne": "Person name",
         "Objet parent": "Parent object",
         "Aucun": "None",
         "Activer": "Enable",
         "Visible": "Visible",
-        "Commandes": "Commands",
+        "URL de retour": "Return URL",
+        "Client ID": "Client ID",
+        "Secret key": "Secret key",
+        "URL de subscription": "URL de subscription",
+        "Subscription id": "Subscription id",
+        "Subscription code": "Subscription code",
+        "Lier": "Link",
+        "Lier à un utilisateur": "Link to a user",
         "Nom": "Name",
         "Type": "Type",
         "Action": "Action",
-        "Supprimer": "Delete",
-        "Sauvegarder": "Save",
-        "Client ID": "Client ID",
-        "Secret key": "Secret key"
+        "Configuration avancée": "Advanced configuration"
     },
     "plugins/fitbit/desktop/js/fitbit.js": {
         "Historiser": "Record",
         "Afficher": "Diplay",
         "Tester": "Tester"
-    },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Poids": "Weight",
-        "Masse grasse": "Fat mass",
-        "IMC": "BMI",
-        "Rafraîhir": "Refresh",
-        "Taille": "Size",
-        "Pas": "Steps",
-        "Calorie": "Calories",
-        "Minute active": "Active minutes",
-        "Distance": "Distance",
-        "Elevation": "Elevation",
-        "Nombre de reveils": "Number of awakenings",
-        "Durée réveils": "Awakening duration",
-        "Durée de sommeil": "Sleep duration",
-        "Sommeil agité": "Fitfully sleep",
-        "Temps pour s'endormir": "Time to sleep"
     }
 }

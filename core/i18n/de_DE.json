@@ -1,47 +1,40 @@
 {
-    "plugins/fitbit/plugin_info/info.xml": {
-        "Plugin pour fitbit": "Plugin für fitbit",
-        "Vérifiez bien que vous avez correctement configuré la partie Général -> Administration -> Configuration puis réseaux. En effet, il faut lors de l'association de Jeedom au compte Fitbit que votre Jeedom soit accessible de l'extérieur (ensuite cela n'est plus nécessaire)": "Achten Sie darauf, dass das Gerät richtig konfiguriert ist Allgemein -> Verwaltung -> Konfiguration und Netzwerke, es ist nötig, wenn Jeedom mit Ihrem Fitbit-Konto Vereint werden soll, das Jeedom von außen zugänglich ist (dann ist das nicht mehr notwendig)"
+    "plugins/fitbit/plugin_info/info.json": {
+        "Plugin pour Fitbit": "Plugin pour Fitbit"
+    },
+    "plugins/fitbit/core/class/fitbit.class.php": {
+        "Erreur sur ": "Fehler auf "
     },
     "plugins/fitbit/desktop/php/fitbit.php": {
         "Ajouter une personne": "Person hinzufügen",
         "Rechercher": "Suche Nach",
         "Mes équipements Fitbit": "Meine Fitbit Geräte",
+        "Sauvegarder": "Speichern",
+        "Supprimer": "Löschen",
+        "Equipement": "Gerät",
+        "Commandes": "Befehle",
         "Général": "Allgemein",
         "Nom de la personne": "Name der Person",
         "Objet parent": "Eltern-Objekt",
         "Aucun": "Ohne",
         "Activer": "aktivieren",
         "Visible": "Sichtbar",
-        "Commandes": "Befehle",
+        "URL de retour": "URL zurück",
+        "Client ID": "Kunden ID",
+        "Secret key": "Geheimer Schlüssel",
+        "URL de subscription": "URL de subscription",
+        "Subscription id": "Subscription id",
+        "Subscription code": "Subscription code",
+        "Lier": "Link",
+        "Lier à un utilisateur": "Benutzer Link",
         "Nom": "Name",
         "Type": "Typ",
         "Action": "Aktion",
-        "Supprimer": "Löschen",
-        "Sauvegarder": "Speichern",
-        "Client ID": "Kunden ID",
-        "Secret key": "Geheimer Schlüssel"
+        "Configuration avancée": "Erweiterte Konfiguration"
     },
     "plugins/fitbit/desktop/js/fitbit.js": {
         "Historiser": "Chronik",
         "Afficher": "anzeigen",
         "Tester": "Test"
-    },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Poids": "Gewicht",
-        "Masse grasse": "Fettmasse",
-        "IMC": "IMC",
-        "Rafraîhir": "Aktualisieren",
-        "Taille": "Größe",
-        "Pas": "nicht",
-        "Calorie": "Kalorie",
-        "Minute active": "aktive Minute",
-        "Distance": "Entfernung",
-        "Elevation": "Höhe",
-        "Nombre de reveils": "Häufigkeit des Erwachens",
-        "Durée réveils": "Alarmdauer",
-        "Durée de sommeil": "Schlafdauer",
-        "Sommeil agité": "Unruhiger Schlaf",
-        "Temps pour s'endormir": "Zeit um einzuschlafen "
     }
 }
