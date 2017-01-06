@@ -28,7 +28,7 @@ Il est recommandé lors du lien entre Jeedom et Fitbit d'etre connecté à Jeedo
 Pour lieer votre compte Fitbit à Jeedom il vous tout d'abord vous creez un compte developpeur chez Fitbit en allant https://dev.fitbit.com/fr[ici], ensuite il vous faut vous connecter puis faire : "Register an app". Il faut ensuite remplir les informations :
 
 * Application Name : Jeedom
-* Description : Jeedom
+* Beschreibung : Jeedom
 * Application Website : https://jeedom.com
 * Organization : jeedom
 * Organization Website : https://jeedom.com
