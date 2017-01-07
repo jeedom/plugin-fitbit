@@ -5,6 +5,6 @@ Plugin für den Zugriff auf Informationen von Fitbit-Geräte (Anzahl der Schritt
 == Konfiguration
 include::configuration.asciidoc[]
 
-== Changelog
+== Änderungsprotokoll
 '''
 include::changelog.asciidoc[]

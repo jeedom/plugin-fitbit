@@ -69,7 +69,7 @@ Pour la subscription il faut en
 
 === Konfiguration
 
-Voici les détails de la configuration du plugin : 
+Hier sind die Details der Plugins Konfiguration : 
 
 image::../images/fitbit-6.JPG[]
 
