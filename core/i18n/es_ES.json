@@ -1,6 +1,6 @@
 {
     "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin pour Fitbit"
+        "Plugin pour Fitbit": "Plugin Fitbit"
     },
     "plugins/fitbit/core/class/fitbit.class.php": {
         "Erreur sur ": "Error en"
@@ -21,10 +21,10 @@
         "Visible": "Visible",
         "URL de retour": "URL de retorno",
         "Client ID": "Cliente ID",
-        "Secret key": "Secret key",
-        "URL de subscription": "URL de subscription",
-        "Subscription id": "Subscription id",
-        "Subscription code": "Subscription code",
+        "Secret key": "Palabra clave",
+        "URL de subscription": "URL Pública",
+        "Subscription id": "ID de suscripción",
+        "Subscription code": "Código de suscripción",
         "Lier": "Enlace",
         "Lier à un utilisateur": "Enlace a un usuario",
         "Nom": "Nombre",
