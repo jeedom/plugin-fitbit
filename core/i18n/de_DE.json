@@ -1,6 +1,6 @@
 {
     "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin pour Fitbit"
+        "Plugin pour Fitbit": "Plugin für Fitbit"
     },
     "plugins/fitbit/core/class/fitbit.class.php": {
         "Erreur sur ": "Fehler auf "
@@ -22,9 +22,9 @@
         "URL de retour": "URL zurück",
         "Client ID": "Kunden ID",
         "Secret key": "Geheimer Schlüssel",
-        "URL de subscription": "URL de subscription",
-        "Subscription id": "Subscription id",
-        "Subscription code": "Subscription code",
+        "URL de subscription": "Abonnement URL",
+        "Subscription id": "Abonnement ID",
+        "Subscription code": "Abonnement code",
         "Lier": "Link",
         "Lier à un utilisateur": "Benutzer Link",
         "Nom": "Name",
