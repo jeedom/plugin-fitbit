@@ -5,5 +5,7 @@
 	"licence" : "AGPL",
 	"author" : "Loïc",
 	"require" : "2.4",
-	"category" : "health"
+        "category" : "health",
+        "changelog" : "https://jeedom.github.io/plugin-fitbit/#language#/changelog",
+        "documentation" : "https://jeedom.github.io/plugin-fitbit/#language#/"
 }
