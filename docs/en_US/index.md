@@ -148,7 +148,7 @@ Voila le widget fitbit :
 
 ![fitbit 7](../images/fitbit-7.JPG)
 
-Changelog 
+Changelog
 =========
 
 -   Passage sur la nouvelle API fitbit

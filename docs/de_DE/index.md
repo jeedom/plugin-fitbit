@@ -4,7 +4,7 @@ Plugin permettant d’accéder aux informations de ses appareils Fitbit
 Configuration 
 =============
 
-Une fois le plugin Fitbit installé, allez sur :
+Sobald Sie das Fitbit-Plugin installiert haben, gehen Sie zu :
 
 ![fitbit 1](../images/fitbit-1.JPG)
 
@@ -21,11 +21,11 @@ Cliquez sur ajouter une personne pour ajouter quelqu’un :
 
 ![fitbit 2](../images/fitbit-2.JPG)
 
-Donnez un nom à cette personne (cet équipement) et validez :
+Geben Sie einen Namen für diese Person ein (dieses Gerät) und bestätigen sie :
 
 ![fitbit 3](../images/fitbit-3.JPG)
 
-Vous devez ensuite avoir cette page :
+Sie haben dann diese Seite :
 
 ![fitbit 4](../images/fitbit-4.JPG)
 
@@ -116,7 +116,7 @@ Pour la subscription il faut en
 Configuration 
 -------------
 
-Voici les détails de la configuration du plugin :
+Hier sind die Details der Plugins Konfiguration :
 
 ![fitbit 6](../images/fitbit-6.JPG)
 
@@ -144,7 +144,7 @@ Voici les détails de la configuration du plugin :
 Widget 
 ------
 
-Voila le widget fitbit :
+Hier ist das Fitbit-Widget :
 
 ![fitbit 7](../images/fitbit-7.JPG)
 
