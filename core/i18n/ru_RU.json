@@ -1,6 +1,6 @@
 {
     "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin pour Fitbit"
+        "Plugin pour Fitbit": "Плагин для Fitbit"
     },
     "plugins/fitbit/core/class/fitbit.class.php": {
         "Erreur sur ": "Ошибка"
@@ -20,11 +20,11 @@
         "Activer": "Активировать",
         "Visible": "Видимый",
         "URL de retour": "URL возвращения",
-        "Client ID": "Client ID",
-        "Secret key": "Secret key",
-        "URL de subscription": "URL de subscription",
-        "Subscription id": "Subscription id",
-        "Subscription code": "Subscription code",
+        "Client ID": "Идентификатор клиента",
+        "Secret key": "секретный ключ",
+        "URL de subscription": "URL подписки",
+        "Subscription id": "идентификатор подписки",
+        "Subscription code": "подписной индекс",
         "Lier": "ссылка",
         "Lier à un utilisateur": "Ссылка на пользователя",
         "Nom": "Имя",

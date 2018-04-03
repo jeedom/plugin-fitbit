@@ -1,0 +1,40 @@
+{
+    "plugins/fitbit/plugin_info/info.json": {
+        "Plugin pour Fitbit": "Fitbit için eklenti"
+    },
+    "plugins/fitbit/core/class/fitbit.class.php": {
+        "Erreur sur ": "Hata"
+    },
+    "plugins/fitbit/desktop/php/fitbit.php": {
+        "Ajouter une personne": "Kişi ekleyin",
+        "Rechercher": "Arayın",
+        "Mes équipements Fitbit": "Fitbit cihazlarım",
+        "Sauvegarder": "Kaydet",
+        "Supprimer": "Sil",
+        "Equipement": "Cihaz",
+        "Commandes": "Komutalar",
+        "Général": "Genel",
+        "Nom de la personne": "Kişinin ismi",
+        "Objet parent": "Üst nesne",
+        "Aucun": "Hiçbir",
+        "Activer": "Etkinleştirmek",
+        "Visible": "Görülebilir",
+        "URL de retour": "Dönüş URL",
+        "Client ID": "Muşteri ID",
+        "Secret key": "Gizli şifre",
+        "URL de subscription": "Yazilma URL",
+        "Subscription id": "Yazılma id",
+        "Subscription code": "Yazılma kodu",
+        "Lier": "Bağlayın",
+        "Lier à un utilisateur": "Kullanıcıya bağlayın",
+        "Nom": "İsim",
+        "Type": "Ceşit",
+        "Action": "Etki",
+        "Configuration avancée": "Gelişmiş ayarlar"
+    },
+    "plugins/fitbit/desktop/js/fitbit.js": {
+        "Historiser": "Tarihe göre sırala",
+        "Afficher": "Göster",
+        "Tester": "Dene"
+    }
+}

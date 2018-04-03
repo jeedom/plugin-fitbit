@@ -1,0 +1,40 @@
+{
+    "plugins/fitbit/plugin_info/info.json": {
+        "Plugin pour Fitbit": "Plugin para o Fitbit"
+    },
+    "plugins/fitbit/core/class/fitbit.class.php": {
+        "Erreur sur ": "erro"
+    },
+    "plugins/fitbit/desktop/php/fitbit.php": {
+        "Ajouter une personne": "Adicionar Pessoa",
+        "Rechercher": "pesquisa",
+        "Mes équipements Fitbit": "Meu equipamento Fitbit",
+        "Sauvegarder": "salvar",
+        "Supprimer": "remover",
+        "Equipement": "equipamento",
+        "Commandes": "comandos",
+        "Général": "geral",
+        "Nom de la personne": "Nome da pessoa",
+        "Objet parent": "objeto pai",
+        "Aucun": "não",
+        "Activer": "ativar",
+        "Visible": "visível",
+        "URL de retour": "URL de retorno",
+        "Client ID": "ID do cliente",
+        "Secret key": "chave secreta",
+        "URL de subscription": "assinatura URL",
+        "Subscription id": "ID de subscrição",
+        "Subscription code": "código de subscrição",
+        "Lier": "link",
+        "Lier à un utilisateur": "Ligando para um usuário",
+        "Nom": "nome",
+        "Type": "tipo",
+        "Action": "ação",
+        "Configuration avancée": "configuração avançada"
+    },
+    "plugins/fitbit/desktop/js/fitbit.js": {
+        "Historiser": "historicizar",
+        "Afficher": "display",
+        "Tester": "teste"
+    }
+}

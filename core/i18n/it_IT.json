@@ -1,32 +1,32 @@
 {
     "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin pour Fitbit"
+        "Plugin pour Fitbit": "Plugin per Fitbit"
     },
     "plugins/fitbit/core/class/fitbit.class.php": {
         "Erreur sur ": "Errore su"
     },
     "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Ajouter une personne",
+        "Ajouter une personne": "Aggiungi persona",
         "Rechercher": "Cerca",
-        "Mes équipements Fitbit": "Mes équipements Fitbit",
+        "Mes équipements Fitbit": "La mia attrezzatura Fitbit",
         "Sauvegarder": "Salva",
         "Supprimer": "Elimina",
         "Equipement": "Dispositivo",
         "Commandes": "Comandi",
         "Général": "Generale",
-        "Nom de la personne": "Nom de la personne",
+        "Nom de la personne": "Nome della persona",
         "Objet parent": "Oggetto padre",
         "Aucun": "Nessuno",
         "Activer": "Attiva",
         "Visible": "Visibile",
-        "URL de retour": "URL de retour",
+        "URL de retour": "URL di ritorno",
         "Client ID": "ID Client",
-        "Secret key": "Secret key",
-        "URL de subscription": "URL de subscription",
-        "Subscription id": "Subscription id",
-        "Subscription code": "Subscription code",
-        "Lier": "Lier",
-        "Lier à un utilisateur": "Lier à un utilisateur",
+        "Secret key": "chiave segreta",
+        "URL de subscription": "abbonamento URL",
+        "Subscription id": "id abbonamento",
+        "Subscription code": "codice di abbonamento",
+        "Lier": "Collegamento",
+        "Lier à un utilisateur": "Collegamento a un utente",
         "Nom": "Nome",
         "Type": "Tipo",
         "Action": "Azione",

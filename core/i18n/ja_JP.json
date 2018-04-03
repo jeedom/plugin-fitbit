@@ -1,0 +1,40 @@
+{
+    "plugins/fitbit/plugin_info/info.json": {
+        "Plugin pour Fitbit": "Fitbitのためのプラグイン"
+    },
+    "plugins/fitbit/core/class/fitbit.class.php": {
+        "Erreur sur ": "エラー"
+    },
+    "plugins/fitbit/desktop/php/fitbit.php": {
+        "Ajouter une personne": "人を追加",
+        "Rechercher": "検索する",
+        "Mes équipements Fitbit": "マイFitbit機器",
+        "Sauvegarder": "セーブ",
+        "Supprimer": "取り除きます",
+        "Equipement": "設備",
+        "Commandes": "コマンド",
+        "Général": "コモン",
+        "Nom de la personne": "人物の名前",
+        "Objet parent": "親オブジェクト",
+        "Aucun": "何でもありません",
+        "Activer": "アクティブにし",
+        "Visible": "目に見えます",
+        "URL de retour": "リターンURL",
+        "Client ID": "顧客ID",
+        "Secret key": "秘密鍵",
+        "URL de subscription": "URLサブスクリプション",
+        "Subscription id": "サブスクリプションID",
+        "Subscription code": "サブスクリプションコード",
+        "Lier": "リンク",
+        "Lier à un utilisateur": "ユーザーへのリンク",
+        "Nom": "表題",
+        "Type": "タイプ",
+        "Action": "アクション",
+        "Configuration avancée": "高度な設定"
+    },
+    "plugins/fitbit/desktop/js/fitbit.js": {
+        "Historiser": "historicize",
+        "Afficher": "ディスプレイ",
+        "Tester": "テスト"
+    }
+}

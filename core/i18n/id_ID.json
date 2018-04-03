@@ -1,6 +1,6 @@
 {
     "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin pour Fitbit"
+        "Plugin pour Fitbit": "Plugin untuk Fitbit"
     },
     "plugins/fitbit/core/class/fitbit.class.php": {
         "Erreur sur ": "Error"
@@ -19,18 +19,18 @@
         "Aucun": "Tak ada",
         "Activer": "Mengaktifkan",
         "Visible": "Terlihat",
-        "URL de retour": "URL de retour",
-        "Client ID": "Client ID",
-        "Secret key": "Secret key",
-        "URL de subscription": "URL de subscription",
-        "Subscription id": "Subscription id",
-        "Subscription code": "Subscription code",
-        "Lier": "Lier",
-        "Lier à un utilisateur": "Lier à un utilisateur",
+        "URL de retour": "URL Kembali",
+        "Client ID": "ID pelanggan",
+        "Secret key": "kunci rahasia",
+        "URL de subscription": "berlangganan URL",
+        "Subscription id": "id berlangganan",
+        "Subscription code": "kode langganan",
+        "Lier": "link",
+        "Lier à un utilisateur": "Menghubungkan ke pengguna",
         "Nom": "Nama",
         "Type": "Jenis",
         "Action": "Tindakan",
-        "Configuration avancée": "Configuration avancée"
+        "Configuration avancée": "konfigurasi lanjutan"
     },
     "plugins/fitbit/desktop/js/fitbit.js": {
         "Historiser": "Historicize",
