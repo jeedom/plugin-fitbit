@@ -1,9 +1,0 @@
-# 03/04/2018
-
-- Actualización de la documentación
-
-# 01/01/2016
-
--   Passage sur la nouvelle API fitbit
--   Utilisation d’un widget standard
--   Ajout de l’information sur le rythme cardiaque
