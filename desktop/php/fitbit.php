@@ -17,6 +17,11 @@ $eqLogics = eqLogic::byType($plugin->getId());
     <br/>
     <span>{{Ajouter une personne}}</span>
   </div>
+	  
+	  	</div>
+		<legend><i class="fas fa-table"></i> {{Mes équipement Fitbit}}</legend>
+	  <input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
+	 <div class="eqLogicThumbnailContainer">
   <?php
 foreach ($eqLogics as $eqLogic) {
 	$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
