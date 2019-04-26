@@ -147,14 +147,3 @@ Widget
 Voila le widget fitbit :
 
 ![fitbit 7](../images/fitbit-7.JPG)
-
-cambios
-=========
-
--   Passage sur la nouvelle API fitbit
-
--   Utilisation d’un widget standard
-
--   Ajout de l’information sur le rythme cardiaque
-
-

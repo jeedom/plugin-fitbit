@@ -1,7 +1,7 @@
 Plugin permettant d’accéder aux informations de ses appareils Fitbit
 (nombre de pas, calories, distance…​)
 
-Configuration 
+Konfiguration
 =============
 
 Une fois le plugin Fitbit installé, allez sur :
@@ -147,14 +147,3 @@ Widget
 Voila le widget fitbit :
 
 ![fitbit 7](../images/fitbit-7.JPG)
-
-Changelog
-=========
-
--   Passage sur la nouvelle API fitbit
-
--   Utilisation d’un widget standard
-
--   Ajout de l’information sur le rythme cardiaque
-
-

@@ -503,7 +503,7 @@ class fitbit extends eqLogic {
 			$this->checkAndUpdateCmd('sleepDuration', $sleep['minutesAsleep']);
 			$this->checkAndUpdateCmd('restlessDuration', $sleep['restlessDuration']);
 		}
-		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value']) && isset($hearts['activities-heart'][0]['restingHeartRate'])) {
+		if (isset($hearts['activities-heart'][0]) && isset($hearts['activities-heart'][0]['value']) && isset($hearts['activities-heart'][0]['value']['restingHeartRate'])) {
 			$heart = $hearts['activities-heart'][0]['value'];
 			$this->checkAndUpdateCmd('restingHeartRate', $heart['restingHeartRate']);
 			if (isset($heart['heartRateZones']) && count($heart['heartRateZones']) == 4 && isset($heart['heartRateZones'][0]['minutes'])) {
@@ -548,6 +548,10 @@ class fitbitProvider extends AbstractProvider {
 	use BearerAuthorizationTrait;
 	const BASE_FITBIT_URL = 'https://www.fitbit.com';
 	const BASE_FITBIT_API_URL = 'https://api.fitbit.com';
+	
+	protected function getDefaultHeaders(){
+                return ['Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret)];
+        }
 
 	public function getBaseAuthorizationUrl() {
 		return static::BASE_FITBIT_URL . '/oauth2/authorize';
