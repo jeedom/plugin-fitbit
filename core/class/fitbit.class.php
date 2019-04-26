@@ -95,12 +95,12 @@ class fitbit extends eqLogic {
 		$provider = $this->getProvider();
 		try {
 			$request = $provider->getAuthenticatedRequest($_type, fitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(), $options);
-			return $provider->getResponse($request);
+			 return json_decode((string)$provider->getResponse($request)->getBody(), true);
 		} catch (Exception $e) {
 
 		}
 		$request = $provider->getAuthenticatedRequest($_type, fitbitProvider::BASE_FITBIT_API_URL . $_request, $this->getAccessToken(true), $options);
-		return $provider->getResponse($request);
+		 return json_decode((string)$provider->getResponse($request)->getBody(), true);
 	}
 
 	public function subscribe() {
