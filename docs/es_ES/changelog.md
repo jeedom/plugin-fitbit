@@ -1,3 +1,7 @@
+# 26/04/2019
+
+- Correction de bugs (merci @Dany)
+
 # 03/04/2018
 
 - Actualización de la documentación
