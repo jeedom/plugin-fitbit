@@ -1,19 +1,21 @@
 {
-    "plugins\/fitbit\/plugin_info\/info.json": {
-        "Plugin pour Fitbit": "Plugin pour Fitbit"
+    "desktop\/js\/fitbit.js": {
+        "Historiser": "Historiser",
+        "Afficher": "Afficher",
+        "Tester": "Tester"
     },
-    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
-        "Erreur sur ": "Erreur sur "
-    },
-    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
-        "Ajouter une personne": "Ajouter une personne",
-        "Rechercher": "Rechercher",
+    "desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
         "Mes équipements Fitbit": "Mes équipements Fitbit",
+        "Ajouter une personne": "Ajouter une personne",
+        "Mes équipement Fitbit": "Mes équipement Fitbit",
+        "Rechercher": "Rechercher",
+        "Configuration avancée": "Configuration avancée",
+        "Dupliquer": "Dupliquer",
         "Sauvegarder": "Sauvegarder",
         "Supprimer": "Supprimer",
         "Equipement": "Equipement",
         "Commandes": "Commandes",
-        "Général": "Général",
         "Nom de la personne": "Nom de la personne",
         "Objet parent": "Objet parent",
         "Aucun": "Aucun",
@@ -29,12 +31,38 @@
         "Lier à un utilisateur": "Lier à un utilisateur",
         "Nom": "Nom",
         "Type": "Type",
-        "Action": "Action",
-        "Configuration avancée": "Configuration avancée"
+        "Action": "Action"
     },
-    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
-        "Historiser": "Historiser",
-        "Afficher": "Afficher",
-        "Tester": "Tester"
+    "core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "EqLogic non trouvé : ": "EqLogic non trouvé : ",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/fitbit.class.php": {
+        "Erreur sur ": "Erreur sur ",
+        "Poids": "Poids",
+        "Masse grasse": "Masse grasse",
+        "IMC": "IMC",
+        "Taille": "Taille",
+        "Pas": "Pas",
+        "Calorie": "Calorie",
+        "Minute active": "Minute active",
+        "Fréquence cardiaque au repos": "Fréquence cardiaque au repos",
+        "Coeur temps au repos": "Coeur temps au repos",
+        "Coeur temps perte de graisse": "Coeur temps perte de graisse",
+        "Coeur temps cardio": "Coeur temps cardio",
+        "Coeur temps maximum": "Coeur temps maximum",
+        "Coeur calories au repos": "Coeur calories au repos",
+        "Coeur calories perte de graisse": "Coeur calories perte de graisse",
+        "Coeur calories cardio": "Coeur calories cardio",
+        "Coeur calories maximum": "Coeur calories maximum",
+        "Distance": "Distance",
+        "Elevation": "Elevation",
+        "Nombre de reveils": "Nombre de reveils",
+        "Durée réveils": "Durée réveils",
+        "Durée de sommeil": "Durée de sommeil",
+        "Sommeil agité": "Sommeil agité",
+        "Temps pour s\\'endormir": "Temps pour s\\'endormir",
+        "Rafraîhir": "Rafraîhir"
     }
 }

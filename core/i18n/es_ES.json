@@ -1,24 +1,26 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin Fitbit"
+    "desktop\/js\/fitbit.js": {
+        "Historiser": "Guardar historial",
+        "Afficher": "Mostrar",
+        "Tester": "Probar"
     },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "Error en"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Añadir una persona",
-        "Rechercher": "Buscar",
+    "desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Acceso no autorizado",
         "Mes équipements Fitbit": "Mis dispositivos Fitbit",
+        "Ajouter une personne": "Añadir una persona",
+        "Mes équipement Fitbit": "Mi equipo Fitbit",
+        "Rechercher": "Buscar",
+        "Configuration avancée": "Configuración avanzada",
+        "Dupliquer": "duplicado",
         "Sauvegarder": "Guardar",
         "Supprimer": "Borrar",
         "Equipement": "Dispositivos",
         "Commandes": "Comandos",
-        "Général": "General",
         "Nom de la personne": "Apellido de la persona",
         "Objet parent": "Objeto padre",
         "Aucun": "Ningún",
         "Activer": "Activar",
-        "Visible": "Visible",
+        "Visible": "visible",
         "URL de retour": "URL de retorno",
         "Client ID": "Cliente ID",
         "Secret key": "Palabra clave",
@@ -29,10 +31,14 @@
         "Lier à un utilisateur": "Enlace a un usuario",
         "Nom": "Nombre",
         "Type": "Tipo",
-        "Action": "Acción",
-        "Configuration avancée": "Configuración avanzada"
+        "Action": "Acción"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Acceso no autorizado",
+        "EqLogic non trouvé : ": "EqLogic no encontrado:",
+        "Aucune methode correspondante à : ": "Ningún método correspondiente a:"
+    },
+    "core\/class\/fitbit.class.php": {
         "Historiser": "Guardar historial",
         "Afficher": "Mostrar",
         "Tester": "Probar"

@@ -1,19 +1,21 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin untuk Fitbit"
+    "desktop\/js\/fitbit.js": {
+        "Historiser": "Historicize",
+        "Afficher": "Memenitikan",
+        "Tester": "Coba"
     },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "Error"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Tambahan orang",
-        "Rechercher": "Mencari",
+    "desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
         "Mes équipements Fitbit": "Peralatanku Fitbit",
+        "Ajouter une personne": "Tambahan orang",
+        "Mes équipement Fitbit": "Mes équipement Fitbit",
+        "Rechercher": "Mencari",
+        "Configuration avancée": "konfigurasi lanjutan",
+        "Dupliquer": "Dupliquer",
         "Sauvegarder": "Menyimpan",
         "Supprimer": "Menghapus",
         "Equipement": "Peralatan",
         "Commandes": "Perintah",
-        "Général": "Umum",
         "Nom de la personne": "Nama orang",
         "Objet parent": "Objek induk",
         "Aucun": "Tak ada",
@@ -29,10 +31,14 @@
         "Lier à un utilisateur": "Menghubungkan ke pengguna",
         "Nom": "Nama",
         "Type": "Jenis",
-        "Action": "Tindakan",
-        "Configuration avancée": "konfigurasi lanjutan"
+        "Action": "Tindakan"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "EqLogic non trouvé : ": "EqLogic non trouvé : ",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/fitbit.class.php": {
         "Historiser": "Historicize",
         "Afficher": "Memenitikan",
         "Tester": "Coba"

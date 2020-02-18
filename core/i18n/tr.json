@@ -1,19 +1,21 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Fitbit için eklenti"
+    "desktop\/js\/fitbit.js": {
+        "Historiser": "Tarihe göre sırala",
+        "Afficher": "Göster",
+        "Tester": "Dene"
     },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "Hata"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Kişi ekleyin",
-        "Rechercher": "Arayın",
+    "desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
         "Mes équipements Fitbit": "Fitbit cihazlarım",
+        "Ajouter une personne": "Kişi ekleyin",
+        "Mes équipement Fitbit": "Mes équipement Fitbit",
+        "Rechercher": "Arayın",
+        "Configuration avancée": "Gelişmiş ayarlar",
+        "Dupliquer": "Dupliquer",
         "Sauvegarder": "Kaydet",
         "Supprimer": "Sil",
         "Equipement": "Cihaz",
         "Commandes": "Komutalar",
-        "Général": "Genel",
         "Nom de la personne": "Kişinin ismi",
         "Objet parent": "Üst nesne",
         "Aucun": "Hiçbir",
@@ -29,10 +31,14 @@
         "Lier à un utilisateur": "Kullanıcıya bağlayın",
         "Nom": "İsim",
         "Type": "Ceşit",
-        "Action": "Etki",
-        "Configuration avancée": "Gelişmiş ayarlar"
+        "Action": "Etki"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "EqLogic non trouvé : ": "EqLogic non trouvé : ",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/fitbit.class.php": {
         "Historiser": "Tarihe göre sırala",
         "Afficher": "Göster",
         "Tester": "Dene"

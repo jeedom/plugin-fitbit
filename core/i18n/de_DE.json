@@ -1,19 +1,21 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin für Fitbit"
+    "desktop\/js\/fitbit.js": {
+        "Historiser": "Chronik",
+        "Afficher": "anzeigen",
+        "Tester": "Test"
     },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "Fehler auf "
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Person hinzufügen",
-        "Rechercher": "Suche Nach",
+    "desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
         "Mes équipements Fitbit": "Meine Fitbit Geräte",
+        "Ajouter une personne": "Person hinzufügen",
+        "Mes équipement Fitbit": "Meine Fitbit-Ausrüstung",
+        "Rechercher": "Suche Nach",
+        "Configuration avancée": "Erweiterte Konfiguration",
+        "Dupliquer": "Duplikat",
         "Sauvegarder": "Speichern",
         "Supprimer": "Löschen",
         "Equipement": "Gerät",
         "Commandes": "Befehle",
-        "Général": "Allgemein",
         "Nom de la personne": "Name der Person",
         "Objet parent": "Eltern-Objekt",
         "Aucun": "Ohne",
@@ -29,10 +31,14 @@
         "Lier à un utilisateur": "Benutzer Link",
         "Nom": "Name",
         "Type": "Typ",
-        "Action": "Aktion",
-        "Configuration avancée": "Erweiterte Konfiguration"
+        "Action": "Aktion"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
+        "EqLogic non trouvé : ": "EqLogic nicht gefunden:",
+        "Aucune methode correspondante à : ": "Keine Methode entsprechend:"
+    },
+    "core\/class\/fitbit.class.php": {
         "Historiser": "Chronik",
         "Afficher": "anzeigen",
         "Tester": "Test"

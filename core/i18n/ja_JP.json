@@ -1,19 +1,21 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Fitbitのためのプラグイン"
+    "desktop\/js\/fitbit.js": {
+        "Historiser": "historicize",
+        "Afficher": "ディスプレイ",
+        "Tester": "テスト"
     },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "エラー"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "人を追加",
-        "Rechercher": "検索する",
+    "desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
         "Mes équipements Fitbit": "マイFitbit機器",
+        "Ajouter une personne": "人を追加",
+        "Mes équipement Fitbit": "Mes équipement Fitbit",
+        "Rechercher": "検索する",
+        "Configuration avancée": "高度な設定",
+        "Dupliquer": "Dupliquer",
         "Sauvegarder": "セーブ",
         "Supprimer": "取り除きます",
         "Equipement": "設備",
         "Commandes": "コマンド",
-        "Général": "コモン",
         "Nom de la personne": "人物の名前",
         "Objet parent": "親オブジェクト",
         "Aucun": "何でもありません",
@@ -29,10 +31,14 @@
         "Lier à un utilisateur": "ユーザーへのリンク",
         "Nom": "表題",
         "Type": "タイプ",
-        "Action": "アクション",
-        "Configuration avancée": "高度な設定"
+        "Action": "アクション"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "EqLogic non trouvé : ": "EqLogic non trouvé : ",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/fitbit.class.php": {
         "Historiser": "historicize",
         "Afficher": "ディスプレイ",
         "Tester": "テスト"

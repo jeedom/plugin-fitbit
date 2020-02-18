@@ -1,19 +1,21 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin para o Fitbit"
+    "desktop\/js\/fitbit.js": {
+        "Historiser": "historicizar",
+        "Afficher": "display",
+        "Tester": "teste"
     },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "erro"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Adicionar Pessoa",
-        "Rechercher": "pesquisa",
+    "desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
         "Mes équipements Fitbit": "Meu equipamento Fitbit",
+        "Ajouter une personne": "Adicionar Pessoa",
+        "Mes équipement Fitbit": "Mes équipement Fitbit",
+        "Rechercher": "pesquisa",
+        "Configuration avancée": "configuração avançada",
+        "Dupliquer": "Dupliquer",
         "Sauvegarder": "salvar",
         "Supprimer": "remover",
         "Equipement": "equipamento",
         "Commandes": "comandos",
-        "Général": "geral",
         "Nom de la personne": "Nome da pessoa",
         "Objet parent": "objeto pai",
         "Aucun": "não",
@@ -29,10 +31,14 @@
         "Lier à un utilisateur": "Ligando para um usuário",
         "Nom": "nome",
         "Type": "tipo",
-        "Action": "ação",
-        "Configuration avancée": "configuração avançada"
+        "Action": "ação"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "EqLogic non trouvé : ": "EqLogic non trouvé : ",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/fitbit.class.php": {
         "Historiser": "historicizar",
         "Afficher": "display",
         "Tester": "teste"
