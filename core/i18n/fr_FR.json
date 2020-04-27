@@ -1,10 +1,5 @@
 {
-    "desktop\/js\/fitbit.js": {
-        "Historiser": "Historiser",
-        "Afficher": "Afficher",
-        "Tester": "Tester"
-    },
-    "desktop\/php\/fitbit.php": {
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
         "401 - Accès non autorisé": "401 - Accès non autorisé",
         "Mes équipements Fitbit": "Mes équipements Fitbit",
         "Ajouter une personne": "Ajouter une personne",
@@ -33,12 +28,17 @@
         "Type": "Type",
         "Action": "Action"
     },
-    "core\/ajax\/fitbit.ajax.php": {
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
+        "Historiser": "Historiser",
+        "Afficher": "Afficher",
+        "Tester": "Tester"
+    },
+    "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
         "401 - Accès non autorisé": "401 - Accès non autorisé",
         "EqLogic non trouvé : ": "EqLogic non trouvé : ",
         "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
     },
-    "core\/class\/fitbit.class.php": {
+    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
         "Erreur sur ": "Erreur sur ",
         "Poids": "Poids",
         "Masse grasse": "Masse grasse",

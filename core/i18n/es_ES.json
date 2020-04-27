@@ -1,46 +1,68 @@
 {
-    "desktop\/js\/fitbit.js": {
-        "Historiser": "Guardar historial",
-        "Afficher": "Mostrar",
-        "Tester": "Probar"
-    },
-    "desktop\/php\/fitbit.php": {
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
         "401 - Accès non autorisé": "401 - Acceso no autorizado",
-        "Mes équipements Fitbit": "Mis dispositivos Fitbit",
-        "Ajouter une personne": "Añadir una persona",
-        "Mes équipement Fitbit": "Mi equipo Fitbit",
+        "Mes équipements Fitbit": "",
+        "Ajouter une personne": "",
+        "Mes équipement Fitbit": "",
         "Rechercher": "Buscar",
         "Configuration avancée": "Configuración avanzada",
-        "Dupliquer": "duplicado",
+        "Dupliquer": "Duplicar",
         "Sauvegarder": "Guardar",
         "Supprimer": "Borrar",
         "Equipement": "Dispositivos",
         "Commandes": "Comandos",
-        "Nom de la personne": "Apellido de la persona",
+        "Nom de la personne": "",
         "Objet parent": "Objeto padre",
-        "Aucun": "Ningún",
+        "Aucun": "Ninguna",
         "Activer": "Activar",
-        "Visible": "visible",
+        "Visible": "Visible",
         "URL de retour": "URL de retorno",
-        "Client ID": "Cliente ID",
-        "Secret key": "Palabra clave",
-        "URL de subscription": "URL Pública",
-        "Subscription id": "ID de suscripción",
-        "Subscription code": "Código de suscripción",
-        "Lier": "Enlace",
-        "Lier à un utilisateur": "Enlace a un usuario",
+        "Client ID": "ID del cliente",
+        "Secret key": "Clave secreta",
+        "URL de subscription": "",
+        "Subscription id": "",
+        "Subscription code": "",
+        "Lier": "Enlazar",
+        "Lier à un utilisateur": "Enlace al usuario",
         "Nom": "Nombre",
         "Type": "Tipo",
         "Action": "Acción"
     },
-    "core\/ajax\/fitbit.ajax.php": {
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
+        "Historiser": "Guardar historial",
+        "Afficher": "Mostrar",
+        "Tester": "Probar"
+    },
+    "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
         "401 - Accès non autorisé": "401 - Acceso no autorizado",
         "EqLogic non trouvé : ": "EqLogic no encontrado:",
         "Aucune methode correspondante à : ": "Ningún método correspondiente a:"
     },
-    "core\/class\/fitbit.class.php": {
-        "Historiser": "Guardar historial",
-        "Afficher": "Mostrar",
-        "Tester": "Probar"
+    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
+        "Erreur sur ": "Error en",
+        "Poids": "Peso",
+        "Masse grasse": "",
+        "IMC": "",
+        "Taille": "Tamaño",
+        "Pas": "No",
+        "Calorie": "",
+        "Minute active": "",
+        "Fréquence cardiaque au repos": "",
+        "Coeur temps au repos": "",
+        "Coeur temps perte de graisse": "",
+        "Coeur temps cardio": "",
+        "Coeur temps maximum": "",
+        "Coeur calories au repos": "",
+        "Coeur calories perte de graisse": "",
+        "Coeur calories cardio": "",
+        "Coeur calories maximum": "",
+        "Distance": "",
+        "Elevation": "",
+        "Nombre de reveils": "",
+        "Durée réveils": "",
+        "Durée de sommeil": "",
+        "Sommeil agité": "",
+        "Temps pour s\\'endormir": "",
+        "Rafraîhir": ""
     }
 }

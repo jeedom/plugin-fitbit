@@ -1,46 +1,68 @@
 {
-    "desktop\/js\/fitbit.js": {
-        "Historiser": "Tarihe göre sırala",
-        "Afficher": "Göster",
-        "Tester": "Dene"
-    },
-    "desktop\/php\/fitbit.php": {
-        "401 - Accès non autorisé": "401 - Accès non autorisé",
-        "Mes équipements Fitbit": "Fitbit cihazlarım",
-        "Ajouter une personne": "Kişi ekleyin",
-        "Mes équipement Fitbit": "Mes équipement Fitbit",
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Yetkisiz erişim",
+        "Mes équipements Fitbit": "",
+        "Ajouter une personne": "",
+        "Mes équipement Fitbit": "",
         "Rechercher": "Arayın",
         "Configuration avancée": "Gelişmiş ayarlar",
-        "Dupliquer": "Dupliquer",
+        "Dupliquer": "Kopyala",
         "Sauvegarder": "Kaydet",
         "Supprimer": "Sil",
         "Equipement": "Cihaz",
         "Commandes": "Komutalar",
-        "Nom de la personne": "Kişinin ismi",
+        "Nom de la personne": "",
         "Objet parent": "Üst nesne",
         "Aucun": "Hiçbir",
-        "Activer": "Etkinleştirmek",
+        "Activer": "Etkinleştir",
         "Visible": "Görülebilir",
         "URL de retour": "Dönüş URL",
-        "Client ID": "Muşteri ID",
-        "Secret key": "Gizli şifre",
-        "URL de subscription": "Yazilma URL",
-        "Subscription id": "Yazılma id",
-        "Subscription code": "Yazılma kodu",
-        "Lier": "Bağlayın",
-        "Lier à un utilisateur": "Kullanıcıya bağlayın",
+        "Client ID": "",
+        "Secret key": "",
+        "URL de subscription": "",
+        "Subscription id": "",
+        "Subscription code": "",
+        "Lier": "",
+        "Lier à un utilisateur": "",
         "Nom": "İsim",
-        "Type": "Ceşit",
-        "Action": "Etki"
+        "Type": "Çeşit",
+        "Action": "Eylem"
     },
-    "core\/ajax\/fitbit.ajax.php": {
-        "401 - Accès non autorisé": "401 - Accès non autorisé",
-        "EqLogic non trouvé : ": "EqLogic non trouvé : ",
-        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
-    },
-    "core\/class\/fitbit.class.php": {
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
         "Historiser": "Tarihe göre sırala",
         "Afficher": "Göster",
-        "Tester": "Dene"
+        "Tester": "Test et"
+    },
+    "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Yetkisiz erişim",
+        "EqLogic non trouvé : ": "",
+        "Aucune methode correspondante à : ": "Aşağıdakilere karşılık gelen bir yöntem yok:"
+    },
+    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
+        "Erreur sur ": "Hata",
+        "Poids": "",
+        "Masse grasse": "",
+        "IMC": "",
+        "Taille": "Boyut",
+        "Pas": "",
+        "Calorie": "",
+        "Minute active": "",
+        "Fréquence cardiaque au repos": "",
+        "Coeur temps au repos": "",
+        "Coeur temps perte de graisse": "",
+        "Coeur temps cardio": "",
+        "Coeur temps maximum": "",
+        "Coeur calories au repos": "",
+        "Coeur calories perte de graisse": "",
+        "Coeur calories cardio": "",
+        "Coeur calories maximum": "",
+        "Distance": "",
+        "Elevation": "",
+        "Nombre de reveils": "",
+        "Durée réveils": "",
+        "Durée de sommeil": "",
+        "Sommeil agité": "",
+        "Temps pour s\\'endormir": "",
+        "Rafraîhir": ""
     }
 }
