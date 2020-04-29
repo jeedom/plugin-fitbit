@@ -4,14 +4,14 @@
 
 # 26.04.2019
 
-- 
+- Fehlerbehebungen (danke @Dany)
 
 # 2018.03.04
 
 - Aktualisieren des Dokuments
 
-# 
+# 01/01/2016
 
--   
--   
--   
+-   Wechseln Sie zur neuen Fitbit-API
+-   Verwenden eines Standard-Widgets
+-   Hinzufügen von Herzfrequenzinformationen
