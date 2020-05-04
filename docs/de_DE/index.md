@@ -55,7 +55,7 @@ dann tu es : "Registrieren Sie eine App". Dann geben Sie die Informationen ein
 
 -   Application Website : <https://jeedom.com>
 
--   Organisation : Jeedom
+-   Organisation : jeedom
 
 -   Organisation Website : <https://jeedom.com>
 
@@ -71,7 +71,7 @@ Sie können auch ein Abonnement hinzufügen, dies ermöglicht Fitbit
 Schieben Sie ein Update direkt in Jeedom (anstatt darauf zu warten
 Jeedom Update Informationen) :
 
--   Standard : Ja
+-   Standard : oui
 
 -   Endpunkt-URL : der von Jeedom gegeben
 

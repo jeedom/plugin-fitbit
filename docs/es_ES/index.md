@@ -55,27 +55,27 @@ entonces haz : "Registrar una aplicación". Luego complete la información
 
 -   Application Website : <https://jeedom.com>
 
--   Organización : Jeedom
+-   Organización : jeedom
 
 -   Organización Website : <https://jeedom.com>
 
--   OAuth 2.0 Puntao de aplicación : Servidor
+-   OAuth 2.0 Tipo de aplicación : Server
 
 -   URL de devolución de llamada : Tienes que poner el que te da la libertad durante el
     creación de equipos Fitbit, tenga cuidado si no
     bueno la conexión no se puede hacer
 
--   Puntao de acceso predeterminado : Leer y escribir
+-   Tipo de acceso predeterminado : Leer y escribir
 
 También puede agregar una suscripción, esto le permite a Fitbit
 enviar una actualización directamente a Jeedom (en lugar de esperar
 Información de actualización de Jeedom) :
 
--   Por defecto : Si
+-   Por defecto : oui
 
--   URL de punto final : el dado por Jeedom
+-   URL de punto final : el dado por jeedom
 
--   Puntao : Cuerpo JSON
+-   Tipo : Cuerpo JSON
 
 -   ID de suscriptor : No poner nada
 
@@ -90,7 +90,7 @@ estos pasos en orden) :
 
 -   En el sitio de Fitbit, inicie la verificación de la suscripción.
 
--   Luego "Enlace a un usuario" el equipo Jeedom, como se muestra a continuación
+-   Luego "Enlace a un usuario" el equipo jeedom, como se muestra a continuación
 
 > **Important**
 >

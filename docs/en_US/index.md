@@ -55,7 +55,7 @@ then do : "Register an app". Then fill in the information
 
 -   Application Website : <https://jeedom.com>
 
--   Organization : Jeedom
+-   Organization : jeedom
 
 -   Organization Website : <https://jeedom.com>
 
@@ -71,9 +71,9 @@ You can also add a subscription, this allows Fitbit to
 push an update directly into Jeedom (instead of waiting for
 Jeedom update information) :
 
--   Default : Yes
+-   Default : oui
 
--   Endpoint URL : the one given by Jeedom
+-   Endpoint URL : the one given by jeedom
 
 -   Type : JSON body
 
