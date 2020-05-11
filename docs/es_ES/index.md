@@ -1,21 +1,14 @@
-Complemento para acceder a información en dispositivos Fitbit
-(número de pasos, calorías, distancia ...)
+# Complemento Fitbit
 
-Configuración 
-=============
+Complemento para acceder a información en dispositivos Fitbit (número de pasos, calorías, distancia, etc.)
+
+# Configuración 
 
 Una vez que el complemento Fitbit esté instalado, ve a :
 
 ![fitbit 1](../images/fitbit-1.JPG)
 
-Creación de equipos y asociación con cuenta Fitbit 
---------------------------------------------------------
-
-> **Punta**
->
-> Como en muchos lugares de Jeedom, coloca el mouse en el extremo izquierdo
-> abre un menú de acceso rápido (puedes
-> de tus perfiles siempre lo dejas visible)
+## Creación de equipos y asociación con cuenta Fitbit 
 
 Haga clic en agregar una persona para agregar a alguien :
 
@@ -31,118 +24,69 @@ Entonces deberías tener esta página :
 
 > **Importante**
 >
-> Lo primero que debe verificar es "URL de retorno". Esto debe ser
-> validado y accesible desde el exterior, de lo contrario no podrá
-> vincula Jeedom a tu cuenta de Fitbit. Si no, pon
-> actualice la configuración de su red en General →
-> Administración → Configuración y luego parte "redes", ver
-> [aquí](https://www.jeedom.fr/doc/documentation/core/es_ES/doc-core-administration.html.html#administration)
+> Lo primero que debe verificar es "URL de retorno". Esto debe ser validado y accesible desde el exterior, de lo contrario no podrá asociar Jeedom con su cuenta de Fitbit. Si este no es el caso, actualice los parámetros de configuración de su red en General → Administración → Configuración y luego en la sección "redes", consulte [aquí](https://www.jeedom.fr/doc/documentation/core/es_ES/doc-core-administration.html.html#administration)
 
 > **Nota**
 >
-> Se recomienda cuando se conecta entre Jeedom y Fitbit para conectarse
-> a Jeedom por la ip externa
+> Cuando se conecta entre Jeedom y Fitbit, se recomienda que se conecte a Jeedom por medio de una IP externa
 
-Para vincular su cuenta de Fitbit a Jeedom it, primero cree
-una cuenta de desarrollador de Fitbit yendo
-[aquí](https://dev.fitbit.com/fr), entonces necesitas iniciar sesión
-entonces haz : "Registrar una aplicación". Luego complete la información
-:
+Para vincular su cuenta de Fitbit a Jeedom, primero cree una cuenta de desarrollador con Fitbit yendo [aquí](https://dev.fitbit.com/fr), entonces necesita iniciar sesión y luego hacer : "Registrar una aplicación". Luego complete la información :
 
 -   Nombre de la aplicación : Jeedom
-
 -   Descripción : Jeedom
-
 -   Application Website : <https://jeedom.com>
-
 -   Organización : jeedom
-
 -   Organización Website : <https://jeedom.com>
-
 -   OAuth 2.0 Tipo de aplicación : Server
-
--   URL de devolución de llamada : Tienes que poner el que te da la libertad durante el
-    creación de equipos Fitbit, tenga cuidado si no
-    bueno la conexión no se puede hacer
-
+-   URL de devolución de llamada : Debes poner el que te da Jeedom al crear un equipo de Fitbit, ten cuidado si no colocas el correcto, la conexión no se podrá hacer
 -   Tipo de acceso predeterminado : Leer y escribir
 
-También puede agregar una suscripción, esto le permite a Fitbit
-enviar una actualización directamente a Jeedom (en lugar de esperar
-Información de actualización de Jeedom) :
+También puede agregar una suscripción, esto le permite a Fitbit enviar una actualización directamente en Jeedom (en lugar de esperar a que Jeedom actualice la información) :
 
 -   Por defecto : oui
-
 -   URL de punto final : el dado por jeedom
-
 -   Tipo : Cuerpo JSON
-
 -   ID de suscriptor : No poner nada
 
-Si tiene una suscripción debe (tenga cuidado de hacer todo
-estos pasos en orden) :
+Si tiene una suscripción, debe hacerlo (tenga cuidado de hacer todos estos pasos en orden) :
 
 -   Pon el número de suscripción en el equipo de Fitbit en Jeedom
-
 -   Pon el código de suscripción en el equipo de Fitbit en Jeedom
-
 -   Equipo de respaldo
-
 -   En el sitio de Fitbit, inicie la verificación de la suscripción
-
 -   Luego "Enlace a un usuario" el equipo jeedom, como se muestra a continuación
 
 > **Importante**
 >
-> Actualmente Fitbit admite mal https, así que si estás en https
-> hay pocas posibilidades de que funcione
+> Actualmente, Fitbit no es compatible con https, así que si estás en https hay pocas posibilidades de que funcione
 
-Haga clic en "Vincular a usuario" para vincular este dispositivo a su
-Cuenta Fitbit :
+Haz clic en "Vincular a usuario" para vincular este dispositivo a tu cuenta de Fitbit :
 
 ![fitbit 5](../images/fitbit-5.JPG)
 
-Ingrese las credenciales de su cuenta de Fitbit, luego valide
-solicitud de autorización :
+Ingrese las credenciales de su cuenta de Fitbit, luego valide la solicitud de autorización :
 
-Si obtiene una página en blanco o un error, su
-la configuración de red no es buena, de lo contrario debe recurrir a
-esta página :
+Si obtiene una página en blanco o un error, significa que la configuración de su red no es buena, de lo contrario, debe volver a esta página :
 
 ![fitbit 6](../images/fitbit-6.JPG)
 
-Para la suscripción que necesitas
-
-Configuración 
--------------
+## Configuración 
 
 Aquí están los detalles de la configuración del complemento :
 
 ![fitbit 6](../images/fitbit-6.JPG)
 
 -   Nombre de la persona : nombre del equipo Fitbit
-
 -   Objeto padre : nombre del objeto al que se adjunta el equipo
-
--   Activar / Visible : activa el equipo (no olvides
-    hazlo de lo contrario no tendrás datos) y hazlo visible
-    en el tablero
-
+-   Activar / Visible : permite activar el equipo (no te olvides de hacerlo, de lo contrario no tendrás datos) y hacerlo visible en el tablero
 -   Para cada orden :
-
     -   Guardar historial : permite registrar el comando
-
     -   Mostrar : permite hacerlo visible o no en el tablero
-
-    -   Avanzado (ruedas con muescas pequeñas) : muestra el
-        configuración de control avanzada
-
+    -   Avanzado (ruedas con muescas pequeñas) : muestra la configuración avanzada del comando
     -   Probar : permite probar el comando para ver su valor
-
     -   Eliminar (botón "-") : para eliminar el pedido
 
-Reproductor 
-------
+## Reproductor 
 
 Aquí está el widget de Fitbit :
 
