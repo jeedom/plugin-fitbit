@@ -11,7 +11,7 @@ Depois que o plug-in Fitbit estiver instalado, vá para :
 Criação e associação de equipamentos com a conta Fitbit 
 --------------------------------------------------------
 
-> **Tip**
+> **Dica**
 >
 > Como em muitos lugares em Jeedom, coloque o mouse na extremidade esquerda
 > abre um menu de acesso rápido (você pode
@@ -29,16 +29,16 @@ Você deve ter esta página :
 
 ![fitbit 4](../images/fitbit-4.JPG)
 
-> **Important**
+> **IMPORTANTE**
 >
 > A primeira coisa a verificar é "URL de retorno". Isso deve ser
 > validado e acessível a partir do exterior, caso contrário você não poderá
 > vincule o Jeedom à sua conta Fitbit. Caso contrário, coloque
 > atualize as configurações da rede em Geral →
 > Administração → Configuração e parte "redes", consulte
-> [aqui](https://www.jeedom.fr/doc/documentation/core/fr_FR/doc-core-administration.html.html#administration)
+> [aqui](https://www.jeedom.fr/doc/documentation/core/pt_PT/doc-core-administration.html.html#administration)
 
-> **Note**
+> **NOTA**
 >
 > Recomenda-se ao conectar entre Jeedom e Fitbit a ser conectado
 > para Jeedom pelo ip externo
@@ -61,7 +61,7 @@ então faça : "Registrar um aplicativo". Em seguida, preencha as informações
 
 -   OAuth 2.0 Tipo de Aplicação : Server
 
--   URL de retorno de chamada : Você tem que colocar o que Jeedom lhe dá durante o
+-   URL de retorno de chamada : Você tem que colocar o que jeedom lhe dá durante o
     criação de equipamento Fitbit, tenha cuidado se não
     bom a conexão não pode ser feita
 
@@ -92,7 +92,7 @@ estas etapas em ordem) :
 
 -   Em seguida, "Vincule a um usuário" o equipamento jeedom, como abaixo
 
-> **Important**
+> **IMPORTANTE**
 >
 > No momento, o Fitbit suporta https muito mal; portanto, se você estiver em https
 > há pouca chance de que funcione

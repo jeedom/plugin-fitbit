@@ -35,10 +35,10 @@ You should then have this page :
 > validated and accessible from the outside otherwise you will not be able to
 > link Jeedom to your Fitbit account. If not, put
 > update your network configuration settings in General →
-> Administration → Setup then "networks" part, see
-> [here](https://www.jeedom.fr/doc/documentation/core/fr_FR/doc-core-administration.html.html#administration)
+> Administration → Configuration then "networks" part, see
+> [here](https://www.jeedom.fr/doc/documentation/core/en_US/doc-core-administration.html.html#administration)
 
-> **Note**
+> **NOTE**
 >
 > It is recommended when connecting between Jeedom and Fitbit to be connected
 > to Jeedom by the external ip
@@ -61,7 +61,7 @@ then do : "Register an app". Then fill in the information
 
 -   OAuth 2.0 Application Type : Server
 
--   Callback URL : You have to put the one that Jeedom gives you during the
+-   Callback URL : You have to put the one that jeedom gives you during the
     creation of Fitbit equipment, be careful if you do not
     good the connection cannot be made
 
@@ -90,7 +90,7 @@ these steps in order) :
 
 -   On the Fitbit site launch the verification of the subscription
 
--   Then "Link to a user" the Jeedom equipment, as below
+-   Then "Link to a user" the jeedom equipment, as below
 
 > **Important**
 >

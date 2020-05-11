@@ -11,7 +11,7 @@ Una vez que el complemento Fitbit esté instalado, ve a :
 Creación de equipos y asociación con cuenta Fitbit 
 --------------------------------------------------------
 
-> **Tip**
+> **Punta**
 >
 > Como en muchos lugares de Jeedom, coloca el mouse en el extremo izquierdo
 > abre un menú de acceso rápido (puedes
@@ -29,16 +29,16 @@ Entonces deberías tener esta página :
 
 ![fitbit 4](../images/fitbit-4.JPG)
 
-> **Important**
+> **Importante**
 >
 > Lo primero que debe verificar es "URL de retorno". Esto debe ser
 > validado y accesible desde el exterior, de lo contrario no podrá
 > vincula Jeedom a tu cuenta de Fitbit. Si no, pon
 > actualice la configuración de su red en General →
 > Administración → Configuración y luego parte "redes", ver
-> [aquí](https://www.jeedom.fr/doc/documentation/core/fr_FR/doc-core-administration.html.html#administration)
+> [aquí](https://www.jeedom.fr/doc/documentation/core/es_ES/doc-core-administration.html.html#administration)
 
-> **Note**
+> **Nota**
 >
 > Se recomienda cuando se conecta entre Jeedom y Fitbit para conectarse
 > a Jeedom por la ip externa
@@ -88,11 +88,11 @@ estos pasos en orden) :
 
 -   Equipo de respaldo
 
--   En el sitio de Fitbit, inicie la verificación de la suscripción.
+-   En el sitio de Fitbit, inicie la verificación de la suscripción
 
 -   Luego "Enlace a un usuario" el equipo jeedom, como se muestra a continuación
 
-> **Important**
+> **Importante**
 >
 > Actualmente Fitbit admite mal https, así que si estás en https
 > hay pocas posibilidades de que funcione

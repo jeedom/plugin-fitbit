@@ -11,7 +11,7 @@ Sobald das Fitbit-Plugin installiert ist, gehen Sie zu :
 Geräteerstellung und Zuordnung zum Fitbit-Konto 
 --------------------------------------------------------
 
-> **Tip**
+> **Spitze**
 >
 > Setzen Sie die Maus wie an vielen Stellen auf Jeedom ganz links
 > ruft ein Schnellzugriffsmenü auf (Sie können
@@ -29,16 +29,16 @@ Sie sollten dann diese Seite haben :
 
 ![fitbit 4](../images/fitbit-4.JPG)
 
-> **Important**
+> **Wichtig**
 >
 > Das erste, was überprüft werden muss, ist "URL zurückgeben"". Das muss sein
 > validiert und von außen zugänglich, sonst können Sie nicht
 > Verknüpfe Jeedom mit deinem Fitbit-Konto. Wenn nicht, setzen Sie
 > Aktualisieren Sie Ihre Netzwerkkonfigurationseinstellungen unter Allgemein →
 > Administration → Konfiguration dann Teil "Netzwerke", siehe
-> [hier](https://www.jeedom.fr/doc/documentation/core/fr_FR/doc-core-administration.html.html#administration)
+> [hier](https://www.jeedom.fr/doc/documentation/core/de_DE/doc-core-administration.html.html#administration)
 
-> **Note**
+> **Notiz**
 >
 > Es wird empfohlen, zwischen Jeedom und Fitbit eine Verbindung herzustellen
 > zu Jeedom durch die externe IP
@@ -73,7 +73,7 @@ Jeedom Update Informationen) :
 
 -   Standard : oui
 
--   Endpunkt-URL : der von Jeedom gegeben
+-   Endpunkt-URL : der von jeedom gegeben
 
 -   Typ : JSON-Körper
 
@@ -92,7 +92,7 @@ diese Schritte in der Reihenfolge) :
 
 -   Dann "Link zu einem Benutzer" der Jeedom-Ausrüstung, wie unten
 
-> **Important**
+> **Wichtig**
 >
 > Derzeit unterstützt Fitbit https schlecht, wenn Sie sich also in https befinden
 > Es gibt kaum eine Chance, dass es funktioniert
