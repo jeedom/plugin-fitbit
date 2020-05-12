@@ -1,40 +1,68 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin für Fitbit"
-    },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "Fehler auf "
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
+        "Mes équipements Fitbit": "Meine Fitbit-Ausrüstung",
         "Ajouter une personne": "Person hinzufügen",
-        "Rechercher": "Suche Nach",
-        "Mes équipements Fitbit": "Meine Fitbit Geräte",
+        "Mes équipement Fitbit": "Meine Fitbit-Ausrüstung",
+        "Rechercher": "Suchen nach",
+        "Configuration avancée": "Erweiterte Konfiguration",
+        "Dupliquer": "Duplikat",
         "Sauvegarder": "Speichern",
         "Supprimer": "Löschen",
         "Equipement": "Gerät",
         "Commandes": "Befehle",
-        "Général": "Allgemein",
         "Nom de la personne": "Name der Person",
-        "Objet parent": "Eltern-Objekt",
+        "Objet parent": "Übergeordnetes Objekt",
         "Aucun": "Ohne",
-        "Activer": "aktivieren",
+        "Activer": "Aktivieren",
         "Visible": "Sichtbar",
-        "URL de retour": "URL zurück",
-        "Client ID": "Kunden ID",
-        "Secret key": "Geheimer Schlüssel",
-        "URL de subscription": "Abonnement URL",
-        "Subscription id": "Abonnement ID",
-        "Subscription code": "Abonnement code",
-        "Lier": "Link",
-        "Lier à un utilisateur": "Benutzer Link",
+        "URL de retour": "URL zurückgeben",
+        "Client ID": "Kunden-ID",
+        "Secret key": "Geheimschlüssel",
+        "URL de subscription": "Abonnement-URL",
+        "Subscription id": "Abonnement-ID",
+        "Subscription code": "Abonnementcode",
+        "Lier": "Binden",
+        "Lier à un utilisateur": "Link zum Benutzer",
         "Nom": "Name",
         "Type": "Typ",
-        "Action": "Aktion",
-        "Configuration avancée": "Erweiterte Konfiguration"
+        "Action": "Aktion"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
         "Historiser": "Chronik",
-        "Afficher": "anzeigen",
+        "Afficher": "Anzeige",
         "Tester": "Test"
+    },
+    "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
+        "EqLogic non trouvé : ": "EqLogic nicht gefunden:",
+        "Aucune methode correspondante à : ": "Keine Methode entsprechend:"
+    },
+    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
+        "Erreur sur ": "Fehler ein",
+        "Poids": "Gewicht",
+        "Masse grasse": "Fettmasse",
+        "IMC": "BMI",
+        "Taille": "Größe",
+        "Pas": "Nicht",
+        "Calorie": "Kalorie",
+        "Minute active": "Aktive Minute",
+        "Fréquence cardiaque au repos": "Ruheherzfrequenz",
+        "Coeur temps au repos": "Herzzeit in Ruhe",
+        "Coeur temps perte de graisse": "Zeit zum Verlust des Herzfetts",
+        "Coeur temps cardio": "Herzzeit Cardio",
+        "Coeur temps maximum": "Herz maximale Zeit",
+        "Coeur calories au repos": "Kalorienherz in Ruhe",
+        "Coeur calories perte de graisse": "Herzkalorien Fettabbau",
+        "Coeur calories cardio": "Herz Kalorien Cardio",
+        "Coeur calories maximum": "Herz maximale Kalorien",
+        "Distance": "Entfernung",
+        "Elevation": "Höhe",
+        "Nombre de reveils": "Anzahl der Wecker",
+        "Durée réveils": "Weckzeit",
+        "Durée de sommeil": "Schlafdauer",
+        "Sommeil agité": "Unruhiger Schlaf",
+        "Temps pour s\\'endormir": "Zeit einzuschlafen",
+        "Rafraîhir": "Aktualisieren"
     }
 }

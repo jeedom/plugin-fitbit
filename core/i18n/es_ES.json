@@ -1,40 +1,68 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin Fitbit"
-    },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "Error en"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Añadir una persona",
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Acceso no autorizado",
+        "Mes équipements Fitbit": "Mi equipo Fitbit",
+        "Ajouter une personne": "Añadir persona",
+        "Mes équipement Fitbit": "Mi equipo Fitbit",
         "Rechercher": "Buscar",
-        "Mes équipements Fitbit": "Mis dispositivos Fitbit",
+        "Configuration avancée": "Configuración avanzada",
+        "Dupliquer": "Duplicar",
         "Sauvegarder": "Guardar",
         "Supprimer": "Borrar",
         "Equipement": "Dispositivos",
         "Commandes": "Comandos",
-        "Général": "General",
-        "Nom de la personne": "Apellido de la persona",
+        "Nom de la personne": "Nombre de la persona",
         "Objet parent": "Objeto padre",
-        "Aucun": "Ningún",
+        "Aucun": "Ninguna",
         "Activer": "Activar",
         "Visible": "Visible",
         "URL de retour": "URL de retorno",
-        "Client ID": "Cliente ID",
-        "Secret key": "Palabra clave",
-        "URL de subscription": "URL Pública",
+        "Client ID": "ID del cliente",
+        "Secret key": "Clave secreta",
+        "URL de subscription": "URL de suscripción",
         "Subscription id": "ID de suscripción",
         "Subscription code": "Código de suscripción",
-        "Lier": "Enlace",
-        "Lier à un utilisateur": "Enlace a un usuario",
+        "Lier": "Enlazar",
+        "Lier à un utilisateur": "Enlace al usuario",
         "Nom": "Nombre",
         "Type": "Tipo",
-        "Action": "Acción",
-        "Configuration avancée": "Configuración avanzada"
+        "Action": "Acción"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
         "Historiser": "Guardar historial",
         "Afficher": "Mostrar",
         "Tester": "Probar"
+    },
+    "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Acceso no autorizado",
+        "EqLogic non trouvé : ": "EqLogic no encontrado:",
+        "Aucune methode correspondante à : ": "Ningún método correspondiente a:"
+    },
+    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
+        "Erreur sur ": "Error en",
+        "Poids": "Peso",
+        "Masse grasse": "Masa grasa",
+        "IMC": "IMC",
+        "Taille": "Tamaño",
+        "Pas": "No",
+        "Calorie": "Calorías",
+        "Minute active": "Minuto activo",
+        "Fréquence cardiaque au repos": "Frecuencia cardíaca en reposo",
+        "Coeur temps au repos": "Tiempo cardíaco en reposo",
+        "Coeur temps perte de graisse": "Tiempo de pérdida de grasa del corazón",
+        "Coeur temps cardio": "Cardio del tiempo del corazón",
+        "Coeur temps maximum": "Tiempo máximo del corazón",
+        "Coeur calories au repos": "Corazón calórico en reposo",
+        "Coeur calories perte de graisse": "Calorías del corazón pérdida de grasa",
+        "Coeur calories cardio": "Calorías cardíacas cardio",
+        "Coeur calories maximum": "Calorías máximas del corazón",
+        "Distance": "Distancia",
+        "Elevation": "Elevacion",
+        "Nombre de reveils": "Numero de despertadores",
+        "Durée réveils": "Hora de despertarse",
+        "Durée de sommeil": "Duración del sueño",
+        "Sommeil agité": "Sueño inquieto",
+        "Temps pour s\\'endormir": "Hora de conciliar el sueño",
+        "Rafraîhir": "Actualizar"
     }
 }

@@ -1,40 +1,68 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Fitbitのためのプラグイン"
-    },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "エラー"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "人を追加",
-        "Rechercher": "検索する",
-        "Mes équipements Fitbit": "マイFitbit機器",
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401-不正アクセス",
+        "Mes équipements Fitbit": "",
+        "Ajouter une personne": "",
+        "Mes équipement Fitbit": "",
+        "Rechercher": "検索",
+        "Configuration avancée": "高度な構成",
+        "Dupliquer": "重複",
         "Sauvegarder": "セーブ",
         "Supprimer": "取り除きます",
         "Equipement": "設備",
         "Commandes": "コマンド",
-        "Général": "コモン",
-        "Nom de la personne": "人物の名前",
+        "Nom de la personne": "",
         "Objet parent": "親オブジェクト",
         "Aucun": "何でもありません",
-        "Activer": "アクティブにし",
+        "Activer": "アクティブ",
         "Visible": "目に見えます",
         "URL de retour": "リターンURL",
         "Client ID": "顧客ID",
-        "Secret key": "秘密鍵",
-        "URL de subscription": "URLサブスクリプション",
-        "Subscription id": "サブスクリプションID",
-        "Subscription code": "サブスクリプションコード",
-        "Lier": "リンク",
-        "Lier à un utilisateur": "ユーザーへのリンク",
+        "Secret key": "",
+        "URL de subscription": "",
+        "Subscription id": "",
+        "Subscription code": "",
+        "Lier": "",
+        "Lier à un utilisateur": "",
         "Nom": "表題",
         "Type": "タイプ",
-        "Action": "アクション",
-        "Configuration avancée": "高度な設定"
+        "Action": "アクション"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
-        "Historiser": "historicize",
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
+        "Historiser": "Historicize",
         "Afficher": "ディスプレイ",
         "Tester": "テスト"
+    },
+    "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401-不正アクセス",
+        "EqLogic non trouvé : ": "",
+        "Aucune methode correspondante à : ": "以下に対応するメソッドはありません："
+    },
+    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
+        "Erreur sur ": "エラーオン",
+        "Poids": "",
+        "Masse grasse": "",
+        "IMC": "",
+        "Taille": "サイズ",
+        "Pas": "",
+        "Calorie": "",
+        "Minute active": "",
+        "Fréquence cardiaque au repos": "",
+        "Coeur temps au repos": "",
+        "Coeur temps perte de graisse": "",
+        "Coeur temps cardio": "",
+        "Coeur temps maximum": "",
+        "Coeur calories au repos": "",
+        "Coeur calories perte de graisse": "",
+        "Coeur calories cardio": "",
+        "Coeur calories maximum": "",
+        "Distance": "",
+        "Elevation": "",
+        "Nombre de reveils": "",
+        "Durée réveils": "",
+        "Durée de sommeil": "",
+        "Sommeil agité": "",
+        "Temps pour s\\'endormir": "",
+        "Rafraîhir": ""
     }
 }

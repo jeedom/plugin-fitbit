@@ -1,40 +1,68 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin untuk Fitbit"
-    },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "Error"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Tambahan orang",
-        "Rechercher": "Mencari",
-        "Mes équipements Fitbit": "Peralatanku Fitbit",
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Akses tidak sah",
+        "Mes équipements Fitbit": "",
+        "Ajouter une personne": "",
+        "Mes équipement Fitbit": "",
+        "Rechercher": "Pencarian",
+        "Configuration avancée": "Konfigurasi lanjutan",
+        "Dupliquer": "Duplikat",
         "Sauvegarder": "Menyimpan",
         "Supprimer": "Menghapus",
         "Equipement": "Peralatan",
         "Commandes": "Perintah",
-        "Général": "Umum",
-        "Nom de la personne": "Nama orang",
+        "Nom de la personne": "",
         "Objet parent": "Objek induk",
         "Aucun": "Tak ada",
         "Activer": "Mengaktifkan",
         "Visible": "Terlihat",
         "URL de retour": "URL Kembali",
         "Client ID": "ID pelanggan",
-        "Secret key": "kunci rahasia",
-        "URL de subscription": "berlangganan URL",
-        "Subscription id": "id berlangganan",
-        "Subscription code": "kode langganan",
-        "Lier": "link",
-        "Lier à un utilisateur": "Menghubungkan ke pengguna",
+        "Secret key": "",
+        "URL de subscription": "",
+        "Subscription id": "",
+        "Subscription code": "",
+        "Lier": "",
+        "Lier à un utilisateur": "",
         "Nom": "Nama",
         "Type": "Jenis",
-        "Action": "Tindakan",
-        "Configuration avancée": "konfigurasi lanjutan"
+        "Action": "Tindakan"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
         "Historiser": "Historicize",
         "Afficher": "Memenitikan",
         "Tester": "Coba"
+    },
+    "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Akses tidak sah",
+        "EqLogic non trouvé : ": "",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à :"
+    },
+    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
+        "Erreur sur ": "Error",
+        "Poids": "",
+        "Masse grasse": "",
+        "IMC": "",
+        "Taille": "Size",
+        "Pas": "",
+        "Calorie": "",
+        "Minute active": "",
+        "Fréquence cardiaque au repos": "",
+        "Coeur temps au repos": "",
+        "Coeur temps perte de graisse": "",
+        "Coeur temps cardio": "",
+        "Coeur temps maximum": "",
+        "Coeur calories au repos": "",
+        "Coeur calories perte de graisse": "",
+        "Coeur calories cardio": "",
+        "Coeur calories maximum": "",
+        "Distance": "",
+        "Elevation": "",
+        "Nombre de reveils": "",
+        "Durée réveils": "",
+        "Durée de sommeil": "",
+        "Sommeil agité": "",
+        "Temps pour s\\'endormir": "",
+        "Rafraîhir": ""
     }
 }

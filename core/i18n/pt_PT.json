@@ -1,40 +1,68 @@
 {
-    "plugins/fitbit/plugin_info/info.json": {
-        "Plugin pour Fitbit": "Plugin para o Fitbit"
-    },
-    "plugins/fitbit/core/class/fitbit.class.php": {
-        "Erreur sur ": "erro"
-    },
-    "plugins/fitbit/desktop/php/fitbit.php": {
-        "Ajouter une personne": "Adicionar Pessoa",
-        "Rechercher": "pesquisa",
+    "plugins\/fitbit\/desktop\/php\/fitbit.php": {
+        "401 - Accès non autorisé": "401 - Acesso não autorizado",
         "Mes équipements Fitbit": "Meu equipamento Fitbit",
-        "Sauvegarder": "salvar",
-        "Supprimer": "remover",
-        "Equipement": "equipamento",
-        "Commandes": "comandos",
-        "Général": "geral",
+        "Ajouter une personne": "Adicionar pessoa",
+        "Mes équipement Fitbit": "Meu equipamento Fitbit",
+        "Rechercher": "Pesquisa",
+        "Configuration avancée": "Configuração avançada",
+        "Dupliquer": "Duplicar",
+        "Sauvegarder": "Salvar",
+        "Supprimer": "Remover",
+        "Equipement": "Equipamento",
+        "Commandes": "Comandos",
         "Nom de la personne": "Nome da pessoa",
-        "Objet parent": "objeto pai",
-        "Aucun": "não",
-        "Activer": "ativar",
-        "Visible": "visível",
+        "Objet parent": "Objeto pai",
+        "Aucun": "Nemhum",
+        "Activer": "Ativar",
+        "Visible": "Visivél",
         "URL de retour": "URL de retorno",
         "Client ID": "ID do cliente",
-        "Secret key": "chave secreta",
-        "URL de subscription": "assinatura URL",
-        "Subscription id": "ID de subscrição",
-        "Subscription code": "código de subscrição",
-        "Lier": "link",
-        "Lier à un utilisateur": "Ligando para um usuário",
-        "Nom": "nome",
-        "Type": "tipo",
-        "Action": "ação",
-        "Configuration avancée": "configuração avançada"
+        "Secret key": "Chave secreta",
+        "URL de subscription": "URL de inscrição",
+        "Subscription id": "ID da assinatura",
+        "Subscription code": "Código de assinatura",
+        "Lier": "Vincular",
+        "Lier à un utilisateur": "Link para o usuário",
+        "Nom": "Nome",
+        "Type": "Tipo",
+        "Action": "Ação"
     },
-    "plugins/fitbit/desktop/js/fitbit.js": {
-        "Historiser": "historicizar",
-        "Afficher": "display",
-        "Tester": "teste"
+    "plugins\/fitbit\/desktop\/js\/fitbit.js": {
+        "Historiser": "Historicizar",
+        "Afficher": "Display",
+        "Tester": "Teste"
+    },
+    "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
+        "401 - Accès non autorisé": "401 - Acesso não autorizado",
+        "EqLogic non trouvé : ": "EqLogic não encontrado:",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à :"
+    },
+    "plugins\/fitbit\/core\/class\/fitbit.class.php": {
+        "Erreur sur ": "Erro",
+        "Poids": "Peso",
+        "Masse grasse": "Massa gorda",
+        "IMC": "IMC",
+        "Taille": "Tamanho",
+        "Pas": "Não",
+        "Calorie": "Calorias",
+        "Minute active": "Minuto ativo",
+        "Fréquence cardiaque au repos": "Frequência cardíaca em repouso",
+        "Coeur temps au repos": "Tempo do coração em repouso",
+        "Coeur temps perte de graisse": "Tempo de perda de gordura do coração",
+        "Coeur temps cardio": "Cardio cardíaco",
+        "Coeur temps maximum": "Tempo máximo do coração",
+        "Coeur calories au repos": "Coração calórico em repouso",
+        "Coeur calories perte de graisse": "Perda de gordura nas calorias do coração",
+        "Coeur calories cardio": "Cardio calorias do coração",
+        "Coeur calories maximum": "Calorias máximas do coração",
+        "Distance": "Distância",
+        "Elevation": "Elevação",
+        "Nombre de reveils": "Número de despertadores",
+        "Durée réveils": "Hora de acordar",
+        "Durée de sommeil": "Duração do sono",
+        "Sommeil agité": "Sono inquieto",
+        "Temps pour s\\'endormir": "Hora de adormecer",
+        "Rafraîhir": "Atualizar"
     }
 }
