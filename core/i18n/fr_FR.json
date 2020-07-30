@@ -64,5 +64,8 @@
         "Sommeil agité": "Sommeil agité",
         "Temps pour s\\'endormir": "Temps pour s\\'endormir",
         "Rafraîhir": "Rafraîhir"
+    },
+    "info.json": {
+        "Plugin pour Fitbit": "Plugin pour Fitbit"
     }
 }

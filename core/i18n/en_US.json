@@ -64,5 +64,8 @@
         "Sommeil agité": "Agitated sleep",
         "Temps pour s\\'endormir": "Time to fall asleep",
         "Rafraîhir": "Refresh"
+    },
+    "info.json": {
+        "Plugin pour Fitbit": "Plugbit for Fitbit"
     }
 }

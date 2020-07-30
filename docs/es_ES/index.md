@@ -1,6 +1,6 @@
 # Complemento Fitbit
 
-Complemento para acceder a información en dispositivos Fitbit (número de pasos, calorías, distancia, etc.)
+Complemento que permite acceder a la información de sus dispositivos Fitbit (número de pasos, calorías, distancia)
 
 # Configuración 
 
@@ -41,14 +41,14 @@ Para vincular su cuenta de Fitbit a Jeedom, primero cree una cuenta de desarroll
 -   URL de devolución de llamada : Debes poner el que te da Jeedom al crear un equipo de Fitbit, ten cuidado si no colocas el correcto, la conexión no se podrá hacer
 -   Tipo de acceso predeterminado : Leer y escribir
 
-También puede agregar una suscripción, esto le permite a Fitbit enviar una actualización directamente en Jeedom (en lugar de esperar a que Jeedom actualice la información) :
+También puede agregar una suscripción, esto le permite a Fitbit enviar una actualización directamente a Jeedom (en lugar de esperar a que Jeedom actualice la información) :
 
 -   Por defecto : oui
 -   URL de punto final : el dado por jeedom
 -   Tipo : Cuerpo JSON
 -   ID de suscriptor : No poner nada
 
-Si tiene una suscripción, debe hacerlo (tenga cuidado de hacer todos estos pasos en orden) :
+Si ha realizado una suscripción, debe hacerlo (tenga cuidado de hacer todos estos pasos en orden) :
 
 -   Pon el número de suscripción en el equipo de Fitbit en Jeedom
 -   Pon el código de suscripción en el equipo de Fitbit en Jeedom
@@ -82,7 +82,7 @@ Aquí están los detalles de la configuración del complemento :
 -   Para cada orden :
     -   Guardar historial : permite registrar el comando
     -   Mostrar : permite hacerlo visible o no en el tablero
-    -   Avanzado (ruedas con muescas pequeñas) : muestra la configuración avanzada del comando
+    -   Avanzado (ruedas pequeñas con muescas) : muestra la configuración avanzada del comando
     -   Probar : permite probar el comando para ver su valor
     -   Eliminar (botón "-") : para eliminar el pedido
 

@@ -1,6 +1,6 @@
 # Fitbit plugin
 
-Plugin to access information on Fitbit devices (number of steps, calories, distance, etc.)
+Plugin allowing access to the information of its Fitbit devices (number of steps, calories, distance)
 
 # Setup 
 
@@ -41,14 +41,14 @@ To link your Fitbit account to Jeedom you first create a developer account with 
 -   Callback URL : You have to put the one that Jeedom gives you when creating a Fitbit equipment, be careful if you do not put the correct one the connection will not be able to be made
 -   Default Access Type : Read & Write
 
-You can also add a subscription, this allows Fitbit to push an update directly in Jeedom (instead of waiting for Jeedom to update the information) :
+You can also add a subscription, this allows Fitbit to push an update directly into Jeedom (instead of waiting for Jeedom to update the information) :
 
 -   Default : oui
 -   Endpoint URL : the one given by jeedom
 -   Type : JSON body
 -   Subscriber ID : Put nothing
 
-If you have a subscription you must (be careful to do all these steps in order) :
+If you have made a subscription you must (be careful to do all these steps in order) :
 
 -   Put the subscription number in the Fitbit equipment on Jeedom
 -   Put the subscription code in the Fitbit equipment on Jeedom
@@ -84,7 +84,7 @@ Here are the details of the plugin configuration :
     -   Show : allows to make it visible or not on the dashboard
     -   Advanced (small notched wheels) : displays the advanced configuration of the command
     -   Test : allows to test the command to see its value
-    -   Delete ("-" button) : to delete the order
+    -   Delete (button "-") : to delete the order
 
 ## Widget 
 

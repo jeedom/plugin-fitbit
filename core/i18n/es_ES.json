@@ -64,5 +64,8 @@
         "Sommeil agité": "Sueño inquieto",
         "Temps pour s\\'endormir": "Hora de conciliar el sueño",
         "Rafraîhir": "Actualizar"
+    },
+    "info.json": {
+        "Plugin pour Fitbit": "Plugbit para Fitbit"
     }
 }

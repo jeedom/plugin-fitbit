@@ -64,5 +64,8 @@
         "Sommeil agité": "Unruhiger Schlaf",
         "Temps pour s\\'endormir": "Zeit einzuschlafen",
         "Rafraîhir": "Aktualisieren"
+    },
+    "info.json": {
+        "Plugin pour Fitbit": "Plugbit für Fitbit"
     }
 }

@@ -1,6 +1,6 @@
 # Fitbit Plugin
 
-Plugin für den Zugriff auf Informationen zu Fitbit-Geräten (Anzahl der Schritte, Kalorien, Entfernung usw.)
+Plugin für den Zugriff auf die Informationen seiner Fitbit-Geräte (Anzahl der Schritte, Kalorien, Entfernung)
 
 # Konfiguration 
 
@@ -48,7 +48,7 @@ Sie können auch ein Abonnement hinzufügen. Dadurch kann Fitbit ein Update dire
 -   Typ : JSON-Körper
 -   Teilnehmer-ID : Setzen Sie nichts
 
-Wenn Sie ein Abonnement haben, müssen Sie (alle diese Schritte der Reihe nach ausführen) :
+Wenn Sie ein Abonnement abgeschlossen haben, müssen Sie (alle diese Schritte der Reihe nach ausführen)) :
 
 -   Tragen Sie die Abonnementnummer in die Fitbit-Ausrüstung von Jeedom ein
 -   Geben Sie den Abonnementcode in die Fitbit-Ausrüstung von Jeedom ein

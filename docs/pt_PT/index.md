@@ -1,6 +1,6 @@
 # Fitbit plugin
 
-Plug-in para acessar informações em dispositivos Fitbit (número de etapas, calorias, distância etc.)
+Plugin que permite acessar as informações de seus dispositivos Fitbit (número de etapas, calorias, distância)
 
 # Configuração 
 
@@ -41,14 +41,14 @@ Para vincular sua conta Fitbit ao Jeedom, primeiro crie uma conta de desenvolved
 -   URL de retorno de chamada : Você deve colocar o que o Jeedom fornecer ao criar um equipamento Fitbit, tenha cuidado se você não colocar o correto, a conexão não poderá ser feita
 -   Tipo de acesso padrão : Ler e escrever
 
-Você também pode adicionar uma assinatura, isso permite que o Fitbit envie uma atualização diretamente no Jeedom (em vez de esperar que o Jeedom atualize as informações) :
+Você também pode adicionar uma assinatura, isso permite que o Fitbit envie uma atualização diretamente para o Jeedom (em vez de esperar que o Jeedom atualize as informações) :
 
 -   Padrão : oui
 -   URL do terminal : o dado por jeedom
 -   Tipo : Corpo JSON
 -   ID do Assinante : não ponha nada
 
-Se você possui uma assinatura, deve (tome cuidado para executar todas essas etapas em ordem) :
+Se você fez uma assinatura, você deve (tenha cuidado para executar todas essas etapas para) :
 
 -   Coloque o número da assinatura no equipamento Fitbit na Jeedom
 -   Coloque o código de assinatura no equipamento Fitbit no Jeedom
@@ -84,7 +84,7 @@ Aqui estão os detalhes da configuração do plugin :
     -   Display : permite torná-lo visível ou não no painel
     -   Avançado (pequenas rodas dentadas) : exibe a configuração avançada do comando
     -   Teste : permite testar o comando para ver seu valor
-    -   Excluir (botão "-") : para excluir o pedido
+    -   Botão Excluir ( "-") : para excluir o pedido
 
 ## Widget 
 
