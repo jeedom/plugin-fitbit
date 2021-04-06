@@ -6,9 +6,12 @@
 
 # 17/03/2021
 
+- Actualización importante del complemento
+
 >**Importante**
 >
 > Tras una modificación de las condiciones en el lado de Fibit, ahora es necesario pasar por nuestros servicios en la nube. Para hacerlo, lamentablemente tendrá que eliminar todos sus equipos Fitbit y rehacerlos uno por uno. Tenga en cuenta que la documentación se ha actualizado para indicarle cómo volver a vincular Jeedom y Fitbit (mucho más simple que antes)
+
 
 # 08/13/2019
 

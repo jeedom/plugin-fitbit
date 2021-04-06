@@ -6,9 +6,12 @@
 
 # 17.03.2021
 
+- Haupt-Plugin-Update
+
 >**Wichtig**
 >
 > Nach einer Änderung der Bedingungen auf der Fibit-Seite ist es nun erforderlich, unsere Cloud-Dienste zu durchlaufen. Dazu müssen Sie leider alle Ihre Fitbit-Geräte löschen und nacheinander wiederholen. Bitte beachten Sie, dass die Dokumentation aktualisiert wurde, um Ihnen zu erklären, wie Sie Jeedom und Fitbit erneut verknüpfen können (viel einfacher als zuvor)
+
 
 # 2019.08.13
 

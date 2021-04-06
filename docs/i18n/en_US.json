@@ -3,6 +3,7 @@
         "Changelog Fitbit": "Changelog Fitbit",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text",
         "17\/03\/2021": "03\/17\/2021",
+        "Mise à jour majeur du plugin": "Major plugin update",
         "Suite a une modification des condition coté Fibit il est maintenant necessaire de passer par nos services cloud": "Following a modification of the conditions on the Fibit side, it is now necessary to go through our cloud services",
         "Pour se faire il va malheureusement falloir supprimer tous vos équipements Fitbit et les refaires un à un": "To do so, you will unfortunately have to delete all your Fitbit equipment and redo them one by one",
         "Attention la documentation a été mise à jour pour vous indiquer comment refaire le lien entre Jeedom et Fitbit (bien plus simple que avant": "Please note that the documentation has been updated to tell you how to re-link Jeedom and Fitbit (much simpler than before",

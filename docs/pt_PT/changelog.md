@@ -6,9 +6,12 @@
 
 # 17/03/2021
 
+- Atualização principal do plugin
+
 >**IMPORTANTE**
 >
 > Após uma modificação das condições no lado Fibit, agora é necessário passar por nossos serviços em nuvem. Para fazer isso, infelizmente você terá que excluir todos os seus equipamentos Fitbit e refazê-los um por um. Por favor, note que a documentação foi atualizada para lhe dizer como reconectar Jeedom e Fitbit (muito mais simples do que antes)
+
 
 # 13/08/2019
 

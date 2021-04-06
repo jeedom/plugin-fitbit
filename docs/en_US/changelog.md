@@ -6,9 +6,12 @@
 
 # 03/17/2021
 
+- Major plugin update
+
 >**Important**
 >
 > Following a modification of the conditions on the Fibit side, it is now necessary to go through our cloud services. To do so, you will unfortunately have to delete all your Fitbit equipment and redo them one by one. Please note that the documentation has been updated to tell you how to re-link Jeedom and Fitbit (much simpler than before)
+
 
 # 08/13/2019
 
