@@ -16,14 +16,7 @@
         "Aucun": "Ninguna",
         "Activer": "Activar",
         "Visible": "Visible",
-        "URL de retour": "URL de retorno",
-        "Client ID": "ID del cliente",
-        "Secret key": "Clave secreta",
-        "URL de subscription": "URL de suscripción",
-        "Subscription id": "ID de suscripción",
-        "Subscription code": "Código de suscripción",
         "Lier": "Enlazar",
-        "Lier à un utilisateur": "Enlace al usuario",
         "Nom": "Nombre",
         "Type": "Tipo",
         "Action": "Acción"
@@ -40,29 +33,9 @@
     },
     "plugins\/fitbit\/core\/class\/fitbit.class.php": {
         "Erreur sur ": "Error en",
-        "Poids": "Peso",
-        "Masse grasse": "Masa grasa",
-        "IMC": "IMC",
-        "Taille": "Tamaño",
-        "Pas": "No",
-        "Calorie": "Calorías",
-        "Minute active": "Minuto activo",
-        "Fréquence cardiaque au repos": "Frecuencia cardíaca en reposo",
-        "Coeur temps au repos": "Tiempo cardíaco en reposo",
-        "Coeur temps perte de graisse": "Tiempo de pérdida de grasa del corazón",
-        "Coeur temps cardio": "Cardio del tiempo del corazón",
-        "Coeur temps maximum": "Tiempo máximo del corazón",
-        "Coeur calories au repos": "Corazón calórico en reposo",
-        "Coeur calories perte de graisse": "Calorías del corazón pérdida de grasa",
-        "Coeur calories cardio": "Calorías cardíacas cardio",
-        "Coeur calories maximum": "Calorías máximas del corazón",
-        "Distance": "Distancia",
-        "Elevation": "Elevacion",
-        "Nombre de reveils": "Numero de despertadores",
-        "Durée réveils": "Hora de despertarse",
-        "Durée de sommeil": "Duración del sueño",
-        "Sommeil agité": "Sueño inquieto",
-        "Temps pour s\\'endormir": "Hora de conciliar el sueño",
-        "Rafraîhir": "Actualizar"
+        "[Fitbit] Erreur lors de la récuperation des données : ": "[Fitbit] Error al recuperar datos:"
+    },
+    "info.json": {
+        "Plugin pour Fitbit": "Plugbit para Fitbit"
     }
 }

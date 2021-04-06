@@ -16,14 +16,7 @@
         "Aucun": "Nemhum",
         "Activer": "Ativar",
         "Visible": "Visivél",
-        "URL de retour": "URL de retorno",
-        "Client ID": "ID do cliente",
-        "Secret key": "Chave secreta",
-        "URL de subscription": "URL de inscrição",
-        "Subscription id": "ID da assinatura",
-        "Subscription code": "Código de assinatura",
         "Lier": "Vincular",
-        "Lier à un utilisateur": "Link para o usuário",
         "Nom": "Nome",
         "Type": "Tipo",
         "Action": "Ação"
@@ -40,29 +33,9 @@
     },
     "plugins\/fitbit\/core\/class\/fitbit.class.php": {
         "Erreur sur ": "Erro",
-        "Poids": "Peso",
-        "Masse grasse": "Massa gorda",
-        "IMC": "IMC",
-        "Taille": "Tamanho",
-        "Pas": "Não",
-        "Calorie": "Calorias",
-        "Minute active": "Minuto ativo",
-        "Fréquence cardiaque au repos": "Frequência cardíaca em repouso",
-        "Coeur temps au repos": "Tempo do coração em repouso",
-        "Coeur temps perte de graisse": "Tempo de perda de gordura do coração",
-        "Coeur temps cardio": "Cardio cardíaco",
-        "Coeur temps maximum": "Tempo máximo do coração",
-        "Coeur calories au repos": "Coração calórico em repouso",
-        "Coeur calories perte de graisse": "Perda de gordura nas calorias do coração",
-        "Coeur calories cardio": "Cardio calorias do coração",
-        "Coeur calories maximum": "Calorias máximas do coração",
-        "Distance": "Distância",
-        "Elevation": "Elevação",
-        "Nombre de reveils": "Número de despertadores",
-        "Durée réveils": "Hora de acordar",
-        "Durée de sommeil": "Duração do sono",
-        "Sommeil agité": "Sono inquieto",
-        "Temps pour s\\'endormir": "Hora de adormecer",
-        "Rafraîhir": "Atualizar"
+        "[Fitbit] Erreur lors de la récuperation des données : ": "[Fitbit] Erro ao recuperar dados:"
+    },
+    "info.json": {
+        "Plugin pour Fitbit": "Plugin for Fitbit"
     }
 }

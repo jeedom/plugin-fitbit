@@ -1,0 +1,331 @@
+{
+  "commands" : [
+    {
+      "name": "Rafraîchir",
+      "type": "action",
+      "subtype": "other",
+      "logicalId": "refresh"
+    },
+    {
+      "name": "Poids",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "body/log/weight/date/#date#.json"
+      },
+      "unite" : "kg",
+      "logicalId": "weight::0::weight"
+    },
+    {
+      "name": "Masse grasse",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "body/log/weight/date/#date#.json"
+      },
+      "unite" : "%",
+      "logicalId": "weight::0::fat"
+    },
+    {
+      "name": "IMC",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "body/log/weight/date/#date#.json"
+      },
+      "logicalId": "weight::0::bmi"
+    },
+    {
+      "name": "Calories",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/date/#date#.json"
+      },
+      "unite" : "kcal",
+      "logicalId": "summary::caloriesOut"
+    },
+    {
+      "name": "Pas",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/date/#date#.json"
+      },
+      "logicalId": "summary::steps"
+    },
+    {
+      "name": "Elévation",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/date/#date#.json"
+      },
+      "unite" : "m",
+      "logicalId": "summary::elevation"
+    },
+    {
+      "name": "Assez actives",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "summary::fairlyActiveMinutes"
+    },
+    {
+      "name": "Légèrement actives",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "summary::lightlyActiveMinutes"
+    },
+    {
+      "name": "Sédentaires",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "summary::sedentaryMinutes"
+    },
+    {
+      "name": "Très actives",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "summary::veryActiveMinutes"
+    },
+    {
+      "name": "Etage",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/date/#date#.json"
+      },
+      "logicalId": "summary::floors"
+    },
+    {
+      "name": "Efficacité sommeil",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "sleep/date/#date#.json"
+      },
+      "logicalId": "sleep::0::efficiency"
+    },
+    {
+      "name": "Temps après le réveil",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "sleep/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "sleep::0::minutesAfterWakeup"
+    },
+    {
+      "name": "Temps endormi",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "sleep/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "sleep::0::minutesAsleep"
+    },
+    {
+      "name": "Temps éveillé",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "sleep/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "sleep::0::minutesAwake"
+    },
+    {
+      "name": "Temps pour s'endormir",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "sleep/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "sleep::0::minutesToFallAsleep"
+    },
+    {
+      "name": "Temps au lit",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "sleep/date/#date#.json"
+      },
+      "unite" : "min",
+      "logicalId": "sleep::0::timeInBed"
+    },
+    {
+      "name": "Temps rythme cardiaque bas",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/heart/date/#date#/1d.json"
+      },
+      "unite" : "min",
+      "logicalId": "activities-heart::0::value::heartRateZones::0::minutes"
+    },
+    {
+      "name": "Calories rythme cardiaque bas",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/heart/date/#date#/1d.json"
+      },
+      "unite" : "kcal",
+      "logicalId": "activities-heart::0::value::heartRateZones::0::caloriesOut"
+    },
+    {
+      "name": "Temps rythme cardiaque bruleur de graisse",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/heart/date/#date#/1d.json"
+      },
+      "unite" : "min",
+      "logicalId": "activities-heart::0::value::heartRateZones::1::minutes"
+    },
+    {
+      "name": "Calories rythme cardiaque bruleur de graisse",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/heart/date/#date#/1d.json"
+      },
+      "unite" : "kcal",
+      "logicalId": "activities-heart::0::value::heartRateZones::1::caloriesOut"
+    },
+    {
+      "name": "Temps rythme cardiaque cardio",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/heart/date/#date#/1d.json"
+      },
+      "unite" : "min",
+      "logicalId": "activities-heart::0::value::heartRateZones::2::minutes"
+    },
+    {
+      "name": "Calories rythme cardiaque cardio",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/heart/date/#date#/1d.json"
+      },
+      "unite" : "kcal",
+      "logicalId": "activities-heart::0::value::heartRateZones::2::caloriesOut"
+    },
+    {
+      "name": "Temps rythme cardiaque max",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/heart/date/#date#/1d.json"
+      },
+      "unite" : "min",
+      "logicalId": "activities-heart::0::value::heartRateZones::3::minutes"
+    },
+    {
+      "name": "Calories rythme cardiaque max",
+      "type": "info",
+      "subtype": "numeric",
+      "isVisible": 1,
+      "isHistorized": 1,
+      "configuration" : {
+        "historizeRound" : 2,
+        "path" : "activities/heart/date/#date#/1d.json"
+      },
+      "unite" : "kcal",
+      "logicalId": "activities-heart::0::value::heartRateZones::3::caloriesOut"
+    }
+  ]
+}

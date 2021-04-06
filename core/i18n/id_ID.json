@@ -1,9 +1,9 @@
 {
     "plugins\/fitbit\/desktop\/php\/fitbit.php": {
         "401 - Accès non autorisé": "401 - Akses tidak sah",
-        "Mes équipements Fitbit": "",
-        "Ajouter une personne": "",
-        "Mes équipement Fitbit": "",
+        "Mes équipements Fitbit": "Mes équipements Fitbit",
+        "Ajouter une personne": "Ajouter une personne",
+        "Mes équipement Fitbit": "Mes équipement Fitbit",
         "Rechercher": "Pencarian",
         "Configuration avancée": "Konfigurasi lanjutan",
         "Dupliquer": "Duplikat",
@@ -11,19 +11,12 @@
         "Supprimer": "Menghapus",
         "Equipement": "Peralatan",
         "Commandes": "Perintah",
-        "Nom de la personne": "",
+        "Nom de la personne": "Nom de la personne",
         "Objet parent": "Objek induk",
         "Aucun": "Tak ada",
         "Activer": "Mengaktifkan",
         "Visible": "Terlihat",
-        "URL de retour": "URL Kembali",
-        "Client ID": "ID pelanggan",
-        "Secret key": "",
-        "URL de subscription": "",
-        "Subscription id": "",
-        "Subscription code": "",
-        "Lier": "",
-        "Lier à un utilisateur": "",
+        "Lier": "Lier",
         "Nom": "Nama",
         "Type": "Jenis",
         "Action": "Tindakan"
@@ -35,34 +28,14 @@
     },
     "plugins\/fitbit\/core\/ajax\/fitbit.ajax.php": {
         "401 - Accès non autorisé": "401 - Akses tidak sah",
-        "EqLogic non trouvé : ": "",
+        "EqLogic non trouvé : ": "EqLogic non trouvé :",
         "Aucune methode correspondante à : ": "Aucune methode correspondante à :"
     },
     "plugins\/fitbit\/core\/class\/fitbit.class.php": {
         "Erreur sur ": "Error",
-        "Poids": "",
-        "Masse grasse": "",
-        "IMC": "",
-        "Taille": "Size",
-        "Pas": "",
-        "Calorie": "",
-        "Minute active": "",
-        "Fréquence cardiaque au repos": "",
-        "Coeur temps au repos": "",
-        "Coeur temps perte de graisse": "",
-        "Coeur temps cardio": "",
-        "Coeur temps maximum": "",
-        "Coeur calories au repos": "",
-        "Coeur calories perte de graisse": "",
-        "Coeur calories cardio": "",
-        "Coeur calories maximum": "",
-        "Distance": "",
-        "Elevation": "",
-        "Nombre de reveils": "",
-        "Durée réveils": "",
-        "Durée de sommeil": "",
-        "Sommeil agité": "",
-        "Temps pour s\\'endormir": "",
-        "Rafraîhir": ""
+        "[Fitbit] Erreur lors de la récuperation des données : ": "[Fitbit] Erreur lors de la récuperation des données :"
+    },
+    "info.json": {
+        "Plugin pour Fitbit": "Plugin pour Fitbit"
     }
 }

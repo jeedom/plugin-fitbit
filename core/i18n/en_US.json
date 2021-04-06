@@ -16,14 +16,7 @@
         "Aucun": "None",
         "Activer": "Activate",
         "Visible": "Visible",
-        "URL de retour": "Return url",
-        "Client ID": "Client ID",
-        "Secret key": "Secret key",
-        "URL de subscription": "Subscription URL",
-        "Subscription id": "Subscription id",
-        "Subscription code": "Subscription code",
         "Lier": "Bind",
-        "Lier à un utilisateur": "Link to user",
         "Nom": "Name",
         "Type": "Type",
         "Action": "Action"
@@ -40,29 +33,9 @@
     },
     "plugins\/fitbit\/core\/class\/fitbit.class.php": {
         "Erreur sur ": "Error on",
-        "Poids": "Weight",
-        "Masse grasse": "Fat mass",
-        "IMC": "BMI",
-        "Taille": "Size",
-        "Pas": "Not",
-        "Calorie": "Calorie",
-        "Minute active": "Active minute",
-        "Fréquence cardiaque au repos": "Resting heart rate",
-        "Coeur temps au repos": "Heart time at rest",
-        "Coeur temps perte de graisse": "Heart fat loss time",
-        "Coeur temps cardio": "Heart time cardio",
-        "Coeur temps maximum": "Heart maximum time",
-        "Coeur calories au repos": "Calorie heart at rest",
-        "Coeur calories perte de graisse": "Heart calories fat loss",
-        "Coeur calories cardio": "Heart calories cardio",
-        "Coeur calories maximum": "Heart maximum calories",
-        "Distance": "Range",
-        "Elevation": "Elevation",
-        "Nombre de reveils": "Number of alarm clocks",
-        "Durée réveils": "Wake-up time",
-        "Durée de sommeil": "Sleep duration",
-        "Sommeil agité": "Agitated sleep",
-        "Temps pour s\\'endormir": "Time to fall asleep",
-        "Rafraîhir": "Refresh"
+        "[Fitbit] Erreur lors de la récuperation des données : ": "[Fitbit] Error retrieving data:"
+    },
+    "info.json": {
+        "Plugin pour Fitbit": "Plugbit for Fitbit"
     }
 }
