@@ -6,7 +6,12 @@
         "en_US": "Plugbit for Fitbit",
         "es_ES": "Plugbit para Fitbit",
         "de_DE": "Plugbit für Fitbit",
-        "pt_PT": "Plugin for Fitbit"
+        "pt_PT": "Plugin for Fitbit",
+        "ru_RU": "Plugin pour Fitbit",
+        "id_ID": "Plugin pour Fitbit",
+        "it_IT": "Plugin pour Fitbit",
+        "ja_JP": "Plugin pour Fitbit",
+        "tr": "Plugin pour Fitbit"
     },
     "licence": "AGPL",
     "author": "Loïc",
@@ -19,7 +24,12 @@
         "en_US",
         "es_ES",
         "de_DE",
-        "pt_PT"
+        "ru_RU",
+        "id_ID",
+        "it_IT",
+        "ja_JP",
+        "pt_PT",
+        "tr"
     ],
     "compatibility": [
         "miniplus",
